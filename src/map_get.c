@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_get.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:47:55 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/16 16:42:14 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/17 13:02:31 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-//adds a string in a new array of strings
+/*copy an array of strings in a new mallocated array
+then add a string at the end and free the old array*/
 static char	**_dim2join_free(char **tab, char *str)
 {
 	char	**output;
@@ -27,7 +28,7 @@ static char	**_dim2join_free(char **tab, char *str)
 	return (output);
 }
 
-//puts each line of a text file in an array of strings
+/*puts each line of a text file in an array of strings*/
 char	**get_map(char *file_name)
 {
 	char	**map;
@@ -42,6 +43,7 @@ char	**get_map(char *file_name)
 	line = get_next_line(fd);
 	while (line)
 	{
+		line[ft_strclen2(line, '\n')] = '\0';
 		map = _dim2join_free(map, line);
 		line = get_next_line(fd);
 	}
