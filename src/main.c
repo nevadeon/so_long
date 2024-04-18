@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/17 16:10:17 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:03:51 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int	_verif_arg(int argc, char *filename)
 
 int	main(int argc, char *argv[])
 {
-	char	**map;
+	char		**map;
+	t_position	*pos;
 
 	if (_verif_arg(argc, argv[1]))
 		return (1);
@@ -42,10 +43,10 @@ int	main(int argc, char *argv[])
 		return (ft_printf("Error\nError while opening the file"));
 	if (map[0] == NULL)
 		return (ft_printf("Error\nEmpty map\n"));
-	if (parse_map(map) != OK)
-	{
-		print_map(map);
+	pos = (t_position *) malloc(sizeof(t_position));
+	print_map(map);
+	if (parse_map(map, pos) != OK)
 		return (1);
-	}
+	free(pos);
 	return (0);
 }
