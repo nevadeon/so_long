@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/18 21:16:55 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/19 18:28:33 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,43 @@
 
 void	get_player_position(char **map, t_position *pos)
 {
-	size_t	i;
-	size_t	j;
+	size_t	y;
+	size_t	x;
 
-	j = -1;
-	while (map[++j] != NULL)
+	y = -1;
+	while (map[++y] != NULL)
 	{
-		i = -1;
-		while (map[j][++i] != '\0')
+		x = -1;
+		while (map[y][++x] != '\0')
 		{
-			if (map[j][i] == 'P')
+			if (map[y][x] == 'P')
 			{
-				pos->player_x = i;
-				pos->player_y = j;
+				pos->player_x = x;
+				pos->player_y = y;
 			}
 		}
 	}
 }
 
+void	reset_map(char **map)
+{
+	size_t	x;
+	size_t	y;
+
+	y = -1;
+	while (map[++y] != NULL)
+	{
+		x = -1;
+		while (map[y][++x] != '\0')
+		{
+			if (map[y][x] & 128)
+				map[y][x] ^= 128;
+		}
+	}
+}
+
+/*this function takes advandate of the 8th unused bit of ascii chars to
+distinguish the parts of the map that are reachable and those that aren't*/
 void	parse_path(char **map, size_t x, size_t y)
 {
 	if (map[y][x] == '1' || map[y][x] & 128)
@@ -43,28 +62,32 @@ void	parse_path(char **map, size_t x, size_t y)
 	parse_path(map, x, y + 1);
 }
 
-/*prints (in STDERR) and return an error message if map is invalid*/
+/*prints error mesage (in STDERR) and returns error code if map is invalid*/
 t_error	parse_map(char **map, t_position *pos)
 {
-	if (is_rectangle(map))
+	if (map == NULL)
+		return (ft_putendl_fd(FAILED_TO_OPEN, STDERR_FILENO), ERR_OPEN);
+	if (map[0] == NULL)
+		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY);
+	if (is_rectangle(map, pos))
 		return (ft_putendl_fd(NOT_RECTANGLE, STDERR_FILENO), ERR_RECT);
 	if (check_map_size(map))
-		return (ft_putendl_fd(MAP_TOO_BIG, STDERR_FILENO), ERR_M_SIZE);
-	if (check_characters(map))
+		return (ft_putendl_fd(MAP_TOO_BIG, STDERR_FILENO), ERR_MAP_SIZE);
+	if (check_characters(map, pos))
 		return (ft_putendl_fd(UNEXPECTED_CHARACTER, STDERR_FILENO), ERR_CHAR);
-	if (check_outer_walls(map))
+	if (check_outer_walls(map, pos))
 		return (ft_putendl_fd(WRONG_MAP_WALLS, STDERR_FILENO), ERR_WALL);
-	if (count_player(map))
+	if (count_player(map, pos))
 		return (ft_putendl_fd(WRONG_PLAYER_COUNT, STDERR_FILENO), ERR_PLAYER);
-	if (count_exit(map))
+	if (count_exit(map, pos))
 		return (ft_putendl_fd(WRONG_EXIT_COUNT, STDERR_FILENO), ERR_EXIT);
-	if (count_collectible(map))
+	if (count_collectible(map, pos))
 		return (ft_putendl_fd(WRONG_COLLECTIBLE_COUNT, STDERR_FILENO), ERR_COL);
 	get_player_position(map, pos);
 	parse_path(map, pos->player_x, pos->player_y);
-	if (!count_exit(map))
+	if (!count_exit(map, pos))
 		return (ft_putendl_fd(UNREACHABLE_EXIT, STDERR_FILENO), PATH_E);
-	if (!count_collectible(map))
-		return (ft_putendl_fd(UNREACHABLE_COLLECTIBLE, STDERR_FILENO), PATH_C);
+	if (!count_collectible(map, pos))
+		return (ft_putendl_fd(UNREACHABLE_COLL, STDERR_FILENO), PATH_C);
 	return (OK);
 }

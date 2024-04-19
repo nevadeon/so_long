@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"libndav.h": "c"
+		"libndav.h": "c",
+		"so_long.h": "c"
 	}
 }

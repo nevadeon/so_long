@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:47:55 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/17 13:02:31 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:22:39 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*copy an array of strings in a new mallocated array
 then add a string at the end and free the old array*/
-static char	**_dim2join_free(char **tab, char *str)
+char	**_dim2join_free(char **tab, char *str)
 {
 	char	**output;
 	size_t	len;
