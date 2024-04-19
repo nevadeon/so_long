@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 18:28:56 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:14:21 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define TOO_MANY_ARGS "Error\ntoo many arguments\n"
 # define SHORT_FILE_NAME "Error\nfile name too short\n"
 # define WRONG_FILE_EXT "Error\nincorrect file extension\n"
-# define EMPTY_MAP "Error\nEmpty map\n"
+# define EMPTY_MAP "Error\nEmpty map"
 # define FAILED_TO_OPEN "Error\nError while opening the file"
 # define MAP_TOO_BIG "Error\nMap is too big"
 # define NOT_RECTANGLE "Error\nMap is not a rectangle\n"

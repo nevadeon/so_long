@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 18:27:56 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:12:59 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 {
 	char		**map;
 	t_position	*pos;
-	t_error		code;
+	t_error		error_code;
 
 	if (verif_arg(argc, argv[1]))
 		return (1);
@@ -41,11 +41,11 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		map = get_map(DEFAULT_MAP_PATH);
 	pos = (t_position *) malloc(sizeof(t_position));
-	code = parse_map(map, pos);
+	error_code = parse_map(map, pos);
 	reset_map(map);
-	if (code != OK)
+	if (error_code != OK)
 	{
-		if (code != ERR_OPEN && code != ERR_EMPTY && code != ERR_MAP_SIZE)
+		if (error_code != ERR_OPEN && error_code != ERR_MAP_SIZE)
 			print_map(map, pos);
 		return (free(pos), 1);
 	}

@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 16:24:13 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:15:28 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_error	check_map_size(char **map)
 
 	map_width = ft_strlen(map[0]);
 	map_hight = dim2_len((void **) map);
-	if (map_hight > 1000 || map_width > 1000)
+	if (map_hight > 1000 || map_width > 80)
 		return (ERR_MAP_SIZE);
 	return (OK);
 }

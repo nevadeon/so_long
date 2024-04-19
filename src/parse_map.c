@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 18:28:33 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/19 18:35:19 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	get_player_position(char **map, t_position *pos)
 	}
 }
 
+/*undo changes done by parse_path*/
 void	reset_map(char **map)
 {
 	size_t	x;
