@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 19:14:21 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/20 16:40:50 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,16 @@
 # include <fcntl.h> //O_RDONLY
 # include <string.h> //strerror
 # include <stdio.h> //perror
+# include <stdbool.h> //true false
 # include "../libndav/headers/libndav.h"
 
 # define DEFAULT_MAP_PATH "../maps/default.ber"
+# define MASK 128
+
+# define COLOR_UNREACH "\033[38;2;222;107;72;5m%c\033[0m"
+# define COLOR_GROUND "\033[38;2;87;213;199m%c\033[0m"
+# define COLOR_PCE "\033[38;2;173;226;93m%c\033[0m"
+# define COLOR_WALL "\033[38;2;108;169;189m%c\033[0m"
 
 /*error section*/
 # define TOO_MANY_ARGS "Error\ntoo many arguments\n"
@@ -59,8 +66,6 @@ typedef struct s_position
 {
 	size_t	player_x;
 	size_t	player_y;
-	ssize_t	error_x;
-	ssize_t	error_y;
 }	t_position;
 
 char	**get_map(char *file_name);
@@ -70,18 +75,18 @@ void	free_map(char **map);
 size_t	ft_strclen2(const char *str, char c);
 size_t	dim2_len(void **tab);
 void	dim2_cpy(void **dest, void **src);
-void	print_map(char **map, t_position *pos);
+void	print_map(char **map);
 
 /*parsing*/
 t_error	verif_arg(int argc, char *filename);
 t_error	parse_map(char **map, t_position *pos);
-t_error	is_rectangle(char **map, t_position *pos);
+t_error	is_rectangle(char **map);
 t_error	check_map_size(char **map);
-t_error	check_characters(char **map, t_position *pos);
-t_error	check_outer_walls(char **map, t_position *pos);
-t_error	count_collectible(char **map, t_position *pos);
-t_error	count_player(char **map, t_position *pos);
-t_error	count_exit(char **map, t_position *pos);
+t_error	check_characters(char **map);
+t_error	check_outer_walls(char **map);
+t_error	count_player(char **map);
+t_error	count_collectible(char **map, bool apply_mask);
+t_error	count_exit(char **map, bool apply_mask);
 void	reset_map(char **map);
 
 #endif

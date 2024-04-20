@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_errors_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 17:06:22 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:17:38 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_error	check_characters(char **map, t_position *pos)
+t_error	check_characters(char **map)
 {
 	size_t	x;
 	size_t	y;
@@ -26,8 +26,7 @@ t_error	check_characters(char **map, t_position *pos)
 			if (map[y][x] != 'P' && map[y][x] != 'C' && map[y][x] != 'E'
 				&& map[y][x] != '0' && map[y][x] != '1')
 			{
-				pos->error_x = x;
-				pos->error_y = y;
+				map[y][x] |= MASK;
 				return (ERR_CHAR);
 			}
 		}
@@ -35,7 +34,7 @@ t_error	check_characters(char **map, t_position *pos)
 	return (OK);
 }
 
-t_error	check_outer_walls(char **map, t_position *pos)
+t_error	check_outer_walls(char **map)
 {
 	size_t	map_width;
 	size_t	map_hight;
@@ -53,8 +52,7 @@ t_error	check_outer_walls(char **map, t_position *pos)
 			if ((x == 0 || x == map_width || y == 0 || y == map_hight)
 				&& map[y][x] != '1')
 			{
-				pos->error_x = x;
-				pos->error_y = y;
+				map[y][x] |= MASK;
 				return (ERR_WALL);
 			}
 		}
@@ -62,7 +60,7 @@ t_error	check_outer_walls(char **map, t_position *pos)
 	return (OK);
 }
 
-t_error	count_player(char **map, t_position *pos)
+t_error	count_player(char **map)
 {
 	size_t	nb_player;
 	size_t	x;
@@ -77,20 +75,18 @@ t_error	count_player(char **map, t_position *pos)
 		{
 			if (map[y][x] == 'P')
 			{
-				pos->error_x = x;
-				pos->error_y = y;
+				map[y][x] |= MASK;
 				nb_player += 1;
 			}
 		}
 	}
 	if (nb_player != 1)
 		return (ERR_PLAYER);
-	pos->error_x = -1;
-	pos->error_y = -1;
+	reset_map(map);
 	return (OK);
 }
 
-t_error	count_exit(char **map, t_position *pos)
+t_error	count_exit(char **map, bool apply_mask)
 {
 	size_t	nb_exit;
 	size_t	x;
@@ -105,20 +101,20 @@ t_error	count_exit(char **map, t_position *pos)
 		{
 			if (map[y][x] == 'E')
 			{
-				pos->error_x = x;
-				pos->error_y = y;
+				if (apply_mask == true)
+					map[y][x] |= MASK;
 				nb_exit += 1;
 			}
 		}
 	}
 	if (nb_exit != 1)
 		return (ERR_EXIT);
-	pos->error_x = -1;
-	pos->error_y = -1;
+	if (apply_mask == true)
+		reset_map(map);
 	return (OK);
 }
 
-t_error	count_collectible(char **map, t_position *pos)
+t_error	count_collectible(char **map, bool apply_mask)
 {
 	size_t	nb_collectibles;
 	size_t	x;
@@ -133,15 +129,15 @@ t_error	count_collectible(char **map, t_position *pos)
 		{
 			if (map[y][x] == 'C')
 			{
-				pos->error_x = x;
-				pos->error_y = y;
+				if (apply_mask == true)
+					map[y][x] |= MASK;
 				nb_collectibles += 1;
 			}
 		}
 	}
 	if (nb_collectibles < 1)
 		return (ERR_COL);
-	pos->error_x = -1;
-	pos->error_y = -1;
+	if (apply_mask == true)
+		reset_map(map);
 	return (OK);
 }

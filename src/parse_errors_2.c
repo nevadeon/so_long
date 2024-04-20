@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_errors_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 19:15:28 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:24:30 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_error	check_map_size(char **map)
 	return (OK);
 }
 
-t_error	is_rectangle(char **map, t_position *pos)
+t_error	is_rectangle(char **map)
 {
 	size_t	map_width;
 	size_t	len;
@@ -56,8 +56,7 @@ t_error	is_rectangle(char **map, t_position *pos)
 			;
 		if (len != map_width)
 		{
-			pos->error_x = len - 1;
-			pos->error_y = y;
+			map[y][len - 1] |= MASK;
 			return (ERR_RECT);
 		}
 	}

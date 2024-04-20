@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_get.c                                          :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:47:55 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 17:22:39 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/20 16:41:44 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_map(char **map)
 	free(map);
 }
 
-void	print_map(char **map, t_position *pos)
+void	print_map(char **map)
 {
 	size_t	y;
 	size_t	x;
@@ -33,12 +33,14 @@ void	print_map(char **map, t_position *pos)
 		x = -1;
 		while (map[y][++x] != '\0')
 		{
-			if (y == pos->error_y && x == pos->error_x)
-				ft_printf(2, "\033[38;2;255;0;5;5m%c\033[0m", map[y][x]);
-			else if (map[y][x] & 128)
-				ft_printf(2, "\033[38;2;255;0;5;5m%c\033[0m", map[y][x] ^= 128);
+			if (map[y][x] & 128)
+				ft_printf(2, COLOR_UNREACH, map[y][x] ^ 128);
+			else if (map[y][x] == '1')
+				ft_printf(2, COLOR_WALL, map[y][x]);
+			else if (map[y][x] == 'C' || map[y][x] == 'P' || map[y][x] == 'E')
+				ft_printf(2, COLOR_PCE, map[y][x]);
 			else
-				ft_printf(2, "%c", map[y][x]);
+				ft_printf(2, COLOR_GROUND, map[y][x]);
 		}
 		ft_printf(2, "\n");
 	}

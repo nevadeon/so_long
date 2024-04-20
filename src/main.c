@@ -3,22 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/19 19:12:59 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:23:04 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_position	*pos_init(void)
+void	get_player_position(char **map, t_position *pos)
+{
+	size_t	y;
+	size_t	x;
+
+	y = -1;
+	while (map[++y] != NULL)
+	{
+		x = -1;
+		while (map[y][++x] != '\0')
+		{
+			if (map[y][x] == 'P')
+			{
+				pos->player_x = x;
+				pos->player_y = y;
+			}
+		}
+	}
+}
+
+t_position	*pos_init(char **map)
 {
 	t_position	*pos;
 
 	pos = (t_position *) malloc(sizeof(t_position));
-	pos->error_x = -1;
-	pos->error_y = -1;
+	get_player_position(map, pos);
 	return (pos);
 }
 
@@ -34,10 +53,10 @@ int	main(int argc, char *argv[])
 		map = get_map(DEFAULT_MAP_PATH);
 	if (map == NULL)
 		return (ft_putendl_fd(FAILED_TO_OPEN, STDERR_FILENO), ERR_OPEN);
-	pos = pos_init();
+	pos = pos_init(map);
 	if (parse_map(map, pos) != OK)
 	{
-		print_map(map, pos);
+		print_map(map);
 		return (free_map(map), free(pos), 1);
 	}
 	return (free_map(map), free(pos), 0);
