@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/20 16:40:50 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/20 17:02:39 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 # define DEFAULT_MAP_PATH "../maps/default.ber"
 # define MASK 128
 
-# define COLOR_UNREACH "\033[38;2;222;107;72;5m%c\033[0m"
-# define COLOR_GROUND "\033[38;2;87;213;199m%c\033[0m"
-# define COLOR_PCE "\033[38;2;173;226;93m%c\033[0m"
-# define COLOR_WALL "\033[38;2;108;169;189m%c\033[0m"
+# define COLOR_UNREACH "\033[48;2;222;107;72;5m\033[30m%c\033[0m"
+# define COLOR_GROUND "\033[48;2;87;213;199m\033[30m%c\033[0m"
+# define COLOR_PCE "\033[48;2;173;226;93m\033[30m%c\033[0m"
+# define COLOR_WALL "\033[48;2;108;169;189m\033[30m%c\033[0m"
 
 /*error section*/
 # define TOO_MANY_ARGS "Error\ntoo many arguments\n"
