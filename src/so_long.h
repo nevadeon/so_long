@@ -27,16 +27,15 @@
 # define SHORT_FILE_NAME "Error\nfile name too short\n"
 # define WRONG_FILE_EXT "Error\nincorrect file extension\n"
 # define EMPTY_MAP "Error\nEmpty map"
-# define FAILED_TO_OPEN "Error\nError while opening the file"
+# define FAILED_TO_OPEN "Error\nfile opening failure"
 # define MAP_TOO_BIG "Error\nMap is too big"
 # define NOT_RECTANGLE "Error\nMap is not a rectangle\n"
 # define UNEXPECTED_CHARACTER "Error\nMap contains an unexpected character\n"
-# define WRONG_MAP_WALLS "Error\nMap exterior walls are not composed of 1\n"
+# define WRONG_MAP_WALLS "Error\nBreach in exterior walls\n"
 # define WRONG_PLAYER_COUNT "Error\nMap needs exactly 1 player\n"
 # define WRONG_EXIT_COUNT "Error\nMap needs exactly 1 exit\n"
 # define WRONG_COLLECTIBLE_COUNT "Error\nMap needs at least 1 collectible\n"
-# define UNREACHABLE_COLL "Error\nAt least one collectible is unreachable\n"
-# define UNREACHABLE_EXIT "Error\nExit is unreachable\n"
+# define UNREACHABLE_OBJ "Error\nUnreachable exit or collectible\n"
 
 typedef enum e_error
 {
@@ -53,8 +52,7 @@ typedef enum e_error
 	ERR_PLAYER,
 	ERR_EXIT,
 	ERR_COL,
-	PATH_E,
-	PATH_C
+	ERR_UNREACH
 }	t_error;
 
 typedef struct s_position

@@ -32,6 +32,25 @@ void	get_player_position(char **map, t_position *pos)
 	}
 }
 
+void	mark_unreachable(char **map)
+{
+	size_t	x;
+	size_t	y;
+
+	y = -1;
+	while (map[++y] != NULL)
+	{
+		x = -1;
+		while (map[y][++x] != '\0')
+		{
+			if (map[y][x] & 128)
+				map[y][x] ^= 128;
+			else if (map[y][x] == 'E' || map[y][x] == 'C')
+				map[y][x] |= 128;
+		}
+	}
+}
+
 /*undo changes done by parse_path*/
 void	reset_map(char **map)
 {
@@ -84,9 +103,11 @@ t_error	parse_map(char **map, t_position *pos)
 		return (ft_putendl_fd(WRONG_COLLECTIBLE_COUNT, STDERR_FILENO), ERR_COL);
 	get_player_position(map, pos);
 	parse_path(map, pos->player_x, pos->player_y);
-	if (!count_exit(map, pos))
-		return (ft_putendl_fd(UNREACHABLE_EXIT, STDERR_FILENO), PATH_E);
-	if (!count_collectible(map, pos))
-		return (ft_putendl_fd(UNREACHABLE_COLL, STDERR_FILENO), PATH_C);
+	if (!count_exit(map, pos) || !count_collectible(map, pos))
+	{
+		mark_unreachable(map);
+		return (ft_putendl_fd(UNREACHABLE_OBJ, STDERR_FILENO), ERR_UNREACH);
+	}
+	reset_map(map);
 	return (OK);
 }

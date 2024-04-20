@@ -37,7 +37,6 @@ int	main(int argc, char *argv[])
 	pos = pos_init();
 	if (parse_map(map, pos) != OK)
 	{
-		reset_map(map);
 		print_map(map, pos);
 		return (free_map(map), free(pos), 1);
 	}

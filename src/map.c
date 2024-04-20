@@ -30,19 +30,16 @@ void	print_map(char **map, t_position *pos)
 	y = -1;
 	while (map[++y] != NULL)
 	{
-		if (y == pos->error_y)
+		x = -1;
+		while (map[y][++x] != '\0')
 		{
-			x = -1;
-			while (map[y][++x] != '\0')
-			{
-				if (x == pos->error_x)
-					ft_printf("\033[38;2;255;0;5;5m%c\033[0m", map[y][x]);
-				else
-					ft_printf("%c", map[y][x]);
-			}
+			if (y == pos->error_y && x == pos->error_x)
+				ft_printf("\033[38;2;255;0;5;5m%c\033[0m", map[y][x]);
+			else if (map[y][x] & 128)
+				ft_printf("\033[38;2;255;0;5;5m%c\033[0m", map[y][x] ^= 128);
+			else
+				ft_printf("%c", map[y][x]);
 		}
-		else
-			ft_printf("%s", map[y]);
 		ft_printf("\n");
 	}
 }
