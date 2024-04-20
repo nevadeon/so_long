@@ -85,6 +85,8 @@ t_error	count_player(char **map, t_position *pos)
 	}
 	if (nb_player != 1)
 		return (ERR_PLAYER);
+	pos->error_x = -1;
+	pos->error_y = -1;
 	return (OK);
 }
 
@@ -111,6 +113,8 @@ t_error	count_exit(char **map, t_position *pos)
 	}
 	if (nb_exit != 1)
 		return (ERR_EXIT);
+	pos->error_x = -1;
+	pos->error_y = -1;
 	return (OK);
 }
 
@@ -137,5 +141,7 @@ t_error	count_collectible(char **map, t_position *pos)
 	}
 	if (nb_collectibles < 1)
 		return (ERR_COL);
+	pos->error_x = -1;
+	pos->error_y = -1;
 	return (OK);
 }

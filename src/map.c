@@ -12,6 +12,41 @@
 
 #include "so_long.h"
 
+void	free_map(char **map)
+{
+	size_t	i;
+
+	i = -1;
+	while (map[++i] != NULL)
+		free(map[i]);
+	free(map);
+}
+
+void	print_map(char **map, t_position *pos)
+{
+	size_t	y;
+	size_t	x;
+
+	y = -1;
+	while (map[++y] != NULL)
+	{
+		if (y == pos->error_y)
+		{
+			x = -1;
+			while (map[y][++x] != '\0')
+			{
+				if (x == pos->error_x)
+					ft_printf("\033[38;2;255;0;5;5m%c\033[0m", map[y][x]);
+				else
+					ft_printf("%c", map[y][x]);
+			}
+		}
+		else
+			ft_printf("%s", map[y]);
+		ft_printf("\n");
+	}
+}
+
 /*copy an array of strings in a new mallocated array
 then add a string at the end and free the old array*/
 char	**_dim2join_free(char **tab, char *str)

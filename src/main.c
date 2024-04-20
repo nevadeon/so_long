@@ -12,42 +12,34 @@
 
 #include "so_long.h"
 
-t_error	verif_arg(int argc, char *filename)
+t_position	*pos_init(void)
 {
-	size_t	len;
+	t_position	*pos;
 
-	if (argc > 2)
-		return (ft_putendl_fd(TOO_MANY_ARGS, STDERR_FILENO), ERR_ARGS);
-	if (argc == 2)
-	{
-		len = ft_strlen(filename);
-		if (len < 5)
-			return (ft_putendl_fd(SHORT_FILE_NAME, STDERR_FILENO), ERR_NAME);
-		if (memcmp(filename + len - 4, ".ber", 4))
-			return (ft_putendl_fd(WRONG_FILE_EXT, STDERR_FILENO), ERR_EXT);
-	}
-	return (OK);
+	pos = (t_position *) malloc(sizeof(t_position));
+	pos->error_x = -1;
+	pos->error_y = -1;
+	return (pos);
 }
 
 int	main(int argc, char *argv[])
 {
 	char		**map;
 	t_position	*pos;
-	t_error		error_code;
 
 	if (verif_arg(argc, argv[1]))
 		return (1);
 	map = get_map(argv[1]);
 	if (argc == 1)
 		map = get_map(DEFAULT_MAP_PATH);
-	pos = (t_position *) malloc(sizeof(t_position));
-	error_code = parse_map(map, pos);
-	reset_map(map);
-	if (error_code != OK)
+	if (map == NULL)
+		return (ft_putendl_fd(FAILED_TO_OPEN, STDERR_FILENO), ERR_OPEN);
+	pos = pos_init();
+	if (parse_map(map, pos) != OK)
 	{
-		if (error_code != ERR_OPEN && error_code != ERR_MAP_SIZE)
-			print_map(map, pos);
-		return (free(pos), 1);
+		reset_map(map);
+		print_map(map, pos);
+		return (free_map(map), free(pos), 1);
 	}
-	return (free(pos), 0);
+	return (free_map(map), free(pos), 0);
 }

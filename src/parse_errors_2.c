@@ -12,6 +12,23 @@
 
 #include "so_long.h"
 
+t_error	verif_arg(int argc, char *filename)
+{
+	size_t	len;
+
+	if (argc > 2)
+		return (ft_putendl_fd(TOO_MANY_ARGS, STDERR_FILENO), ERR_ARGS);
+	if (argc == 2)
+	{
+		len = ft_strlen(filename);
+		if (len < 5)
+			return (ft_putendl_fd(SHORT_FILE_NAME, STDERR_FILENO), ERR_NAME);
+		if (memcmp(filename + len - 4, ".ber", 4))
+			return (ft_putendl_fd(WRONG_FILE_EXT, STDERR_FILENO), ERR_EXT);
+	}
+	return (OK);
+}
+
 t_error	check_map_size(char **map)
 {
 	size_t	map_width;
@@ -39,7 +56,7 @@ t_error	is_rectangle(char **map, t_position *pos)
 			;
 		if (len != map_width)
 		{
-			pos->error_x = len;
+			pos->error_x = len - 1;
 			pos->error_y = y;
 			return (ERR_RECT);
 		}

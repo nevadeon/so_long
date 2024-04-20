@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"libndav.h": "c",
-		"so_long.h": "c"
+		"so_long.h": "c",
+		"system_error": "c"
 	}
 }

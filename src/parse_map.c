@@ -66,8 +66,6 @@ void	parse_path(char **map, size_t x, size_t y)
 /*prints error mesage (in STDERR) and returns error code if map is invalid*/
 t_error	parse_map(char **map, t_position *pos)
 {
-	if (map == NULL)
-		return (ft_putendl_fd(FAILED_TO_OPEN, STDERR_FILENO), ERR_OPEN);
 	if (map[0] == NULL)
 		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY);
 	if (is_rectangle(map, pos))

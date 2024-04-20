@@ -18,7 +18,7 @@
 # include <fcntl.h> //O_RDONLY
 # include <string.h> //strerror
 # include <stdio.h> //perror
-# include "../libndav/libndav.h"
+# include "../libndav/headers/libndav.h"
 
 # define DEFAULT_MAP_PATH "../maps/default.ber"
 
@@ -61,11 +61,12 @@ typedef struct s_position
 {
 	size_t	player_x;
 	size_t	player_y;
-	size_t	error_x;
-	size_t	error_y;
+	ssize_t	error_x;
+	ssize_t	error_y;
 }	t_position;
 
 char	**get_map(char *file_name);
+void	free_map(char **map);
 
 /*map utils*/
 size_t	ft_strclen2(const char *str, char c);
@@ -74,6 +75,7 @@ void	dim2_cpy(void **dest, void **src);
 void	print_map(char **map, t_position *pos);
 
 /*parsing*/
+t_error	verif_arg(int argc, char *filename);
 t_error	parse_map(char **map, t_position *pos);
 t_error	is_rectangle(char **map, t_position *pos);
 t_error	check_map_size(char **map);
