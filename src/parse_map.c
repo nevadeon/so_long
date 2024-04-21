@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/21 13:21:42 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/22 00:20:05 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ t_error	parse_map(char **map, t_environment *env)
 {
 	if (map[0] == NULL)
 		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY);
+	env->map_width = ft_strlen(map[0]);
+	env->map_hight = dim2_len((void **) map);
 	if (check_map_size(env))
 		return (ft_putendl_fd(MAP_TOO_BIG, STDERR_FILENO), ERR_MAP_SIZE);
 	if (is_rectangle(map, env))
@@ -80,6 +82,7 @@ t_error	parse_map(char **map, t_environment *env)
 		return (ft_putendl_fd(WRONG_EXIT_COUNT, STDERR_FILENO), ERR_EXIT);
 	if (count_collectible(map, true))
 		return (ft_putendl_fd(WRONG_COLLECTIBLE_COUNT, STDERR_FILENO), ERR_COL);
+	get_player_position(map, env);
 	parse_path(map, env->player_x, env->player_y);
 	mark_unreachable_items(map);
 	if (!count_collectible(map, false) || !count_exit(map, false))

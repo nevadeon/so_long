@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/21 13:38:32 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:11:51 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_environment
 
 char	**get_map(char *file_name);
 void	free_map(char **map);
+void	get_player_position(char **map, t_environment *env);
 
 /*map utils*/
 size_t	ft_strclen2(const char *str, char c);
