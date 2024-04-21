@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/20 14:17:38 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:20:11 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 t_error	check_characters(char **map)
 {
+	bool	found_error;
 	size_t	x;
 	size_t	y;
 
+	found_error = false;
 	y = -1;
 	while (map[++y] != NULL)
 	{
@@ -26,37 +28,41 @@ t_error	check_characters(char **map)
 			if (map[y][x] != 'P' && map[y][x] != 'C' && map[y][x] != 'E'
 				&& map[y][x] != '0' && map[y][x] != '1')
 			{
+				found_error = true;
 				map[y][x] |= MASK;
-				return (ERR_CHAR);
 			}
 		}
 	}
+	if (found_error == true)
+		return (ERR_CHAR);
+	reset_map(map);
 	return (OK);
 }
 
-t_error	check_outer_walls(char **map)
+t_error	check_outer_walls(char **map, t_environment *env)
 {
-	size_t	map_width;
-	size_t	map_hight;
+	bool	found_error;
 	size_t	x;
 	size_t	y;
 
-	map_width = ft_strlen(map[0]) - 1;
-	map_hight = dim2_len((void **) map) - 1;
+	found_error = false;
 	y = -1;
 	while (map[++y] != NULL)
 	{
 		x = -1;
 		while (map[y][++x] != '\0')
 		{
-			if ((x == 0 || x == map_width || y == 0 || y == map_hight)
-				&& map[y][x] != '1')
+			if ((x == 0 || x == env->map_width - 1 || y == 0
+					|| y == env->map_hight - 1) && map[y][x] != '1')
 			{
+				found_error = true;
 				map[y][x] |= MASK;
-				return (ERR_WALL);
 			}
 		}
 	}
+	if (found_error == true)
+		return (ERR_WALL);
+	reset_map(map);
 	return (OK);
 }
 

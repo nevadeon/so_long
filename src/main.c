@@ -6,13 +6,13 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/20 17:09:56 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:19:19 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_player_position(char **map, t_position *pos)
+void	get_player_position(char **map, t_environment *env)
 {
 	size_t	y;
 	size_t	x;
@@ -25,26 +25,28 @@ void	get_player_position(char **map, t_position *pos)
 		{
 			if (map[y][x] == 'P')
 			{
-				pos->player_x = x;
-				pos->player_y = y;
+				env->player_x = x;
+				env->player_y = y;
 			}
 		}
 	}
 }
 
-t_position	*pos_init(char **map)
+t_environment	*env_init(char **map)
 {
-	t_position	*pos;
+	t_environment	*env;
 
-	pos = (t_position *) malloc(sizeof(t_position));
-	get_player_position(map, pos);
-	return (pos);
+	env = (t_environment *) malloc(sizeof(t_environment));
+	get_player_position(map, env);
+	env->map_width = ft_strlen(map[0]);
+	env->map_hight = dim2_len((void **) map);
+	return (env);
 }
 
 int	main(int argc, char *argv[])
 {
-	char		**map;
-	t_position	*pos;
+	char			**map;
+	t_environment	*env;
 
 	if (verif_arg(argc, argv[1]))
 		return (1);
@@ -53,11 +55,11 @@ int	main(int argc, char *argv[])
 		map = get_map(DEFAULT_MAP_PATH);
 	if (map == NULL)
 		return (ft_putendl_fd(FAILED_TO_OPEN, STDERR_FILENO), ERR_OPEN);
-	pos = pos_init(map);
-	if (parse_map(map, pos) != OK)
+	env = env_init(map);
+	if (parse_map(map, env) != OK)
 	{
 		print_map(map);
-		return (free_map(map), free(pos), 1);
+		return (free_map(map), free(env), 1);
 	}
-	return (free_map(map), free(pos), 0);
+	return (free_map(map), free(env), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/20 17:02:39 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:38:32 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@
 # define DEFAULT_MAP_PATH "../maps/default.ber"
 # define MASK 128
 
-# define COLOR_UNREACH "\033[48;2;222;107;72;5m\033[30m%c\033[0m"
-# define COLOR_GROUND "\033[48;2;87;213;199m\033[30m%c\033[0m"
-# define COLOR_PCE "\033[48;2;173;226;93m\033[30m%c\033[0m"
-# define COLOR_WALL "\033[48;2;108;169;189m\033[30m%c\033[0m"
-
 /*error section*/
 # define TOO_MANY_ARGS "Error\ntoo many arguments\n"
 # define SHORT_FILE_NAME "Error\nfile name too short\n"
 # define WRONG_FILE_EXT "Error\nincorrect file extension\n"
 # define EMPTY_MAP "Error\nEmpty map"
-# define FAILED_TO_OPEN "Error\nfile opening failure"
+# define FAILED_TO_OPEN "Error\nFound no corresponding file"
 # define MAP_TOO_BIG "Error\nMap is too big"
 # define NOT_RECTANGLE "Error\nMap is not a rectangle\n"
-# define UNEXPECTED_CHARACTER "Error\nMap contains an unexpected character\n"
-# define WRONG_MAP_WALLS "Error\nBreach in exterior walls\n"
+# define UNEXPECTED_CHARACTER "Error\nMap contains unexpected character\n"
+# define WRONG_MAP_WALLS "Error\nOpening in exterior walls\n"
 # define WRONG_PLAYER_COUNT "Error\nMap must have exactly 1 player\n"
 # define WRONG_EXIT_COUNT "Error\nMap must have exactly 1 exit\n"
 # define WRONG_COLLECTIBLE_COUNT "Error\nMap must have at least 1 collectible\n"
 # define UNREACHABLE_OBJ "Error\nUnreachable exit or collectible\n"
+
+# define COLOR_UNREACH "\033[48;2;222;107;72;5m\033[30m%c\033[0m"
+# define COLOR_GROUND "\033[48;2;87;213;199m\033[30m%c\033[0m"
+# define COLOR_PCE "\033[48;2;173;226;93m\033[30m%c\033[0m"
+# define COLOR_WALL "\033[48;2;108;169;189m\033[30m%c\033[0m"
 
 typedef enum e_error
 {
@@ -62,11 +62,13 @@ typedef enum e_error
 	ERR_UNREACH
 }	t_error;
 
-typedef struct s_position
+typedef struct s_environment
 {
 	size_t	player_x;
 	size_t	player_y;
-}	t_position;
+	size_t	map_width;
+	size_t	map_hight;
+}	t_environment;
 
 char	**get_map(char *file_name);
 void	free_map(char **map);
@@ -79,11 +81,11 @@ void	print_map(char **map);
 
 /*parsing*/
 t_error	verif_arg(int argc, char *filename);
-t_error	parse_map(char **map, t_position *pos);
-t_error	is_rectangle(char **map);
-t_error	check_map_size(char **map);
+t_error	parse_map(char **map, t_environment *env);
+t_error	is_rectangle(char **map, t_environment *env);
+t_error	check_outer_walls(char **map, t_environment *env);
+t_error	check_map_size(t_environment *env);
 t_error	check_characters(char **map);
-t_error	check_outer_walls(char **map);
 t_error	count_player(char **map);
 t_error	count_collectible(char **map, bool apply_mask);
 t_error	count_exit(char **map, bool apply_mask);

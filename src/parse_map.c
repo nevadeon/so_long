@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/20 16:51:08 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:21:42 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	mark_unreachable_items(char **map)
 	}
 }
 
-/*undo changes done by parse_path*/
 void	reset_map(char **map)
 {
 	size_t	x;
@@ -63,25 +62,25 @@ void	parse_path(char **map, size_t x, size_t y)
 }
 
 /*prints error mesage (in STDERR) and returns error code if map is invalid*/
-t_error	parse_map(char **map, t_position *pos)
+t_error	parse_map(char **map, t_environment *env)
 {
 	if (map[0] == NULL)
 		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY);
-	if (is_rectangle(map))
-		return (ft_putendl_fd(NOT_RECTANGLE, STDERR_FILENO), ERR_RECT);
-	if (check_map_size(map))
+	if (check_map_size(env))
 		return (ft_putendl_fd(MAP_TOO_BIG, STDERR_FILENO), ERR_MAP_SIZE);
+	if (is_rectangle(map, env))
+		return (ft_putendl_fd(NOT_RECTANGLE, STDERR_FILENO), ERR_RECT);
+	if (check_outer_walls(map, env))
+		return (ft_putendl_fd(WRONG_MAP_WALLS, STDERR_FILENO), ERR_WALL);
 	if (check_characters(map))
 		return (ft_putendl_fd(UNEXPECTED_CHARACTER, STDERR_FILENO), ERR_CHAR);
-	if (check_outer_walls(map))
-		return (ft_putendl_fd(WRONG_MAP_WALLS, STDERR_FILENO), ERR_WALL);
 	if (count_player(map))
 		return (ft_putendl_fd(WRONG_PLAYER_COUNT, STDERR_FILENO), ERR_PLAYER);
 	if (count_exit(map, true))
 		return (ft_putendl_fd(WRONG_EXIT_COUNT, STDERR_FILENO), ERR_EXIT);
 	if (count_collectible(map, true))
 		return (ft_putendl_fd(WRONG_COLLECTIBLE_COUNT, STDERR_FILENO), ERR_COL);
-	parse_path(map, pos->player_x, pos->player_y);
+	parse_path(map, env->player_x, env->player_y);
 	mark_unreachable_items(map);
 	if (!count_collectible(map, false) || !count_exit(map, false))
 		return (ft_putendl_fd(UNREACHABLE_OBJ, STDERR_FILENO), ERR_UNREACH);

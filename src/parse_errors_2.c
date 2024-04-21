@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/20 20:39:04 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/21 13:17:13 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,25 @@ t_error	verif_arg(int argc, char *filename)
 	return (OK);
 }
 
-t_error	check_map_size(char **map)
+t_error	check_map_size(t_environment *env)
 {
-	size_t	map_width;
-	size_t	map_hight;
-
-	map_width = ft_strlen(map[0]);
-	map_hight = dim2_len((void **) map);
-	if (map_hight > 1000 || map_width > 80)
+	if (env->map_hight > 1000 || env->map_width > 80)
 		return (ERR_MAP_SIZE);
 	return (OK);
 }
 
-t_error	is_rectangle(char **map)
+t_error	is_rectangle(char **map, t_environment *env)
 {
-	size_t	map_width;
 	size_t	len;
 	size_t	y;
 
-	map_width = ft_strlen(map[0]);
 	y = -1;
 	while (map[++y] != NULL)
 	{
 		len = -1;
 		while (map[y][++len] != '\0')
 			;
-		if (len != map_width)
+		if (len != env->map_width)
 		{
 			len = -1;
 			while (map[y][++len] != '\0')
