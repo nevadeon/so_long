@@ -6,11 +6,31 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 00:20:05 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/22 00:36:35 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	get_player_position(char **map, t_environment *env)
+{
+	size_t	y;
+	size_t	x;
+
+	y = -1;
+	while (map[++y] != NULL)
+	{
+		x = -1;
+		while (map[y][++x] != '\0')
+		{
+			if (map[y][x] == 'P')
+			{
+				env->player_x = x;
+				env->player_y = y;
+			}
+		}
+	}
+}
 
 void	mark_unreachable_items(char **map)
 {
@@ -66,9 +86,7 @@ t_error	parse_map(char **map, t_environment *env)
 {
 	if (map[0] == NULL)
 		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY);
-	env->map_width = ft_strlen(map[0]);
-	env->map_hight = dim2_len((void **) map);
-	if (check_map_size(env))
+	if (check_map_size(map, env))
 		return (ft_putendl_fd(MAP_TOO_BIG, STDERR_FILENO), ERR_MAP_SIZE);
 	if (is_rectangle(map, env))
 		return (ft_putendl_fd(NOT_RECTANGLE, STDERR_FILENO), ERR_RECT);

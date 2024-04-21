@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/21 14:11:51 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/22 00:33:48 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	print_map(char **map);
 t_error	verif_arg(int argc, char *filename);
 t_error	parse_map(char **map, t_environment *env);
 t_error	is_rectangle(char **map, t_environment *env);
+t_error	check_map_size(char **map, t_environment *env);
 t_error	check_outer_walls(char **map, t_environment *env);
-t_error	check_map_size(t_environment *env);
 t_error	check_characters(char **map);
 t_error	count_player(char **map);
 t_error	count_collectible(char **map, bool apply_mask);

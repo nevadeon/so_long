@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:47:55 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/21 14:10:59 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/22 00:36:26 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,6 @@ void	print_map(char **map)
 				ft_printf(2, COLOR_GROUND, map[y][x]);
 		}
 		ft_printf(2, "\n");
-	}
-}
-
-void	get_player_position(char **map, t_environment *env)
-{
-	size_t	y;
-	size_t	x;
-
-	y = -1;
-	while (map[++y] != NULL)
-	{
-		x = -1;
-		while (map[y][++x] != '\0')
-		{
-			if (map[y][x] == 'P')
-			{
-				env->player_x = x;
-				env->player_y = y;
-			}
-		}
 	}
 }
 

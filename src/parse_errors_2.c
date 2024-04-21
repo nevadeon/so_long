@@ -6,7 +6,7 @@
 /*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/21 13:17:13 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/22 00:32:31 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ t_error	verif_arg(int argc, char *filename)
 	return (OK);
 }
 
-t_error	check_map_size(t_environment *env)
+t_error	check_map_size(char **map, t_environment *env)
 {
+	env->map_width = ft_strlen(map[0]);
+	env->map_hight = dim2_len((void **) map);
 	if (env->map_hight > 1000 || env->map_width > 80)
 		return (ERR_MAP_SIZE);
 	return (OK);
