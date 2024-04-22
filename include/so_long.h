@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 19:03:12 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:42:58 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # define DEFAULT_MAP_PATH "maps/default.ber"
 # define MASK 128
-# define WIDTH 10
-# define HEIGHT 10
+# define WIDTH 1000
+# define HEIGHT 600
 
 /*error section*/
 # define TOO_MANY_ARGS "Error\ntoo many arguments\n"

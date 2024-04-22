@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 19:02:15 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:17:10 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,14 @@ int	main(int argc, char *argv[])
 		return (free_map(map), free(env), EXIT_FAILURE);
 	}
 	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
-	if (!mlx)
-		ft_error();
-
-	/* Do stuff */
-
-	// Create and display the image.
+	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "so_long", true);
+	
 	mlx_image_t* img = mlx_new_image(mlx, 256, 256);
 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 		ft_error();
 
-	// Even after the image is being displayed, we can still modify the buffer.
 	mlx_put_pixel(img, 0, 0, 0xFF0000FF);
 
-	// Register a hook and pass mlx as an optional param.
-	// NOTE: Do this before calling mlx_loop!
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
