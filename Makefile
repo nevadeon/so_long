@@ -1,51 +1,51 @@
-NAME = 
+NAME = so_long
 
 CC = cc
-RM = rm -f
-CLONE = git clone --depth=1
+RM = rm -rf
 
-CFLAGS += -Wall -Wextra -Werror -O3
+CFLAGS += -Wall -Wextra -Werror -Iinclude
 CLINKS = -ldl -lglfw -pthread -lm
 
-MLX = minilibx
-LIBMLX = $(MLX)/libmlx42.a
+LIBFT_FOLDER = lib/libndav
+LIBFT = $(LIBFT_FOLDER)/libndav.a
+
+LIB_FOLDER = lib/MLX42
+LIBMLX = $(LIB_FOLDER)/libmlx42.a
+
+FILES	=	map \
+			main \
+			map_utils \
+			parse_errors_1 \
+			parse_errors_2 \
+			parse_map \
 
 SRC_FOLDER = src
-SRC	=	$(SRC_FOLDER)/get_map.c\
-		$(SRC_FOLDER)/main.c\
-		$(SRC_FOLDER)/map_utils.c\
-		$(SRC_FOLDER)/parse_errors_1.c\
-		$(SRC_FOLDER)/parse_errors_2.c\
-		$(SRC_FOLDER)/parse_map.c\
-OBJ = $(SRC:.c=.o)
+OBJ_FOLDER = obj
+
+SRC = $(addprefix $(SRC_FOLDER)/, $(addsuffix .c, $(FILES)))
+OBJ = $(addprefix $(OBJ_FOLDER)/, $(addsuffix .o, $(FILES)))
 
 all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(LIBMLX) $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBMLX) $(CLINKS)
+$(NAME): $(LIBFT) $(OBJ_FOLDER) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBMLX) $(LIBFT) $(CLINKS)
 
-$(LIBMLX): $(MLX)
-	$(MAKE) -C $(MLX)
+$(LIBFT):
+	make -C $(LIBFT_FOLDER)
 
-$(MLX):
-	$(CLONE) https://github.com/kodokaii/MLX42.git $(MLX)
-	cmake $(MLX) -B $(MLX)
+$(OBJ_FOLDER):
+	mkdir -p $(OBJ_FOLDER)
 
-%.o: %.c
+obj/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
-	$(MAKE) clean -C $(MLX)
+	$(RM) $(OBJ_FOLDER)
 
 fclean: clean
-	$(RM) $(LIBMLX)
 	$(RM) $(NAME)
-
-clear: fclean
-	$(RM) -r $(MLX) 
 
 re: fclean all
 

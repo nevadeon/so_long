@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:47:55 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 00:36:26 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/22 12:38:37 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	print_map(char **map)
 		x = -1;
 		while (map[y][++x] != '\0')
 		{
-			if (map[y][x] & 128)
-				ft_printf(2, COLOR_UNREACH, map[y][x] ^ 128);
+			if (map[y][x] & MASK)
+				ft_printf(2, COLOR_UNREACH, map[y][x] ^ MASK);
 			else if (map[y][x] == '1')
 				ft_printf(2, COLOR_WALL, map[y][x]);
 			else if (map[y][x] == 'C' || map[y][x] == 'P' || map[y][x] == 'E')

@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 15:25:16 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:48:10 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <string.h> //strerror
 # include <stdio.h> //perror
 # include <stdbool.h> //true false
-# include "libndav.h"
+# include "../libndav/headers/libndav.h"
 
 # define DEFAULT_MAP_PATH "../maps/default.ber"
 # define MASK 128

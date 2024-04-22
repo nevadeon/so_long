@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_errors_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 00:34:03 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:48:10 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_error	check_outer_walls(char **map, t_environment *env)
 		while (map[y][++x] != '\0')
 		{
 			if ((x == 0 || x == env->map_width - 1 || y == 0
-					|| y == env->map_hight - 1) && map[y][x] != '1')
+					|| y == env->map_height - 1) && map[y][x] != '1')
 			{
 				found_error = true;
 				map[y][x] |= MASK;

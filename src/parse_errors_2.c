@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_errors_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <nevadeon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 00:32:31 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:48:10 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_error	verif_arg(int argc, char *filename)
 t_error	check_map_size(char **map, t_environment *env)
 {
 	env->map_width = ft_strlen(map[0]);
-	env->map_hight = dim2_len((void **) map);
-	if (env->map_hight > 1000 || env->map_width > 80)
+	env->map_height = dim2_len((void **) map);
+	if (env->map_height > 40 || env->map_width > 40)
 		return (ERR_MAP_SIZE);
 	return (OK);
 }
