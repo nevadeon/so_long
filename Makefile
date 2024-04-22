@@ -3,21 +3,21 @@ NAME = so_long
 CC = cc
 RM = rm -rf
 
-CFLAGS += -Wall -Wextra -Werror -Iinclude
+CFLAGS += -Wall -Wextra -Werror -Iinclude -g
 CLINKS = -ldl -lglfw -pthread -lm
 
-LIBFT_FOLDER = lib/libndav
+LIBFT_FOLDER = lib
 LIBFT = $(LIBFT_FOLDER)/libndav.a
 
-LIB_FOLDER = lib/MLX42
+LIB_FOLDER = lib
 LIBMLX = $(LIB_FOLDER)/libmlx42.a
 
-FILES	=	map \
-			main \
-			map_utils \
-			parse_errors_1 \
-			parse_errors_2 \
-			parse_map \
+FILES = map \
+main \
+map_utils \
+parse_errors_1 \
+parse_errors_2 \
+parse_map \
 
 SRC_FOLDER = src
 OBJ_FOLDER = obj

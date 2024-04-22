@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 12:57:39 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:00:28 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,6 @@ void	get_player_position(char **map, t_environment *env)
 				env->player_x = x;
 				env->player_y = y;
 			}
-		}
-	}
-}
-
-void	mark_unreachable_items(char **map)
-{
-	size_t	x;
-	size_t	y;
-
-	y = -1;
-	while (map[++y] != NULL)
-	{
-		x = -1;
-		while (map[y][++x] != '\0')
-		{
-			if (map[y][x] & MASK)
-				map[y][x] ^= MASK;
-			else if (map[y][x] == 'E' || map[y][x] == 'C')
-				map[y][x] |= MASK;
 		}
 	}
 }
@@ -96,14 +77,13 @@ t_error	parse_map(char **map, t_environment *env)
 		return (ft_putendl_fd(UNEXPECTED_CHARACTER, STDERR_FILENO), ERR_CHAR);
 	if (count_player(map))
 		return (ft_putendl_fd(WRONG_PLAYER_COUNT, STDERR_FILENO), ERR_PLAYER);
-	if (count_exit(map, true))
+	if (count_exit(map))
 		return (ft_putendl_fd(WRONG_EXIT_COUNT, STDERR_FILENO), ERR_EXIT);
-	if (count_collectible(map, true))
+	if (count_collectible(map))
 		return (ft_putendl_fd(WRONG_COLLECTIBLE_COUNT, STDERR_FILENO), ERR_COL);
 	get_player_position(map, env);
 	parse_path(map, env->player_x, env->player_y);
-	mark_unreachable_items(map);
-	if (!count_collectible(map, false) || !count_exit(map, false))
+	if (search_unreachable(map))
 		return (ft_putendl_fd(UNREACHABLE_OBJ, STDERR_FILENO), ERR_UNREACH);
 	reset_map(map);
 	return (OK);

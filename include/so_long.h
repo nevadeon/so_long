@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 14:48:10 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:03:12 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 # include <string.h> //strerror
 # include <stdio.h> //perror
 # include <stdbool.h> //true false
-# include "../libndav/headers/libndav.h"
+# include "libndav.h"
 
-# define DEFAULT_MAP_PATH "../maps/default.ber"
+# define DEFAULT_MAP_PATH "maps/default.ber"
 # define MASK 128
+# define WIDTH 10
+# define HEIGHT 10
 
 /*error section*/
 # define TOO_MANY_ARGS "Error\ntoo many arguments\n"
@@ -87,9 +89,10 @@ t_error	is_rectangle(char **map, t_environment *env);
 t_error	check_map_size(char **map, t_environment *env);
 t_error	check_outer_walls(char **map, t_environment *env);
 t_error	check_characters(char **map);
+t_error	count_collectible(char **map);
 t_error	count_player(char **map);
-t_error	count_collectible(char **map, bool apply_mask);
-t_error	count_exit(char **map, bool apply_mask);
+t_error	count_exit(char **map);
+t_error	search_unreachable(char **map);
 void	reset_map(char **map);
 
 #endif

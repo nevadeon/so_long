@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 14:48:10 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:56:37 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_error	count_player(char **map)
 	return (OK);
 }
 
-t_error	count_exit(char **map, bool apply_mask)
+t_error	count_exit(char **map)
 {
 	size_t	nb_exit;
 	size_t	x;
@@ -107,20 +107,18 @@ t_error	count_exit(char **map, bool apply_mask)
 		{
 			if (map[y][x] == 'E')
 			{
-				if (apply_mask == true)
-					map[y][x] |= MASK;
+				map[y][x] |= MASK;
 				nb_exit += 1;
 			}
 		}
 	}
 	if (nb_exit != 1)
 		return (ERR_EXIT);
-	if (apply_mask == true)
-		reset_map(map);
+	reset_map(map);
 	return (OK);
 }
 
-t_error	count_collectible(char **map, bool apply_mask)
+t_error	count_collectible(char **map)
 {
 	size_t	nb_collectibles;
 	size_t	x;
@@ -135,15 +133,13 @@ t_error	count_collectible(char **map, bool apply_mask)
 		{
 			if (map[y][x] == 'C')
 			{
-				if (apply_mask == true)
-					map[y][x] |= MASK;
+				map[y][x] |= MASK;
 				nb_collectibles += 1;
 			}
 		}
 	}
 	if (nb_collectibles < 1)
 		return (ERR_COL);
-	if (apply_mask == true)
-		reset_map(map);
+	reset_map(map);
 	return (OK);
 }

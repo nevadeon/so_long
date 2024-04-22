@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 14:48:10 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:00:37 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,32 @@ t_error	is_rectangle(char **map, t_environment *env)
 			return (ERR_RECT);
 		}
 	}
+	return (OK);
+}
+
+t_error	search_unreachable(char **map)
+{
+	bool	found_unreach;
+	size_t	x;
+	size_t	y;
+
+	found_unreach = false;
+	y = -1;
+	while (map[++y] != NULL)
+	{
+		x = -1;
+		while (map[y][++x] != '\0')
+		{
+			if (map[y][x] & MASK)
+				map[y][x] ^= MASK;
+			else if (map[y][x] == 'E' || map[y][x] == 'C')
+			{
+				found_unreach = true;
+				map[y][x] |= MASK;
+			}
+		}
+	}
+	if (found_unreach == true)
+		return (ERR_UNREACH);
 	return (OK);
 }
