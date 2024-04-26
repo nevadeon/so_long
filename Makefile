@@ -12,8 +12,10 @@ LIBFT = $(LIBFT_FOLDER)/libndav.a
 LIB_FOLDER = lib
 LIBMLX = $(LIB_FOLDER)/libmlx42.a
 
-FILES = map \
+FILES = game \
+intro \
 main \
+map \
 map_utils \
 parse_errors_1 \
 parse_errors_2 \

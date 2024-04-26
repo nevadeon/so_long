@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 19:00:37 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:08:17 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_error	verif_arg(int argc, char *filename)
 	return (OK);
 }
 
-t_error	check_map_size(char **map, t_environment *env)
+t_error	check_map_size(char **map, t_envir *env)
 {
 	env->map_width = ft_strlen(map[0]);
 	env->map_height = dim2_len((void **) map);
@@ -38,7 +38,7 @@ t_error	check_map_size(char **map, t_environment *env)
 	return (OK);
 }
 
-t_error	is_rectangle(char **map, t_environment *env)
+t_error	is_rectangle(char **map, t_envir *env)
 {
 	size_t	len;
 	size_t	y;

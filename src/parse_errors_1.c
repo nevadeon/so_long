@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 18:56:37 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:08:21 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_error	check_characters(char **map)
 	return (OK);
 }
 
-t_error	check_outer_walls(char **map, t_environment *env)
+t_error	check_outer_walls(char **map, t_envir *env)
 {
 	bool	found_error;
 	size_t	x;

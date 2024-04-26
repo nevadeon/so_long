@@ -6,13 +6,13 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 19:00:28 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:08:12 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_player_position(char **map, t_environment *env)
+void	get_player_position(char **map, t_envir *env)
 {
 	size_t	y;
 	size_t	x;
@@ -63,7 +63,7 @@ void	parse_path(char **map, size_t x, size_t y)
 }
 
 /*prints error mesage (in STDERR) and returns error code if map is invalid*/
-t_error	parse_map(char **map, t_environment *env)
+t_error	parse_map(char **map, t_envir *env)
 {
 	if (map[0] == NULL)
 		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY);

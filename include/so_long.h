@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/22 19:42:58 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:17:00 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,35 +64,39 @@ typedef enum e_error
 	ERR_UNREACH
 }	t_error;
 
-typedef struct s_environment
+typedef struct s_envir
 {
 	size_t	player_x;
 	size_t	player_y;
 	size_t	map_width;
 	size_t	map_height;
-}	t_environment;
+}	t_envir;
 
+/*map*/
 char	**get_map(char *file_name);
 void	free_map(char **map);
-void	get_player_position(char **map, t_environment *env);
+void	print_map(char **map);
 
 /*map utils*/
 size_t	ft_strclen2(const char *str, char c);
 size_t	dim2_len(void **tab);
 void	dim2_cpy(void **dest, void **src);
-void	print_map(char **map);
 
 /*parsing*/
 t_error	verif_arg(int argc, char *filename);
-t_error	parse_map(char **map, t_environment *env);
-t_error	is_rectangle(char **map, t_environment *env);
-t_error	check_map_size(char **map, t_environment *env);
-t_error	check_outer_walls(char **map, t_environment *env);
+t_error	parse_map(char **map, t_envir *env);
+t_error	is_rectangle(char **map, t_envir *env);
+t_error	check_map_size(char **map, t_envir *env);
+t_error	check_outer_walls(char **map, t_envir *env);
 t_error	check_characters(char **map);
 t_error	count_collectible(char **map);
 t_error	count_player(char **map);
 t_error	count_exit(char **map);
 t_error	search_unreachable(char **map);
 void	reset_map(char **map);
+
+/*game*/
+int		intro(void);
+int		game(t_envir *env);
 
 #endif
