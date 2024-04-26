@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:21:28 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/26 09:23:14 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:39:05 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,17 @@ void	ft_hook(void *param)
 
 int	game(t_envir *env)
 {
-	mlx_t		*mlx;
-	mlx_image_t	*image;
+	mlx_t			*mlx;
+	mlx_image_t		*image;
+	mlx_texture_t	*texture;
 
 	(void)env;
 	// mlx_set_setting(MLX_MAXIMIZED, true);
 	mlx = mlx_init(960, 995, "so_long", true);
-	image = mlx_new_image(mlx, 64, 64);
-	image = mlx_load_png("textures/ground.png");
-	mlx_image_to_window(mlx, image, 64, 64);
+	// image = mlx_new_image(mlx, 10000, 10000);
+	texture = mlx_load_png("textures/ground.png");
+	image = mlx_texture_to_image(mlx, texture);
+	mlx_image_to_window(mlx, image, 0, 0);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
