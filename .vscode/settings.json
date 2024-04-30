@@ -3,6 +3,7 @@
 		"libndav.h": "c",
 		"so_long.h": "c",
 		"system_error": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"mlx42.h": "c"
 	}
 }

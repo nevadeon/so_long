@@ -6,27 +6,37 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/25 15:17:00 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:40:49 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdlib.h> //malloc free open close exit
-# include <unistd.h> //write read
-# include <fcntl.h> //O_RDONLY
-# include <string.h> //strerror
-# include <stdio.h> //perror
-# include <stdbool.h> //true false
+# include <stdlib.h>  //malloc free open close exit
+# include <unistd.h>  //write read
+# include <fcntl.h>   //O_RDONLY
+# include <string.h>  //strerror
+# include <stdio.h>   //perror
+# include <stdbool.h> //bool true false
 # include "libndav.h"
+# include "MLX42.h"
 
 # define DEFAULT_MAP_PATH "maps/default.ber"
 # define MASK 128
-# define WIDTH 1000
-# define HEIGHT 600
+# define WIDTH 861
+# define HEIGHT 633
+# define PERCENT_X mlx->width/100
+# define PERCENT_Y mlx->height/100
+# define CENTER_X 50 * PERCENT_X - image->width/2
+# define CENTER_Y 50 * PERCENT_Y - image->height/2
 
-/*error section*/
+/*image paths*/
+extern const char	**g_paths;
+# define MENU_BACKGROUND "assets/menu/background.png"
+# define START_BUTTON "assets/menu/start.png"
+
+/*error messages*/
 # define TOO_MANY_ARGS "Error\ntoo many arguments\n"
 # define SHORT_FILE_NAME "Error\nfile name too short\n"
 # define WRONG_FILE_EXT "Error\nincorrect file extension\n"
@@ -41,6 +51,7 @@
 # define WRONG_COLLECTIBLE_COUNT "Error\nMap must have at least 1 collectible\n"
 # define UNREACHABLE_OBJ "Error\nUnreachable exit or collectible\n"
 
+/*error colors*/
 # define COLOR_UNREACH "\033[48;2;222;107;72;5m\033[30m%c\033[0m"
 # define COLOR_GROUND "\033[48;2;87;213;199m\033[30m%c\033[0m"
 # define COLOR_PCE "\033[48;2;173;226;93m\033[30m%c\033[0m"
@@ -66,16 +77,16 @@ typedef enum e_error
 
 typedef struct s_envir
 {
-	size_t	player_x;
-	size_t	player_y;
+	int		player_x;
+	int		player_y;
 	size_t	map_width;
 	size_t	map_height;
 }	t_envir;
 
 /*map*/
 char	**get_map(char *file_name);
-void	free_map(char **map);
 void	print_map(char **map);
+void	free_map(char **map);
 
 /*map utils*/
 size_t	ft_strclen2(const char *str, char c);
@@ -96,7 +107,6 @@ t_error	search_unreachable(char **map);
 void	reset_map(char **map);
 
 /*game*/
-int		intro(void);
-int		game(t_envir *env);
+int		menu(void);
 
 #endif

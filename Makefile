@@ -12,8 +12,7 @@ LIBFT = $(LIBFT_FOLDER)/libndav.a
 LIB_FOLDER = lib
 LIBMLX = $(LIB_FOLDER)/libmlx42.a
 
-FILES = game \
-intro \
+FILES = menu \
 main \
 map \
 map_utils \
@@ -22,7 +21,7 @@ parse_errors_2 \
 parse_map \
 
 SRC_FOLDER = src
-OBJ_FOLDER = obj
+OBJ_FOLDER = bin
 
 SRC = $(addprefix $(SRC_FOLDER)/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix $(OBJ_FOLDER)/, $(addsuffix .o, $(FILES)))
@@ -40,7 +39,7 @@ $(LIBFT):
 $(OBJ_FOLDER):
 	mkdir -p $(OBJ_FOLDER)
 
-obj/%.o: src/%.c
+$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

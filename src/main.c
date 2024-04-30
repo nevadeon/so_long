@@ -6,11 +6,17 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/25 14:48:30 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:44:38 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+const char	*g_paths[] = {
+	START_BUTTON,
+	MENU_BACKGROUND,
+	NULL
+};
 
 int	main(int argc, char *argv[])
 {
@@ -20,8 +26,9 @@ int	main(int argc, char *argv[])
 
 	if (verif_arg(argc, argv[1]))
 		return (EXIT_FAILURE);
-	map = get_map(argv[1]);
-	if (argc == 1)
+	if (argc > 1)
+		map = get_map(argv[1]);
+	else
 		map = get_map(DEFAULT_MAP_PATH);
 	if (map == NULL)
 		return (ft_putendl_fd(FAILED_TO_OPEN, STDERR_FILENO), ERR_OPEN);
@@ -33,9 +40,7 @@ int	main(int argc, char *argv[])
 			print_map(map);
 		return (free_map(map), free(env), EXIT_FAILURE);
 	}
-	if (intro())
-		return (free_map(map), free(env), EXIT_FAILURE);
-	if (game(env))
+	if (menu())
 		return (free_map(map), free(env), EXIT_FAILURE);
 	return (free_map(map), free(env), EXIT_SUCCESS);
 }
