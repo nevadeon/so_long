@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/30 19:40:49 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/01 15:43:32 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,6 @@
 
 # define DEFAULT_MAP_PATH "maps/default.ber"
 # define MASK 128
-# define WIDTH 861
-# define HEIGHT 633
-# define PERCENT_X mlx->width/100
-# define PERCENT_Y mlx->height/100
-# define CENTER_X 50 * PERCENT_X - image->width/2
-# define CENTER_Y 50 * PERCENT_Y - image->height/2
-
-/*image paths*/
-extern const char	**g_paths;
-# define MENU_BACKGROUND "assets/menu/background.png"
-# define START_BUTTON "assets/menu/start.png"
 
 /*error messages*/
 # define TOO_MANY_ARGS "Error\ntoo many arguments\n"
@@ -107,6 +96,6 @@ t_error	search_unreachable(char **map);
 void	reset_map(char **map);
 
 /*game*/
-int		menu(void);
+int		game(void);
 
 #endif

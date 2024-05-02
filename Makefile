@@ -12,13 +12,13 @@ LIBFT = $(LIBFT_FOLDER)/libndav.a
 LIB_FOLDER = lib
 LIBMLX = $(LIB_FOLDER)/libmlx42.a
 
-FILES = menu \
+FILES = game \
 main \
-map \
-map_utils \
-parse_errors_1 \
-parse_errors_2 \
-parse_map \
+map/map \
+map/map_utils \
+parsing/parse_errors_1 \
+parsing/parse_errors_2 \
+parsing/parse_map \
 
 SRC_FOLDER = src
 OBJ_FOLDER = bin

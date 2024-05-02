@@ -6,17 +6,11 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/30 19:44:38 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/01 14:32:09 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-const char	*g_paths[] = {
-	START_BUTTON,
-	MENU_BACKGROUND,
-	NULL
-};
 
 int	main(int argc, char *argv[])
 {
@@ -40,7 +34,7 @@ int	main(int argc, char *argv[])
 			print_map(map);
 		return (free_map(map), free(env), EXIT_FAILURE);
 	}
-	if (menu())
+	if (game())
 		return (free_map(map), free(env), EXIT_FAILURE);
 	return (free_map(map), free(env), EXIT_SUCCESS);
 }

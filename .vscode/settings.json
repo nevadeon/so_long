@@ -4,6 +4,7 @@
 		"so_long.h": "c",
 		"system_error": "c",
 		"stdlib.h": "c",
-		"mlx42.h": "c"
+		"mlx42.h": "c",
+		"features.h": "c"
 	}
 }
