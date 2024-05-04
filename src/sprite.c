@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 16:06:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/02 17:14:12 by ndavenne         ###   ########.fr       */
+/*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
+/*   Updated: 2024/05/04 21:55:23 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MLX42.h"
 #include "graphics.h"
+#include "so_long.h"
 
-uint32_t	get_pixel(t_sprite *sprite, uint32_t x, uint32_t y)
-{
-	uint32_t	pixel;
-
-	return (pixel);
-}
-
-void	add_frame(t_animation *anim, t_sprite *sprite,
+void	add_frame(t_animation *a, t_sprite *s,
 	uint32_t x_start, uint32_t y_start)
 {
 	uint32_t	pixel;
@@ -29,54 +23,78 @@ void	add_frame(t_animation *anim, t_sprite *sprite,
 	uint32_t	x;
 	uint32_t	y;
 
-	x_end = x_start + sprite->frame_width;
-	y_end = y_start + sprite->frame_height;
+	x_end = x_start + s->frame_width;
+	y_end = y_start + s->frame_height;
 	y = y_start;
 	while (y < y_end)
 	{
 		x = x_start;
 		while (x < x_end)
 		{
-			pixel = get_pixel(sprite, x_start + x, y_start + y);
-			mlx_put_pixel(anim->frames[anim->current_frame], x, y, pixel);
+			pixel = get_pixel_value(s->image, x_start + x, y_start + y);
+			mlx_put_pixel(a->frames[a->current_frame], x, y, pixel);
 			x++;
 		}
 		y++;
 	}
 }
 
-t_animation	*slice_sprite(t_animation *anim, t_sprite *sprite)
+t_animation	*slice_sprite(t_animation *a, t_sprite *s)
 {
 	uint32_t	i;
 	uint32_t	j;
-	uint32_t	x;
-	uint32_t	y;
+	uint32_t	x_start;
+	uint32_t	y_start;
 
-	anim->current_frame = 0;
-	i = 0;
-	while (i < sprite->nb_rows)
+	a->current_frame = 0;
+	j = 0;
+	while (j < s->nb_rows)
 	{
-		j = 0;
-		while (j < sprite->nb_collumns)
+		i = 0;
+		while (i < s->nb_collumns)
 		{
-			x = sprite->frame_width * i + sprite->padding_x * (i * 2 + 1);
-			y = sprite->frame_height * j + sprite->padding_y * (j * 2 + 1);
-			add_frame(anim, sprite, x, y);
-			anim->current_frame += 1;
-			j++;
+			x_start = s->frame_width * i + s->padding_x * (i * 2 + 1);
+			y_start = s->frame_height * j + s->padding_y * (j * 2 + 1);
+			add_frame(a, s, x_start, y_start);
+			a->current_frame += 1;
+			i++;
 		}
-		i++;
+		j++;
 	}
 }
 
-t_animation	*load_sprite(mlx_t *mlx, t_sprite *sprite)
+t_error	parse_sprite(t_sprite *s)
 {
-	t_animation	*anim;
+	int	width;
+	int	height;
 
-	anim->frames = (mlx_image_t *)
-		calloc(sprite->nb_frames + 1, sizeof(mlx_image_t));
-	sprite->img = load_png(mlx, sprite->file_path);
-	slice_sprite(anim, sprite);
-	mlx_delete_image(mlx, sprite->img);
-	return (anim);
+	width = s->image->width;
+	height = s->image->height;
+	while (width > 0)
+	{
+		width -= s->frame_width + s->padding_x * 2;
+		s->nb_collumns += 1;
+	}
+	while (height > 0)
+	{
+		height -= s->frame_height + s->padding_y * 2;
+		s->nb_rows += 1;
+	}
+	s->nb_frames = s->nb_rows * s->nb_collumns;
+	if (width != 0 || height != 0)
+		return (ERR_FRAME_DIMENSION);
+	return (OK);
+}
+
+t_animation	*load_sprite(mlx_t *mlx, t_sprite *s)
+{
+	t_animation	*a;
+
+	s->image = load_png(mlx, s->file_path);
+	if (parse_sprite(s))
+		return (NULL);
+	a->frames = (mlx_image_t *) calloc(s->nb_frames + 1, sizeof(mlx_image_t));
+	slice_sprite(a, s);
+	mlx_delete_image(mlx, s->image);
+	return (a);
 }
