@@ -6,24 +6,24 @@
 /*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/04 22:12:57 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/05 00:02:05 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_player_position(char **map, t_envir *env)
+void	get_player_position(t_game_data *env)
 {
-	size_t	y;
-	size_t	x;
+	t_uint	y;
+	t_uint	x;
 
 	y = -1;
-	while (map[++y] != NULL)
+	while (env->map[++y] != NULL)
 	{
 		x = -1;
-		while (map[y][++x] != '\0')
+		while (env->map[y][++x] != '\0')
 		{
-			if (map[y][x] == 'P')
+			if (env->map[y][x] == 'P')
 			{
 				env->player_x = x;
 				env->player_y = y;
@@ -34,8 +34,8 @@ void	get_player_position(char **map, t_envir *env)
 
 void	reset_map(char **map)
 {
-	size_t	x;
-	size_t	y;
+	t_uint	x;
+	t_uint	y;
 
 	y = -1;
 	while (map[++y] != NULL)
@@ -51,7 +51,7 @@ void	reset_map(char **map)
 
 /*this function takes advandate of the 8th unused bit of ascii chars to
 distinguish the parts of the map that are reachable and those that aren't*/
-void	parse_path(char **map, size_t x, size_t y)
+void	parse_path(char **map, t_uint x, t_uint y)
 {
 	if (map[y][x] == '1' || map[y][x] & MASK)
 		return ;
@@ -63,28 +63,28 @@ void	parse_path(char **map, size_t x, size_t y)
 }
 
 /*prints error mesage (in STDERR) and returns error code if map is invalid*/
-t_error	parse_map(char **map, t_envir *env)
+t_error	parse_map(t_game_data *env)
 {
-	if (map[0] == NULL)
+	if (env->map[0] == NULL)
 		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY_MAP);
-	if (check_map_size(map, env))
+	if (check_map_size(env))
 		return (ft_putendl_fd(MAP_TOO_BIG, STDERR_FILENO), ERR_MAP_SIZE);
-	if (is_rectangle(map, env))
+	if (is_rectangle(env->map, env->map_width))
 		return (ft_putendl_fd(NOT_RECTANGLE, STDERR_FILENO), ERR_RECT);
-	if (check_outer_walls(map, env))
+	if (check_outer_walls(env->map, env->map_width, env->map_height))
 		return (ft_putendl_fd(WRONG_MAP_WALLS, STDERR_FILENO), ERR_WALL);
-	if (check_characters(map))
+	if (check_characters(env->map))
 		return (ft_putendl_fd(UNEXPECTED_CHARACTER, STDERR_FILENO), ERR_CHAR);
-	if (count_player(map))
+	if (count_player(env->map))
 		return (ft_putendl_fd(WRONG_PLAYER_COUNT, STDERR_FILENO), ERR_PLAYER);
-	if (count_exit(map))
+	if (count_exit(env->map))
 		return (ft_putendl_fd(WRONG_EXIT_COUNT, STDERR_FILENO), ERR_EXIT);
-	if (count_collectible(map))
+	if (count_collectible(env->map))
 		return (ft_putendl_fd(WRONG_COLLECTIBLE_COUNT, STDERR_FILENO), ERR_COL);
-	get_player_position(map, env);
-	parse_path(map, env->player_x, env->player_y);
-	if (search_unreachable(map))
+	get_player_position(env);
+	parse_path(env->map, env->player_x, env->player_y);
+	if (search_unreachable(env->map))
 		return (ft_putendl_fd(UNREACHABLE_OBJ, STDERR_FILENO), ERR_UNREACH);
-	reset_map(map);
+	reset_map(env->map);
 	return (OK);
 }

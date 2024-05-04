@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_errors_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/25 15:08:17 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/05 00:01:31 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ t_error	verif_arg(int argc, char *filename)
 	return (OK);
 }
 
-t_error	check_map_size(char **map, t_envir *env)
+t_error	check_map_size(t_game_data *env)
 {
-	env->map_width = ft_strlen(map[0]);
-	env->map_height = dim2_len((void **) map);
+	env->map_width = ft_strlen(env->map[0]);
+	env->map_height = dim2_len((void **) env->map);
 	if (env->map_height > 40 || env->map_width > 40)
 		return (ERR_MAP_SIZE);
 	return (OK);
 }
 
-t_error	is_rectangle(char **map, t_envir *env)
+t_error	is_rectangle(char **map, size_t map_width)
 {
 	size_t	len;
-	size_t	y;
+	t_uint	y;
 
 	y = -1;
 	while (map[++y] != NULL)
@@ -49,7 +49,7 @@ t_error	is_rectangle(char **map, t_envir *env)
 		len = -1;
 		while (map[y][++len] != '\0')
 			;
-		if (len != env->map_width)
+		if (len != map_width)
 		{
 			len = -1;
 			while (map[y][++len] != '\0')
@@ -63,8 +63,8 @@ t_error	is_rectangle(char **map, t_envir *env)
 t_error	search_unreachable(char **map)
 {
 	bool	found_unreach;
-	size_t	x;
-	size_t	y;
+	t_uint	x;
+	t_uint	y;
 
 	found_unreach = false;
 	y = -1;

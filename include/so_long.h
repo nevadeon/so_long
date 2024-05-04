@@ -6,7 +6,7 @@
 /*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/04 20:45:02 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/05 00:00:56 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,14 @@ typedef enum e_error
 	ERR_FRAME_DIMENSION
 }	t_error;
 
-typedef struct s_envir
+typedef struct s_game_data
 {
-	int		player_x;
-	int		player_y;
+	char	**map;
 	size_t	map_width;
 	size_t	map_height;
-}	t_envir;
+	t_uint	player_x;
+	t_uint	player_y;
+}	t_game_data;
 
 /*map*/
 char	**get_map(char *file_name);
@@ -85,10 +86,10 @@ void	dim2_cpy(void **dest, void **src);
 
 /*parsing*/
 t_error	verif_arg(int argc, char *filename);
-t_error	parse_map(char **map, t_envir *env);
-t_error	is_rectangle(char **map, t_envir *env);
-t_error	check_map_size(char **map, t_envir *env);
-t_error	check_outer_walls(char **map, t_envir *env);
+t_error	parse_map(t_game_data *env);
+t_error	check_map_size(t_game_data *env);
+t_error	is_rectangle(char **map, size_t map_width);
+t_error	check_outer_walls(char **map, size_t map_width, size_t map_height);
 t_error	check_characters(char **map);
 t_error	count_collectible(char **map);
 t_error	count_player(char **map);

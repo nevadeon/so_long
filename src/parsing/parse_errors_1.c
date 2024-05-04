@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_errors_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/25 15:08:21 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/04 23:46:06 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_error	check_characters(char **map)
 {
 	bool	found_error;
-	size_t	x;
-	size_t	y;
+	t_uint	x;
+	t_uint	y;
 
 	found_error = false;
 	y = -1;
@@ -39,11 +39,11 @@ t_error	check_characters(char **map)
 	return (OK);
 }
 
-t_error	check_outer_walls(char **map, t_envir *env)
+t_error	check_outer_walls(char **map, size_t map_width, size_t map_height)
 {
 	bool	found_error;
-	size_t	x;
-	size_t	y;
+	t_uint	x;
+	t_uint	y;
 
 	found_error = false;
 	y = -1;
@@ -52,8 +52,8 @@ t_error	check_outer_walls(char **map, t_envir *env)
 		x = -1;
 		while (map[y][++x] != '\0')
 		{
-			if ((x == 0 || x == env->map_width - 1 || y == 0
-					|| y == env->map_height - 1) && map[y][x] != '1')
+			if ((x == 0 || x == map_width - 1 || y == 0
+					|| y == map_height - 1) && map[y][x] != '1')
 			{
 				found_error = true;
 				map[y][x] |= MASK;
@@ -68,9 +68,9 @@ t_error	check_outer_walls(char **map, t_envir *env)
 
 t_error	count_player(char **map)
 {
-	size_t	nb_player;
-	size_t	x;
-	size_t	y;
+	t_uint	nb_player;
+	t_uint	x;
+	t_uint	y;
 
 	nb_player = 0;
 	y = -1;
@@ -94,9 +94,9 @@ t_error	count_player(char **map)
 
 t_error	count_exit(char **map)
 {
-	size_t	nb_exit;
-	size_t	x;
-	size_t	y;
+	t_uint	nb_exit;
+	t_uint	x;
+	t_uint	y;
 
 	nb_exit = 0;
 	y = -1;
@@ -120,9 +120,9 @@ t_error	count_exit(char **map)
 
 t_error	count_collectible(char **map)
 {
-	size_t	nb_collectibles;
-	size_t	x;
-	size_t	y;
+	t_uint	nb_collectibles;
+	t_uint	x;
+	t_uint	y;
 
 	nb_collectibles = 0;
 	y = -1;
