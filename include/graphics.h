@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/02 17:05:01 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:47:15 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,19 @@ typedef struct s_animation {
 
 typedef struct s_sprite {
 	char		*file_path;
-	uint32_t	frame_width;
-	uint32_t	frame_height;
+	int			frame_width;
+	int			frame_height;
 	uint32_t	padding_x;
 	uint32_t	padding_y;
 	uint32_t	nb_collumns;
 	uint32_t	nb_rows;
 	uint32_t	nb_frames;
-	mlx_image_t	*img;
+	mlx_image_t	*image;
 }	t_sprite;
 
-mlx_image_t	*load_image(mlx_t *mlx, int width, int height);
+mlx_image_t	*load_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);
 t_animation	*load_sprite(mlx_t *mlx, t_sprite *sprite);
+uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y);
 
 #endif

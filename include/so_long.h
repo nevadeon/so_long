@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/01 15:43:32 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:45:02 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@
 
 typedef enum e_error
 {
-	OK,
+	OK = 0,
 	ERR_ARGS,
 	ERR_NAME,
 	ERR_EXT,
 	ERR_OPEN,
-	ERR_EMPTY,
+	ERR_EMPTY_MAP,
 	ERR_RECT,
 	ERR_MAP_SIZE,
 	ERR_CHAR,
@@ -61,7 +61,8 @@ typedef enum e_error
 	ERR_PLAYER,
 	ERR_EXIT,
 	ERR_COL,
-	ERR_UNREACH
+	ERR_UNREACH,
+	ERR_FRAME_DIMENSION
 }	t_error;
 
 typedef struct s_envir
