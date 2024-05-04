@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:16:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/02 16:16:39 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:08:09 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ mlx_image_t	*load_png(mlx_t	*mlx, char *file_path)
 	return (image);
 }
 
-mlx_image_t	*load_image(mlx_t *mlx, int width, int height)
+mlx_image_t	*load_image(mlx_t *mlx, uint32_t width, uint32_t height)
 {
 	mlx_image_t	*img;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:40:13 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/30 16:40:43 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:13:01 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,25 @@ int32_t mlx_get_pixel(mlx_image_t* image, uint32_t x, uint32_t y) {
   uint8_t* pixelstart = image->pixels + (y * image->width + x) * BPP;
   return get_rgba(*(pixelstart), *(pixelstart + 1),
     * (pixelstart + 2), *(pixelstart + 3));
+}
+
+/**
+ * In MLX42 Colors are as follows:
+ * 
+ * 0x|00|00|00|00
+ *   |R |G |B |A 
+ * 
+ * R 0xFF000000
+ * G 0x00FF0000
+ * B 0x0000FF00
+ * A 0x000000FF
+ **/
+uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y)
+{
+	uint32_t	pixel;
+
+	if (x > img->width || y > img->height)
+		return (0xFFFFFF00);
+	ft_memcpy(&pixel, img->pixels[x * y * sizeof(pixel)], sizeof(pixel));
+	return (pixel);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/04/25 15:08:12 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:12:57 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ void	parse_path(char **map, size_t x, size_t y)
 	parse_path(map, x + 1, y);
 	parse_path(map, x - 1, y);
 	parse_path(map, x, y - 1);
-	parse_path(map, x, y + 1);
+	parse_path(map, x, y + 1);	
 }
 
 /*prints error mesage (in STDERR) and returns error code if map is invalid*/
 t_error	parse_map(char **map, t_envir *env)
 {
 	if (map[0] == NULL)
-		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY);
+		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY_MAP);
 	if (check_map_size(map, env))
 		return (ft_putendl_fd(MAP_TOO_BIG, STDERR_FILENO), ERR_MAP_SIZE);
 	if (is_rectangle(map, env))
