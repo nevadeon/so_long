@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/02 16:10:47 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/05 00:17:34 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void	init_game(t_game *env)
 		.frame_height = 150,
 		.padding_x = 0,
 		.padding_y = 0,
-		.nb_frames = 3,
-		.nb_collumns = 3,
-		.nb_rows = 1
 	};
 	*env = (t_game){
 		.mlx = mlx,

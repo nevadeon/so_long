@@ -6,7 +6,7 @@
 /*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/04 21:55:23 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/05 12:03:05 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 #include "graphics.h"
 #include "so_long.h"
 
-void	add_frame(t_animation *a, t_sprite *s,
-	uint32_t x_start, uint32_t y_start)
+void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
 {
-	uint32_t	pixel;
-	uint32_t	x_end;
-	uint32_t	y_end;
-	uint32_t	x;
-	uint32_t	y;
+	t_uint	pixel;
+	t_uint	x_end;
+	t_uint	y_end;
+	t_uint	x;
+	t_uint	y;
 
 	x_end = x_start + s->frame_width;
 	y_end = y_start + s->frame_height;
@@ -41,10 +40,10 @@ void	add_frame(t_animation *a, t_sprite *s,
 
 t_animation	*slice_sprite(t_animation *a, t_sprite *s)
 {
-	uint32_t	i;
-	uint32_t	j;
-	uint32_t	x_start;
-	uint32_t	y_start;
+	t_uint	i;
+	t_uint	j;
+	t_uint	x_start;
+	t_uint	y_start;
 
 	a->current_frame = 0;
 	j = 0;

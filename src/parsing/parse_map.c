@@ -6,45 +6,28 @@
 /*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/05 00:02:05 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/05 13:54:32 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_player_position(t_game_data *env)
+void	get_player_position(t_game_map *map)
 {
 	t_uint	y;
 	t_uint	x;
 
 	y = -1;
-	while (env->map[++y] != NULL)
+	while (map->grid[++y] != NULL)
 	{
 		x = -1;
-		while (env->map[y][++x] != '\0')
+		while (map->grid[y][++x] != '\0')
 		{
-			if (env->map[y][x] == 'P')
+			if (map->grid[y][x] == 'P')
 			{
-				env->player_x = x;
-				env->player_y = y;
+				map->player_x = x;
+				map->player_y = y;
 			}
-		}
-	}
-}
-
-void	reset_map(char **map)
-{
-	t_uint	x;
-	t_uint	y;
-
-	y = -1;
-	while (map[++y] != NULL)
-	{
-		x = -1;
-		while (map[y][++x] != '\0')
-		{
-			if (map[y][x] & MASK)
-				map[y][x] ^= MASK;
 		}
 	}
 }
@@ -62,29 +45,29 @@ void	parse_path(char **map, t_uint x, t_uint y)
 	parse_path(map, x, y + 1);	
 }
 
-/*prints error mesage (in STDERR) and returns error code if map is invalid*/
-t_error	parse_map(t_game_data *env)
+/*returns an error code if map is invalid*/
+t_error	parse_map(t_game_map *map)
 {
-	if (env->map[0] == NULL)
-		return (ft_putendl_fd(EMPTY_MAP, STDERR_FILENO), ERR_EMPTY_MAP);
-	if (check_map_size(env))
-		return (ft_putendl_fd(MAP_TOO_BIG, STDERR_FILENO), ERR_MAP_SIZE);
-	if (is_rectangle(env->map, env->map_width))
-		return (ft_putendl_fd(NOT_RECTANGLE, STDERR_FILENO), ERR_RECT);
-	if (check_outer_walls(env->map, env->map_width, env->map_height))
-		return (ft_putendl_fd(WRONG_MAP_WALLS, STDERR_FILENO), ERR_WALL);
-	if (check_characters(env->map))
-		return (ft_putendl_fd(UNEXPECTED_CHARACTER, STDERR_FILENO), ERR_CHAR);
-	if (count_player(env->map))
-		return (ft_putendl_fd(WRONG_PLAYER_COUNT, STDERR_FILENO), ERR_PLAYER);
-	if (count_exit(env->map))
-		return (ft_putendl_fd(WRONG_EXIT_COUNT, STDERR_FILENO), ERR_EXIT);
-	if (count_collectible(env->map))
-		return (ft_putendl_fd(WRONG_COLLECTIBLE_COUNT, STDERR_FILENO), ERR_COL);
-	get_player_position(env);
-	parse_path(env->map, env->player_x, env->player_y);
-	if (search_unreachable(env->map))
-		return (ft_putendl_fd(UNREACHABLE_OBJ, STDERR_FILENO), ERR_UNREACH);
-	reset_map(env->map);
+	if (map->grid[0] == NULL)
+		return (ERR_EMPTY_MAP);
+	if (check_map_size(map))
+		return (ERR_MAP_SIZE);
+	if (is_rectangle(map->grid, map->width))
+		return (ERR_RECT);
+	if (check_outer_walls(map->grid, map->width, map->height))
+		return (ERR_WALL);
+	if (check_characters(map->grid))
+		return (ERR_CHAR);
+	if (count_player(map->grid))
+		return (ERR_PLAYER);
+	if (count_exit(map->grid))
+		return (ERR_EXIT);
+	if (count_collectible(map->grid))
+		return (ERR_COL);
+	get_player_position(map);
+	parse_path(map->grid, map->player_x, map->player_y);
+	if (search_unreachable(map->grid))
+		return (ERR_UNREACH);
+	reset_map(map->grid);
 	return (OK);
 }
