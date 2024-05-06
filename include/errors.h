@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 22:28:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:42:40 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 22:56:53 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef enum e_error
 ==============================================================================*/
 
 /**
- * @brief Takes an error code and look in the error_message table for the 
+ * @brief Take an error code and look in the error_message table for the 
  * correspongind message
  * 
  * @param error_code The error code
@@ -60,7 +60,7 @@ typedef enum e_error
 char	*get_error_message(t_error error_code);
 
 /**
- * @brief Puts an error mesage in the standard error file descriptor and exit
+ * @brief Put an error mesage in the standard error file descriptor and exit
  * the program
  * 
  * @param error_code The error code
@@ -68,7 +68,7 @@ char	*get_error_message(t_error error_code);
 void	error(t_error error_code);
 
 /**
- * @brief Prints the global error variable of the mlx library and exit
+ * @brief Print the global error variable of the mlx library and exit
  * the program
  */
 void	mlx_error(void);
