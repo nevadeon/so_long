@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/05 13:54:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/05 14:34:08 by nevadeon         ###   ########.fr       */
+/*   Created: 2024/05/06 16:44:11 by ndavenne          #+#    #+#             */
+/*   Updated: 2024/05/06 16:45:43 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "MLX42.h"
 
 static const char	*error_message[] = {
 	"Error\nHow the hell did you get this error message ?",
@@ -38,20 +39,14 @@ char	*get_error_message(t_error error_code)
 	return (error_message[error_code]);
 }
 
-/*turns all negative characters back to their original value*/
-void	reset_map(char **map)
+void	error(t_error error_code)
 {
-	t_uint	x;
-	t_uint	y;
+	ft_putendl_fd(get_error_message(error_code), STDERR_FILENO);
+	exit(error_code);
+}
 
-	y = -1;
-	while (map[++y] != NULL)
-	{
-		x = -1;
-		while (map[y][++x] != '\0')
-		{
-			if (map[y][x] & MASK)
-				map[y][x] ^= MASK;
-		}
-	}
+static void	mlx_error(void)
+{
+	puts(mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
 }

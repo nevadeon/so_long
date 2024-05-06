@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/06 14:08:35 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:40:11 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
 {
-	t_uint	pixel;
-	t_uint	x_end;
-	t_uint	y_end;
-	t_uint	x;
-	t_uint	y;
+	uint32_t	pixel;
+	uint32_t	x_end;
+	uint32_t	y_end;
+	uint32_t	x;
+	uint32_t	y;
 
 	x_end = x_start + s->frame_width;
 	y_end = y_start + s->frame_height;
@@ -40,10 +40,10 @@ void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
 
 t_animation	*slice_sprite(t_animation *a, t_sprite *s)
 {
-	t_uint	i;
-	t_uint	j;
-	t_uint	x_start;
-	t_uint	y_start;
+	uint32_t	i;
+	uint32_t	j;
+	uint32_t	x_start;
+	uint32_t	y_start;
 
 	a->current_frame = 0;
 	j = 0;
@@ -67,8 +67,8 @@ t_error	parse_sprite(t_sprite *s)
 	int	width;
 	int	height;
 
-	width = s->image->width;
-	height = s->image->height;
+	width = s->frame_width;
+	height = s->frame_height;
 	while (width > 0)
 	{
 		width -= s->frame_width + s->padding_x * 2;

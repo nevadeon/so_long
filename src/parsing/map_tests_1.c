@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_errors_1.c                                   :+:      :+:    :+:   */
+/*   map_tests_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/04 23:46:06 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:35:41 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_error	check_characters(char **map)
 {
-	bool	found_error;
-	t_uint	x;
-	t_uint	y;
+	bool		found_error;
+	uint32_t	x;
+	uint32_t	y;
 
 	found_error = false;
 	y = -1;
@@ -41,9 +41,9 @@ t_error	check_characters(char **map)
 
 t_error	check_outer_walls(char **map, size_t map_width, size_t map_height)
 {
-	bool	found_error;
-	t_uint	x;
-	t_uint	y;
+	bool		found_error;
+	uint32_t	x;
+	uint32_t	y;
 
 	found_error = false;
 	y = -1;
@@ -68,9 +68,9 @@ t_error	check_outer_walls(char **map, size_t map_width, size_t map_height)
 
 t_error	count_player(char **map)
 {
-	t_uint	nb_player;
-	t_uint	x;
-	t_uint	y;
+	uint32_t	nb_player;
+	uint32_t	x;
+	uint32_t	y;
 
 	nb_player = 0;
 	y = -1;
@@ -94,9 +94,9 @@ t_error	count_player(char **map)
 
 t_error	count_exit(char **map)
 {
-	t_uint	nb_exit;
-	t_uint	x;
-	t_uint	y;
+	uint32_t	nb_exit;
+	uint32_t	x;
+	uint32_t	y;
 
 	nb_exit = 0;
 	y = -1;
@@ -120,9 +120,9 @@ t_error	count_exit(char **map)
 
 t_error	count_collectible(char **map)
 {
-	t_uint	nb_collectibles;
-	t_uint	x;
-	t_uint	y;
+	uint32_t	nb_collectibles;
+	uint32_t	x;
+	uint32_t	y;
 
 	nb_collectibles = 0;
 	y = -1;

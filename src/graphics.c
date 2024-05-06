@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/05 00:17:34 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:44:31 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
 #include "graphics.h"
 #include "MLX42.h"
 
-static void	error(void)
+void	free_graphics(t_game_visuals *graph)
 {
-	puts(mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
+	mlx_delete_image(graph->mlx, graph->menu_bg);
+	mlx_delete_image(graph->mlx, graph->exit_bt);
+	mlx_delete_image(graph->mlx, graph->start_bt);
+	mlx_delete_image(graph->mlx, graph->foreground);
+	mlx_terminate(graph->mlx);
 }
 
-void	free_game(t_game *env)
-{
-	mlx_delete_image(env->mlx, env->menu_bg);
-	mlx_delete_image(env->mlx, env->exit_bt);
-	mlx_delete_image(env->mlx, env->start_bt);
-	mlx_delete_image(env->mlx, env->foreground);
-	mlx_terminate(env->mlx);
-}
-
-void	init_game(t_game *env)
+void	init_graphics(t_game_visuals *graph)
 {
 	mlx_t		*mlx;
 	t_sprite	*selected_button;
 
 	mlx = mlx_init(WIDTH, HEIGHT, WINDOW_TITLE, false);
 	if (!mlx)
-		error();
+		mlx_error();
 	*selected_button = (t_sprite){
 		.file_path = SELECT_SPRITE,
 		.frame_width = 217,
@@ -44,7 +37,7 @@ void	init_game(t_game *env)
 		.padding_x = 0,
 		.padding_y = 0,
 	};
-	*env = (t_game){
+	*graph = (t_game_visuals){
 		.mlx = mlx,
 		.select_anim = load_sprite(mlx, selected_button),
 		.foreground = load_image(mlx, WIDTH, HEIGHT),
@@ -54,32 +47,21 @@ void	init_game(t_game *env)
 	};
 }
 
-void	display_menu(t_game *env)
+void	display_menu(t_game_visuals *graph)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	if (mlx_image_to_window(env->mlx, env->menu_bg, x, y) == -1)
-		error();
-	x = env->mlx->width / 2 - env->start_bt->width / 2;
-	y = env->mlx->height / 100 * 40;
-	if (mlx_image_to_window(env->mlx, env->start_bt, x, y) == -1)
-		error();
-	x = env->mlx->width / 2 - env->exit_bt->width / 2;
-	y = env->mlx->height / 100 * 60;
-	if (mlx_image_to_window(env->mlx, env->exit_bt, x, y) == -1)
-		error();
-}
-
-int	game(void)
-{
-	t_game	env;
-
-	init_game(&env);
-	display_menu(&env);
-	mlx_loop(env.mlx);
-	free_game(&env);
-	return (EXIT_SUCCESS);
+	if (mlx_image_to_window(graph->mlx, graph->menu_bg, x, y) == -1)
+		mlx_error();
+	x = graph->mlx->width / 2 - graph->start_bt->width / 2;
+	y = graph->mlx->height / 100 * 40;
+	if (mlx_image_to_window(graph->mlx, graph->start_bt, x, y) == -1)
+		mlx_error();
+	x = graph->mlx->width / 2 - graph->exit_bt->width / 2;
+	y = graph->mlx->height / 100 * 60;
+	if (mlx_image_to_window(graph->mlx, graph->exit_bt, x, y) == -1)
+		mlx_error();
 }

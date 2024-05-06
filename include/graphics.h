@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/04 20:47:15 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:40:20 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
-# include "libndav.h"
 # include "MLX42.h"
 
 # define WINDOW_TITLE "so_long"
@@ -26,12 +25,9 @@
 # define START_BUTTON "assets/menu/start.png"
 # define EXIT_BUTTON "assets/menu/exit.png"
 
-# define NB_SLICES 3
-# define SLICE_WIDTH 
-# define SLICE_HEIGHT
-# define DELAY_MS 120
+typedef uint32_t t_uint;
 
-typedef struct s_game
+typedef struct s_game_visuals
 {
 	mlx_t		*mlx;
 	mlx_image_t	*menu_bg;
@@ -39,7 +35,7 @@ typedef struct s_game
 	mlx_image_t	*exit_bt;
 	mlx_image_t	*foreground;
 	t_animation	*select_anim;
-}	t_game;
+}	t_game_visuals;
 
 typedef struct s_animation {
 	mlx_image_t **frames;
@@ -57,6 +53,10 @@ typedef struct s_sprite {
 	uint32_t	nb_frames;
 	mlx_image_t	*image;
 }	t_sprite;
+
+void	display_menu(t_game_visuals *graph);
+void	init_graphics(t_game_visuals *graph);
+void	free_graphics(t_game_visuals *graph);
 
 mlx_image_t	*load_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);

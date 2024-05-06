@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/05 14:30:40 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:02:08 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 # include <string.h>  //strerror
 # include <stdio.h>   //perror
 # include <stdbool.h> //bool true false
-# include "libndav.h"
-# include "MLX42.h"
 
 # define DEFAULT_MAP_PATH "maps/default.ber"
 # define MASK 128
 
 /*error colors*/
-# define COLOR_UNREACH "\033[48;2;222;107;72;5m\033[30m%c\033[0m"
+# define COLOR_ERROR "\033[48;2;222;107;72;5m\033[30m%c\033[0m"
 # define COLOR_GROUND "\033[48;2;87;213;199m\033[30m%c\033[0m"
 # define COLOR_PCE "\033[48;2;173;226;93m\033[30m%c\033[0m"
 # define COLOR_WALL "\033[48;2;108;169;189m\033[30m%c\033[0m"
+
+typedef unsigned int uint32_t;
 
 typedef enum e_error
 {
@@ -53,17 +53,19 @@ typedef enum e_error
 
 typedef struct s_game_map
 {
-	char	**grid;
-	size_t	width;
-	size_t	height;
-	t_uint	player_x;
-	t_uint	player_y;
+	char		**grid;
+	size_t		width;
+	size_t		height;
+	uint32_t	player_x;
+	uint32_t	player_y;
 }	t_game_map;
 
 /*map*/
 char	**get_map(char *file_name);
-void	print_map(char **map);
 void	free_map(char **map);
+void	reset_map(char **map);
+void	print_map(char **map);
+void	get_player_position(t_game_map *map);
 
 /*map utils*/
 size_t	ft_strclen2(const char *str, char c);
@@ -71,7 +73,6 @@ size_t	dim2_len(void **tab);
 void	dim2_cpy(void **dest, void **src);
 
 /*parsing*/
-t_error	verif_arg(int argc, char *filename);
 t_error	parse_map(t_game_map *map);
 t_error	check_map_size(t_game_map *map);
 t_error	is_rectangle(char **map, size_t map_width);
@@ -81,9 +82,11 @@ t_error	count_collectible(char **map);
 t_error	count_player(char **map);
 t_error	count_exit(char **map);
 t_error	search_unreachable(char **map);
-void	reset_map(char **map);
 
 /*game*/
-int		game(void);
+void	so_long(t_game_map *map, t_game_visuals *graph);
+
+/*error*/
+void	error(t_error error_code);
 
 #endif

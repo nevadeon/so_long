@@ -3,38 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/05 13:54:32 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:47:07 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_player_position(t_game_map *map)
-{
-	t_uint	y;
-	t_uint	x;
-
-	y = -1;
-	while (map->grid[++y] != NULL)
-	{
-		x = -1;
-		while (map->grid[y][++x] != '\0')
-		{
-			if (map->grid[y][x] == 'P')
-			{
-				map->player_x = x;
-				map->player_y = y;
-			}
-		}
-	}
-}
-
 /*this function takes advandate of the 8th unused bit of ascii chars to
 distinguish the parts of the map that are reachable and those that aren't*/
-void	parse_path(char **map, t_uint x, t_uint y)
+void	parse_path(char **map, uint32_t x, uint32_t y)
 {
 	if (map[y][x] == '1' || map[y][x] & MASK)
 		return ;
@@ -42,7 +22,7 @@ void	parse_path(char **map, t_uint x, t_uint y)
 	parse_path(map, x + 1, y);
 	parse_path(map, x - 1, y);
 	parse_path(map, x, y - 1);
-	parse_path(map, x, y + 1);	
+	parse_path(map, x, y + 1);
 }
 
 /*returns an error code if map is invalid*/

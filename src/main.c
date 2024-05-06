@@ -3,21 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/05 13:45:21 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:42:13 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "graphics.h"
+
+void	so_long(t_game_map *map, t_game_visuals *graph)
+{
+	init_graphics(graph);
+	display_menu(graph);
+	mlx_loop(graph->mlx);
+}
 
 int	main(int argc, char *argv[])
 {
-	t_game_map	map;
+	t_game_map		map;
+	t_game_visuals	graph;
 
 	parse_inputs(argc, argv, &map);
-	if (game())
-		return (free_map(map.grid), EXIT_FAILURE);
-	return (free_map(map.grid), EXIT_SUCCESS);
+	so_long(&map, &graph);
+	free_grahics(graph);
+	free_map(map.grid);
+	return (EXIT_SUCCESS);
 }

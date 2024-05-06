@@ -1,53 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:47:55 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/05 00:09:36 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:39:21 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(char **map)
-{
-	size_t	i;
-
-	i = -1;
-	while (map[++i] != NULL)
-		free(map[i]);
-	free(map);
-}
-
-void	print_map(char **map)
-{
-	size_t	y;
-	size_t	x;
-
-	y = -1;
-	while (map[++y] != NULL)
-	{
-		x = -1;
-		while (map[y][++x] != '\0')
-		{
-			if (map[y][x] & MASK)
-				ft_printf(2, COLOR_UNREACH, map[y][x] ^ MASK);
-			else if (map[y][x] == '1')
-				ft_printf(2, COLOR_WALL, map[y][x]);
-			else if (map[y][x] == 'C' || map[y][x] == 'P' || map[y][x] == 'E')
-				ft_printf(2, COLOR_PCE, map[y][x]);
-			else
-				ft_printf(2, COLOR_GROUND, map[y][x]);
-		}
-		ft_printf(2, "\n");
-	}
-}
-
-/*copy an array of strings in a new mallocated array
-then add a string at the end and free the old array*/
+/**
+ * @brief Copies an array of strings in a new mallocated array. Adds a string at
+ * the end of the copy array and frees the source array
+ * 
+ * @param tab The array to be copied and freed
+ * @param str The string that will be added at the end of the copy
+ * @return The newly constructed array
+ */
 char	**_dim2join_free(char **tab, char *str)
 {
 	char	**output;
@@ -62,7 +34,12 @@ char	**_dim2join_free(char **tab, char *str)
 	return (output);
 }
 
-/*puts each line of a text file in an array of strings*/
+/**
+ * @brief Puts each line of a text file in an array of strings
+ * 
+ * @param file_name The text file that contains map data
+ * @return A mallocated 2 dimensions array of strings
+ */
 char	**get_map(char *file_name)
 {
 	char	**map;

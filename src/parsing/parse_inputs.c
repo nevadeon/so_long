@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_inputs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:13:15 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/05 14:34:28 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:45:25 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	error(t_error error_code)
-{
-	ft_putendl_fd(get_error_message(error_code), STDERR_FILENO);
-	exit(error_code);
-}
 
 void	parse_arg(int argc, char *filename)
 {

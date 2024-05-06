@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_errors_2.c                                   :+:      :+:    :+:   */
+/*   map_tests_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/05 13:15:35 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:35:28 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_error	check_map_size(t_game_map *map)
 
 t_error	is_rectangle(char **map, size_t map_width)
 {
-	size_t	len;
-	t_uint	y;
+	size_t		len;
+	uint32_t	y;
 
 	y = -1;
 	while (map[++y] != NULL)
@@ -45,9 +45,9 @@ t_error	is_rectangle(char **map, size_t map_width)
 
 t_error	search_unreachable(char **map)
 {
-	bool	found_unreach;
-	t_uint	x;
-	t_uint	y;
+	bool		found_unreach;
+	uint32_t	x;
+	uint32_t	y;
 
 	found_unreach = false;
 	y = -1;
