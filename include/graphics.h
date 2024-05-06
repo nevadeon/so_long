@@ -6,12 +6,14 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 21:53:32 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 22:26:33 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
+
+# include "so_long.h"
 
 # define WINDOW_TITLE "so_long"
 # define WIDTH 	861

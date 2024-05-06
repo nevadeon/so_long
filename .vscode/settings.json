@@ -6,6 +6,7 @@
 		"stdlib.h": "c",
 		"mlx42.h": "c",
 		"features.h": "c",
-		"graphics.h": "c"
+		"graphics.h": "c",
+		"error.h": "c"
 	}
 }
