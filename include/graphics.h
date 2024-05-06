@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 16:40:20 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 21:44:12 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
-
-# include "MLX42.h"
 
 # define WINDOW_TITLE "so_long"
 # define WIDTH 861
@@ -25,7 +23,7 @@
 # define START_BUTTON "assets/menu/start.png"
 # define EXIT_BUTTON "assets/menu/exit.png"
 
-typedef uint32_t t_uint;
+typedef uint32_t	t_uint;
 
 typedef struct s_game_visuals
 {
@@ -37,12 +35,14 @@ typedef struct s_game_visuals
 	t_animation	*select_anim;
 }	t_game_visuals;
 
-typedef struct s_animation {
-	mlx_image_t **frames;
+typedef struct s_animation
+{
+	mlx_image_t	**frames;
 	uint32_t	current_frame;
 }	t_animation;
 
-typedef struct s_sprite {
+typedef struct s_sprite
+{
 	char		*file_path;
 	int			frame_width;
 	int			frame_height;
@@ -54,9 +54,9 @@ typedef struct s_sprite {
 	mlx_image_t	*image;
 }	t_sprite;
 
-void	display_menu(t_game_visuals *graph);
-void	init_graphics(t_game_visuals *graph);
-void	free_graphics(t_game_visuals *graph);
+void		display_menu(t_game_visuals *graph);
+void		init_graphics(t_game_visuals *graph);
+void		free_graphics(t_game_visuals *graph);
 
 mlx_image_t	*load_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);
