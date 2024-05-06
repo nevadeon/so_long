@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 21:44:12 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 21:53:32 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 # define GRAPHICS_H
 
 # define WINDOW_TITLE "so_long"
-# define WIDTH 861
-# define HEIGHT 633
+# define WIDTH 	861
+# define HEIGHT	633
 
-# define MENU_SPRITE "assets/menu/menu_sprite.png"
+# define MENU_SPRITE	 "assets/menu/menu_sprite.png"
 # define MENU_BACKGROUND "assets/menu/background.png"
-# define SELECT_SPRITE "assets/menu/selected.png"
-# define START_BUTTON "assets/menu/start.png"
-# define EXIT_BUTTON "assets/menu/exit.png"
+# define SELECT_SPRITE 	 "assets/menu/selected.png"
+# define START_BUTTON 	 "assets/menu/start.png"
+# define EXIT_BUTTON 	 "assets/menu/exit.png"
 
 typedef uint32_t	t_uint;
 
