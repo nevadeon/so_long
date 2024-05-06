@@ -6,11 +6,11 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:40:13 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 16:39:54 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:55:40 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
+#include "so_long.h"
 
 /**
  * In MLX42 Colors are as follows:

@@ -6,7 +6,7 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:51 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 17:30:21 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:06:46 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ void	free_map(char **map)
 	free(map);
 }
 
-/**
- * @brief Cycle through an array of strings and reverse a previously applied
- * binary MASK
- * 
- * @param map The array of strings
- */
 void	reset_map(char **map)
 {
 	uint32_t	x;
@@ -45,11 +39,6 @@ void	reset_map(char **map)
 	}
 }
 
-/**
- * @brief Prints map data into terminal with colors
- * 
- * @param map The array of strings
- */
 void	print_map(char **map)
 {
 	size_t	y;
@@ -74,12 +63,6 @@ void	print_map(char **map)
 	}
 }
 
-/**
- * @brief Gets the player position and stores it in map structure player_x and
- * player_y variables
- * 
- * @param map The map structure
- */
 void	get_player_position(t_game_map *map)
 {
 	uint32_t	y;

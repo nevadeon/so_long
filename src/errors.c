@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:44:11 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 16:45:43 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:55:57 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "MLX42.h"
 
 static const char	*error_message[] = {
 	"Error\nHow the hell did you get this error message ?",
@@ -28,7 +27,7 @@ static const char	*error_message[] = {
 	"Error\nMap must have exactly 1 exit\n",
 	"Error\nMap must have at least 1 collectible\n",
 	"Error\nUnreachable exit or collectible\n",
-	"Error\nWTF ? Specified sprite frame dimension is incorrect\n",
+	"Error\nThe dev is a fucking morron\n",
 	"Error\nIndex is out of <char *error_message[]> boundaries\n",
 };
 
@@ -45,7 +44,7 @@ void	error(t_error error_code)
 	exit(error_code);
 }
 
-static void	mlx_error(void)
+void	mlx_error(void)
 {
 	puts(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);

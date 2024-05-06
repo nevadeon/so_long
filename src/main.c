@@ -6,12 +6,11 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 16:42:13 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:55:01 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "graphics.h"
 
 void	so_long(t_game_map *map, t_game_visuals *graph)
 {

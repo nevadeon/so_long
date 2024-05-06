@@ -6,12 +6,10 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/06 16:40:11 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:55:32 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MLX42.h"
-#include "graphics.h"
 #include "so_long.h"
 
 void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)

@@ -6,14 +6,12 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 16:47:07 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:31:33 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*this function takes advandate of the 8th unused bit of ascii chars to
-distinguish the parts of the map that are reachable and those that aren't*/
 void	parse_path(char **map, uint32_t x, uint32_t y)
 {
 	if (map[y][x] == '1' || map[y][x] & MASK)
@@ -25,7 +23,6 @@ void	parse_path(char **map, uint32_t x, uint32_t y)
 	parse_path(map, x, y + 1);
 }
 
-/*returns an error code if map is invalid*/
 t_error	parse_map(t_game_map *map)
 {
 	if (map->grid[0] == NULL)

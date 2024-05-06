@@ -6,12 +6,11 @@
 /*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 16:44:31 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:53:18 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "graphics.h"
-#include "MLX42.h"
+#include "so_long.h"
 
 void	free_graphics(t_game_visuals *graph)
 {
