@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 22:31:00 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:54:05 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:25:22 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,23 @@
 # define MAP_H
 
 # include "so_long.h"
+# include "MLX42.h"   //graphic lib
+# include "libndav.h"
+# include "parsing.h"
+# include "graphics.h"
+# include "errors.h"
+# include "map.h"
 
 # define DEFAULT_MAP_PATH "maps/default.ber"
+
+/*------------------------------------------------------------------------------
+                               map printing colors                              
+------------------------------------------------------------------------------*/
+
+# define COLOR_ERROR "\033[48;2;222;107;72;5m\033[30m%c\033[0m"
+# define COLOR_GROUND "\033[48;2;87;213;199m\033[30m%c\033[0m"
+# define COLOR_PCE "\033[48;2;173;226;93m\033[30m%c\033[0m"
+# define COLOR_WALL "\033[48;2;108;169;189m\033[30m%c\033[0m"
 
 typedef struct s_game_map
 {
@@ -98,6 +113,5 @@ size_t	dim2_len(void **tab);
  * @param src The source array
  */
 void	dim2_cpy(void **dest, void **src);
-
 
 #endif

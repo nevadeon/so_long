@@ -6,21 +6,20 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 22:28:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:56:53 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:24:57 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERRORS_H
 # define ERRORS_H
 
-/*------------------------------------------------------------------------------
-                               map printing colors                              
-------------------------------------------------------------------------------*/
-
-# define COLOR_ERROR "\033[48;2;222;107;72;5m\033[30m%c\033[0m"
-# define COLOR_GROUND "\033[48;2;87;213;199m\033[30m%c\033[0m"
-# define COLOR_PCE "\033[48;2;173;226;93m\033[30m%c\033[0m"
-# define COLOR_WALL "\033[48;2;108;169;189m\033[30m%c\033[0m"
+# include "so_long.h" 
+# include "MLX42.h"   //graphic lib
+# include "libndav.h"
+# include "parsing.h"
+# include "graphics.h"
+# include "errors.h"
+# include "map.h"
 
 /**
  * @brief Error codes that are used to identify corresponding error message and
@@ -71,6 +70,6 @@ void	error(t_error error_code);
  * @brief Print the global error variable of the mlx library and exit
  * the program
  */
-void	mlx_error(void);
+void	handle_mlx_error(void);
 
 #endif

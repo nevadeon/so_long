@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/06 22:55:10 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/07 13:33:24 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_error	parse_sprite(t_sprite *s)
 	return (OK);
 }
 
-t_animation	*load_sprite(mlx_t *mlx, t_sprite *s)
+t_animation	*load_animation(mlx_t *mlx, t_sprite *s)
 {
 	t_animation	*a;
 

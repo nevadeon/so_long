@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:13:15 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/06 22:55:05 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:18:24 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void	parse_inputs(int argc, char *argv[], t_game_map *map)
 	error_code = parse_map(map);
 	if (error_code != OK)
 	{
+		ft_putendl_fd(get_error_message(error_code), STDERR_FILENO);
 		if (error_code != ERR_MAP_SIZE)
 			print_map(map->grid);
 		free_map(map->grid);
-		error(error_code);
+		exit(error_code);
 	}
 }

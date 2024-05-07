@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:54:33 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/07 13:38:24 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
                                WORK IN PROGRESS                                 
 ==============================================================================*/
 
-void	so_long(t_game_map *map, t_game_visuals *graph);
+void	so_long(t_game_map *map, t_game_visuals *graphs);
 size_t	ft_strclen2(const char *str, char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 22:22:49 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:54:20 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:25:30 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 # define PARSING_H
 
 # include "so_long.h"
+# include "MLX42.h"   //graphic lib
+# include "libndav.h"
+# include "parsing.h"
+# include "graphics.h"
+# include "errors.h"
+# include "map.h"
 
 # define MASK 128
 
 /*==============================================================================
                                     PARSING                                     
 ==============================================================================*/
+
+void	parse_inputs(int argc, char *argv[], t_game_map *map);
 
 /**
  * @brief Verify that user gave a correct map file name
@@ -30,16 +38,7 @@
 void	parse_arg(int argc, char *filename);
 
 /**
- * @brief Launche all map test functions and return an error code if map is
- * invalid
- * 
- * @param map The map structure
- * @return 0 if map is valid and error_code otherwise
- */
-t_error	parse_map(t_game_map *map);
-
-/**
- * @brief In a nutshell, take advandate of the 8th unused bit of ascii chars to 
+ * @brief In a nutshell, takes advandate of the 8th unused bit of ascii chars to 
  * distinguish the parts of the map that are reachable and those that aren't. In
  *  detail, from the starting x and y of the player, use a recursive algorythm 
  * to go through the entire accessible part of the map. Everytime an untouched 
@@ -51,7 +50,16 @@ t_error	parse_map(t_game_map *map);
  * @param x The collumn of the current character
  * @param y The raw of the current character
  */
-void	parse_path(char **map, uint32_t x, uint32_t y);
+void	parse_player_path(char **map, uint32_t x, uint32_t y);
+
+/**
+ * @brief Launch all map test functions and return an error code if map is
+ * invalid
+ * 
+ * @param map The map structure
+ * @return 0 if map is valid and error_code otherwise
+ */
+t_error	parse_map(t_game_map *map);
 
 /*------------------------------------------------------------------------------
                                    map tests                                    
