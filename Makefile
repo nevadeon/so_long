@@ -32,16 +32,14 @@ all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ_FOLDER) $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBMLX) $(LIBFT) $(CLINKS)
 
 $(LIBFT):
 	make -C $(LIBFT_FOLDER)
 
-$(OBJ_FOLDER):
-	mkdir -p $(OBJ_FOLDER)
-
 $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
