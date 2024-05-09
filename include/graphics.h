@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/07 14:25:06 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:14:56 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 # include "so_long.h"
 # include "MLX42.h"   //graphic lib
 # include "libndav.h"
-# include "parsing.h"
 # include "graphics.h"
 # include "errors.h"
-# include "map.h"
 
 # define WINDOW_TITLE "so_long"
 # define WIDTH 	861

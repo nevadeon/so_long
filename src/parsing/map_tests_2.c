@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_tests_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:55:04 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:20:22 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_error	is_rectangle(char **map, size_t map_width)
 	return (OK);
 }
 
-t_error	search_unreachable(char **map)
+t_error	check_unreachable(char **map)
 {
 	bool		found_unreach;
 	uint32_t	x;

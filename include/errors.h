@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 22:28:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/07 14:24:57 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:15:11 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 # include "so_long.h" 
 # include "MLX42.h"   //graphic lib
 # include "libndav.h"
-# include "parsing.h"
 # include "graphics.h"
 # include "errors.h"
-# include "map.h"
 
 /**
  * @brief Error codes that are used to identify corresponding error message and
