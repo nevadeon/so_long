@@ -6,7 +6,7 @@
 /*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 00:22:57 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:43:46 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,5 @@ void	dim2_cpy(void **dest, void **src);
 ==============================================================================*/
 
 void	so_long(t_game_map *map, t_game_visuals *graphs);
-size_t	ft_strclen2(const char *str, char c);
 
 #endif

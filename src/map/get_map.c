@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:47:55 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:54:56 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:41:48 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	**get_map(char *file_name)
 	line = get_next_line(fd);
 	while (line)
 	{
-		line[ft_strclen2(line, '\n')] = '\0';
+		line[ft_strclen(line, '\n', false)] = '\0';
 		map = _dim2join_free(map, line);
 		line = get_next_line(fd);
 	}
