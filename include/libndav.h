@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libndav.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 19:24:54 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 16:35:10 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 00:34:49 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdbool.h>
+# include <stdint.h>
 
 # define DEC "0123456789"
 # define HEXA_LOW "0123456789abcdef"
@@ -23,8 +25,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 255
 # endif
-
-typedef unsigned int	uint32_t;
 
 typedef struct s_list
 {
@@ -62,9 +62,9 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlcpy(char *dest, const char *src, size_t d_size);
 size_t	ft_strlcat(char *dest, const char *src, size_t d_size);
 
-size_t	ft_strclen(const char *str, char c);
-char	*ft_strcdup(const char *str, char c);
-void	ft_strccat(char *dest, const char *src, char c);
+size_t	ft_strclen(const char *str, char c, bool include_char);
+char	*ft_strcdup(const char *str, char c, bool include_char);
+void	ft_strccat(char *dest, const char *src, char c, bool include_char);
 
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, int n);
