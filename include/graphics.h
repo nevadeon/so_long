@@ -6,7 +6,7 @@
 /*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 00:14:56 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:58:27 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 
 # include "so_long.h"
 # include "MLX42.h"   //graphic lib
-# include "libndav.h"
-# include "graphics.h"
-# include "errors.h"
 
 # define WINDOW_TITLE "so_long"
 # define WIDTH 	861
 # define HEIGHT	633
 
 # define MENU_SPRITE	 "assets/menu/menu_sprite.png"
-# define MENU_BACKGROUND "assets/menu/background.png"
+# define MENU_BACKGROUND "assets/menu/old_bg.png"
 # define SELECT_SPRITE 	 "assets/menu/selected.png"
 # define START_BUTTON 	 "assets/menu/start.png"
 # define EXIT_BUTTON 	 "assets/menu/exit.png"
@@ -57,7 +54,7 @@ typedef struct s_game_visuals
 	mlx_image_t	*start_bt;
 	mlx_image_t	*exit_bt;
 	mlx_image_t	*foreground;
-	t_animation	*select_anim;
+	t_animation	selected_anim;
 }	t_game_visuals;
 
 void		display_menu(t_game_visuals *graphs);
@@ -66,7 +63,7 @@ void		free_graphics(t_game_visuals *graphs);
 
 mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);
-t_animation	*load_animation(mlx_t *mlx, t_sprite *s);
+void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s);
 
 uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y);
 

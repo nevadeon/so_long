@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:40:13 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:55:08 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:38:19 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ int32_t	mlx_get_pixel(mlx_image_t *img, uint32_t x, uint32_t y)
 
 uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y)
 {
+	uint32_t	output;
 	uint32_t	pixel;
 
 	if (x > img->width || y > img->height)
 		return (0xFFFFFF00);
-	ft_memcpy(&pixel, img->pixels[(y * img->width + x) * 4], sizeof(pixel));
-	return (pixel);
+	pixel = img->pixels[(y * img->width + x) * sizeof(pixel)];
+	ft_memcpy(&output, &pixel, sizeof(pixel));
+	return (output);
 }

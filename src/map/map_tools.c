@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:51 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/07 14:24:32 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:50:35 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	free_map(char **map)
 	while (map[++i] != NULL)
 		free(map[i]);
 	free(map);
+	map = NULL;
 }
 
 void	reset_map(char **map)

@@ -12,15 +12,19 @@ LIBFT = $(LIBFT_FOLDER)/libndav.a
 LIB_FOLDER = lib
 LIBMLX = $(LIB_FOLDER)/libmlx42.a
 
-FILES = parsing/map_tests_1\
-parsing/map_tests_2\
-parsing/parse_inputs\
-parsing/parse_map\
+FILES = sprite\
 map/get_map\
-map/map_tools\
 map/map_utils\
+map/map_tools\
+image_utils\
 main\
+image\
 errors\
+graphics\
+parsing/parse_inputs\
+parsing/map_tests_2\
+parsing/parse_map\
+parsing/map_tests_1\
 
 SRC_FOLDER = src
 OBJ_FOLDER = bin

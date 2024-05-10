@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/07 13:33:24 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:01:04 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
 	}
 }
 
-t_animation	*slice_sprite(t_animation *a, t_sprite *s)
+void	slice_sprite(t_animation *a, t_sprite *s)
 {
 	uint32_t	i;
 	uint32_t	j;
@@ -83,15 +83,13 @@ t_error	parse_sprite(t_sprite *s)
 	return (OK);
 }
 
-t_animation	*load_animation(mlx_t *mlx, t_sprite *s)
+void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s)
 {
-	t_animation	*a;
 
 	s->image = load_png(mlx, s->file_path);
-	if (parse_sprite(s))
-		return (NULL);
-	a->frames = (mlx_image_t *) calloc(s->nb_frames + 1, sizeof(mlx_image_t));
+	parse_sprite(s);
+	a->frames = (mlx_image_t **)calloc(s->nb_frames + 1, sizeof(mlx_image_t *));
+	a->frames[s->nb_frames] = NULL;
 	slice_sprite(a, s);
 	mlx_delete_image(mlx, s->image);
-	return (a);
 }

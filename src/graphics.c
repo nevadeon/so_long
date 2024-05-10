@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/07 14:04:14 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:09:37 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	free_graphics(t_game_visuals *graphs)
 void	init_graphics(t_game_visuals *graphs)
 {
 	mlx_t		*mlx;
-	t_sprite	*selected_button;
+	t_sprite	selected_sprite;
 
 	mlx = mlx_init(WIDTH, HEIGHT, WINDOW_TITLE, false);
 	if (!mlx)
 		handle_mlx_error();
-	*selected_button = (t_sprite){
+	selected_sprite = (t_sprite){
 		.file_path = SELECT_SPRITE,
 		.frame_width = 217,
 		.frame_height = 150,
@@ -38,12 +38,12 @@ void	init_graphics(t_game_visuals *graphs)
 	};
 	*graphs = (t_game_visuals){
 		.mlx = mlx,
-		.select_anim = load_animation(mlx, selected_button),
 		.foreground = new_image(mlx, WIDTH, HEIGHT),
 		.menu_bg = load_png(mlx, MENU_BACKGROUND),
 		.start_bt = load_png(mlx, START_BUTTON),
 		.exit_bt = load_png(mlx, EXIT_BUTTON)
 	};
+	load_animation(mlx, &graphs->selected_anim , &selected_sprite);
 }
 
 void	display_menu(t_game_visuals *graphs)
