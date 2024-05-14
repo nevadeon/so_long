@@ -6,13 +6,13 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/06 22:55:03 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:03:30 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_error	check_characters(char **map)
+t_error	check_characters(char **grid)
 {
 	bool		found_error;
 	uint32_t	x;
@@ -20,26 +20,26 @@ t_error	check_characters(char **map)
 
 	found_error = false;
 	y = -1;
-	while (map[++y] != NULL)
+	while (grid[++y] != NULL)
 	{
 		x = -1;
-		while (map[y][++x] != '\0')
+		while (grid[y][++x] != '\0')
 		{
-			if (map[y][x] != 'P' && map[y][x] != 'C' && map[y][x] != 'E'
-				&& map[y][x] != '0' && map[y][x] != '1')
+			if (grid[y][x] != 'P' && grid[y][x] != 'C' && grid[y][x] != 'E'
+				&& grid[y][x] != '0' && grid[y][x] != '1')
 			{
 				found_error = true;
-				map[y][x] |= MASK;
+				grid[y][x] |= MASK;
 			}
 		}
 	}
 	if (found_error == true)
 		return (ERR_CHAR);
-	reset_map(map);
+	reset_map(grid);
 	return (OK);
 }
 
-t_error	check_outer_walls(char **map, size_t map_width, size_t map_height)
+t_error	check_outer_walls(char **grid, size_t map_width, size_t map_height)
 {
 	bool		found_error;
 	uint32_t	x;
@@ -47,26 +47,26 @@ t_error	check_outer_walls(char **map, size_t map_width, size_t map_height)
 
 	found_error = false;
 	y = -1;
-	while (map[++y] != NULL)
+	while (grid[++y] != NULL)
 	{
 		x = -1;
-		while (map[y][++x] != '\0')
+		while (grid[y][++x] != '\0')
 		{
 			if ((x == 0 || x == map_width - 1 || y == 0
-					|| y == map_height - 1) && map[y][x] != '1')
+					|| y == map_height - 1) && grid[y][x] != '1')
 			{
 				found_error = true;
-				map[y][x] |= MASK;
+				grid[y][x] |= MASK;
 			}
 		}
 	}
 	if (found_error == true)
 		return (ERR_WALL);
-	reset_map(map);
+	reset_map(grid);
 	return (OK);
 }
 
-t_error	count_player(char **map)
+t_error	count_player(char **grid)
 {
 	uint32_t	nb_player;
 	uint32_t	x;
@@ -74,25 +74,25 @@ t_error	count_player(char **map)
 
 	nb_player = 0;
 	y = -1;
-	while (map[++y] != NULL)
+	while (grid[++y] != NULL)
 	{
 		x = -1;
-		while (map[y][++x] != '\0')
+		while (grid[y][++x] != '\0')
 		{
-			if (map[y][x] == 'P')
+			if (grid[y][x] == 'P')
 			{
-				map[y][x] |= MASK;
+				grid[y][x] |= MASK;
 				nb_player += 1;
 			}
 		}
 	}
 	if (nb_player != 1)
 		return (ERR_PLAYER);
-	reset_map(map);
+	reset_map(grid);
 	return (OK);
 }
 
-t_error	count_exit(char **map)
+t_error	count_exit(char **grid)
 {
 	uint32_t	nb_exit;
 	uint32_t	x;
@@ -100,25 +100,25 @@ t_error	count_exit(char **map)
 
 	nb_exit = 0;
 	y = -1;
-	while (map[++y] != NULL)
+	while (grid[++y] != NULL)
 	{
 		x = -1;
-		while (map[y][++x] != '\0')
+		while (grid[y][++x] != '\0')
 		{
-			if (map[y][x] == 'E')
+			if (grid[y][x] == 'E')
 			{
-				map[y][x] |= MASK;
+				grid[y][x] |= MASK;
 				nb_exit += 1;
 			}
 		}
 	}
 	if (nb_exit != 1)
 		return (ERR_EXIT);
-	reset_map(map);
+	reset_map(grid);
 	return (OK);
 }
 
-t_error	count_collectible(char **map)
+t_error	count_collectible(char **grid)
 {
 	uint32_t	nb_collectibles;
 	uint32_t	x;
@@ -126,20 +126,20 @@ t_error	count_collectible(char **map)
 
 	nb_collectibles = 0;
 	y = -1;
-	while (map[++y] != NULL)
+	while (grid[++y] != NULL)
 	{
 		x = -1;
-		while (map[y][++x] != '\0')
+		while (grid[y][++x] != '\0')
 		{
-			if (map[y][x] == 'C')
+			if (grid[y][x] == 'C')
 			{
-				map[y][x] |= MASK;
+				grid[y][x] |= MASK;
 				nb_collectibles += 1;
 			}
 		}
 	}
 	if (nb_collectibles < 1)
 		return (ERR_COL);
-	reset_map(map);
+	reset_map(grid);
 	return (OK);
 }

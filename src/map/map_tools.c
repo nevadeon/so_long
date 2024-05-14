@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   map_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:51 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 11:50:35 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:08:28 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(char **map)
+void	free_map(char **grid)
 {
 	size_t	i;
 
 	i = -1;
-	while (map[++i] != NULL)
-		free(map[i]);
-	free(map);
-	map = NULL;
+	while (grid[++i] != NULL)
+		free(grid[i]);
+	free(grid);
+	grid = NULL;
 }
 
-void	reset_map(char **map)
+void	reset_map(char **grid)
 {
 	uint32_t	x;
 	uint32_t	y;
 
 	y = -1;
-	while (map[++y] != NULL)
+	while (grid[++y] != NULL)
 	{
 		x = -1;
-		while (map[y][++x] != '\0')
+		while (grid[y][++x] != '\0')
 		{
-			if (map[y][x] & MASK)
-				map[y][x] ^= MASK;
+			if (grid[y][x] & MASK)
+				grid[y][x] ^= MASK;
 		}
 	}
 }

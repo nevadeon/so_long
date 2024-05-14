@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_tests_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 00:20:22 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:03:31 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,29 @@ t_error	check_map_size(t_game_map *map)
 	return (OK);
 }
 
-t_error	is_rectangle(char **map, size_t map_width)
+t_error	is_rectangle(char **grid, size_t map_width)
 {
 	size_t		len;
 	uint32_t	y;
 
 	y = -1;
-	while (map[++y] != NULL)
+	while (grid[++y] != NULL)
 	{
 		len = -1;
-		while (map[y][++len] != '\0')
+		while (grid[y][++len] != '\0')
 			;
 		if (len != map_width)
 		{
 			len = -1;
-			while (map[y][++len] != '\0')
-				map[y][len] |= MASK;
+			while (grid[y][++len] != '\0')
+				grid[y][len] |= MASK;
 			return (ERR_RECT);
 		}
 	}
 	return (OK);
 }
 
-t_error	check_unreachable(char **map)
+t_error	check_unreachable(char **grid)
 {
 	bool		found_unreach;
 	uint32_t	x;
@@ -51,17 +51,17 @@ t_error	check_unreachable(char **map)
 
 	found_unreach = false;
 	y = -1;
-	while (map[++y] != NULL)
+	while (grid[++y] != NULL)
 	{
 		x = -1;
-		while (map[y][++x] != '\0')
+		while (grid[y][++x] != '\0')
 		{
-			if (map[y][x] & MASK)
-				map[y][x] ^= MASK;
-			else if (map[y][x] == 'E' || map[y][x] == 'C')
+			if (grid[y][x] & MASK)
+				grid[y][x] ^= MASK;
+			else if (grid[y][x] == 'E' || grid[y][x] == 'C')
 			{
 				found_unreach = true;
-				map[y][x] |= MASK;
+				grid[y][x] |= MASK;
 			}
 		}
 	}

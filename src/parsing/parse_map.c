@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 00:20:22 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:04:57 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	mark_reachable_items(char **map, uint32_t x, uint32_t y)
+void	mark_reachable_items(char **grid, uint32_t x, uint32_t y)
 {
-	if (map[y][x] == '1' || map[y][x] & MASK)
+	if (grid[y][x] == '1' || grid[y][x] & MASK)
 		return ;
-	map[y][x] |= MASK;
-	mark_reachable_items(map, x + 1, y);
-	mark_reachable_items(map, x - 1, y);
-	mark_reachable_items(map, x, y - 1);
-	mark_reachable_items(map, x, y + 1);
+	grid[y][x] |= MASK;
+	mark_reachable_items(grid, x + 1, y);
+	mark_reachable_items(grid, x - 1, y);
+	mark_reachable_items(grid, x, y - 1);
+	mark_reachable_items(grid, x, y + 1);
 }
 
 t_error	parse_map(t_game_map *map)

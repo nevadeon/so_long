@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 14:25:35 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:08:27 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,20 @@ t_error	parse_map(t_game_map *map);
  * @param x The collumn of the current character
  * @param y The raw of the current character
  */
-void	mark_reachable_items(char **map, uint32_t x, uint32_t y);
+void	mark_reachable_items(char **grid, uint32_t x, uint32_t y);
 
 /*------------------------------------------------------------------------------
                                    map tests                                    
 ------------------------------------------------------------------------------*/
 
 t_error	check_map_size(t_game_map *map);
-t_error	is_rectangle(char **map, size_t map_width);
-t_error	check_outer_walls(char **map, size_t map_width, size_t map_height);
-t_error	check_characters(char **map);
-t_error	count_collectible(char **map);
-t_error	count_player(char **map);
-t_error	count_exit(char **map);
-t_error	check_unreachable(char **map);
+t_error	is_rectangle(char **grid, size_t map_width);
+t_error	check_outer_walls(char **grid, size_t map_width, size_t map_height);
+t_error	check_characters(char **grid);
+t_error	count_collectible(char **grid);
+t_error	count_player(char **grid);
+t_error	count_exit(char **grid);
+t_error	check_unreachable(char **grid);
 
 /*==============================================================================
                                    MAP TOOLS                                    
@@ -120,7 +120,7 @@ char	**get_map(char *file_name);
  * 
  * @param map The array of strings
  */
-void	free_map(char **map);
+void	free_map(char **grid);
 
 /**
  * @brief Cycle through an array of strings and reverse a previously applied
@@ -128,7 +128,7 @@ void	free_map(char **map);
  * 
  * @param map The array of strings
  */
-void	reset_map(char **map);
+void	reset_map(char **grid);
 
 /**
  * @brief Prints map data into terminal with colors
