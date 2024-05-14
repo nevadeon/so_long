@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 00:43:46 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:25:35 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdlib.h>  //malloc free open close exit
-# include <unistd.h>  //write read
-# include <fcntl.h>   //O_RDONLY
-# include <string.h>  //strerror
-# include <stdio.h>   //perror
-# include <stdbool.h> //bool true false
+# include <stdlib.h>	//malloc free open close exit
+# include <unistd.h>	//write read
+# include <fcntl.h>		//O_RDONLY
+# include <string.h>	//strerror
+# include <stdio.h>		//perror
+# include <stdbool.h>	//bool true false
 
-# include "MLX42.h"   //graphic lib
+# include "MLX42.h"		//graphic lib
 # include "libndav.h"
 # include "graphics.h"
 # include "errors.h"
@@ -45,6 +45,12 @@ typedef struct s_game_map
 	uint32_t	player_x;
 	uint32_t	player_y;
 }	t_game_map;
+
+/*==============================================================================
+                               WORK IN PROGRESS                                 
+==============================================================================*/
+
+void	so_long(t_game_map *map, t_game_visuals *graphs);
 
 /*==============================================================================
                                     PARSING                                     
@@ -169,12 +175,5 @@ size_t	dim2_len(void **tab);
  * @param src The source array
  */
 void	dim2_cpy(void **dest, void **src);
-
-
-/*==============================================================================
-                               WORK IN PROGRESS                                 
-==============================================================================*/
-
-void	so_long(t_game_map *map, t_game_visuals *graphs);
 
 #endif
