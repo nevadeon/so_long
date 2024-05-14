@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 12:58:27 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/14 18:16:29 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ typedef uint32_t	t_uint;
 
 typedef struct s_sprite
 {
+	mlx_image_t	*image;
 	char		*file_path;
 	int			frame_width;
 	int			frame_height;
 	uint32_t	padding_x;
 	uint32_t	padding_y;
+	uint32_t	nb_frames;
 	uint32_t	nb_collumns;
 	uint32_t	nb_rows;
-	uint32_t	nb_frames;
-	mlx_image_t	*image;
 }	t_sprite;
 
 typedef struct s_animation

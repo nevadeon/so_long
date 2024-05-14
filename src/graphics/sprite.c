@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/10 13:01:04 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:43:30 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	slice_sprite(t_animation *a, t_sprite *s)
 	while (j < s->nb_rows)
 	{
 		i = 0;
-		while (i < s->nb_collumns)
+		while (i < s->nb_collumns && a->current_frame < s->nb_frames)
 		{
 			x_start = s->frame_width * i + s->padding_x * (i * 2 + 1);
 			y_start = s->frame_height * j + s->padding_y * (j * 2 + 1);
@@ -65,8 +65,8 @@ t_error	parse_sprite(t_sprite *s)
 	int	width;
 	int	height;
 
-	width = s->frame_width;
-	height = s->frame_height;
+	width = s->image->width;
+	height = s->image->height;
 	while (width > 0)
 	{
 		width -= s->frame_width + s->padding_x * 2;
@@ -77,7 +77,6 @@ t_error	parse_sprite(t_sprite *s)
 		height -= s->frame_height + s->padding_y * 2;
 		s->nb_rows += 1;
 	}
-	s->nb_frames = s->nb_rows * s->nb_collumns;
 	if (width != 0 || height != 0)
 		return (ERR_FRAME_DIMENSION);
 	return (OK);
