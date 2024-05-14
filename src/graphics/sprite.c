@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/14 19:08:20 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:12:54 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
 
 	x_end = x_start + s->frame_width;
 	y_end = y_start + s->frame_height;
-	y = y_start;
-	while (y < y_end)
+	y = 0;
+	while (y < s->frame_height)
 	{
-		x = x_start;
-		while (x < x_end)
+		x = 0;
+		while (x < s->frame_width)
 		{
 			pixel = get_pixel_value(s->image, x_start + x, y_start + y);
 			mlx_put_pixel(a->frames[a->current_frame], x, y, pixel);
@@ -62,22 +62,22 @@ void	slice_sprite(t_animation *a, t_sprite *s)
 
 t_error	parse_sprite(t_sprite *s)
 {
-	int	width;
-	int	height;
+	uint32_t	s_width;
+	uint32_t	s_height;
 
-	width = s->image->width;
-	height = s->image->height;
-	while (width > 0)
+	s_width = s->image->width;
+	s_height = s->image->height;
+	while (s_width >= s->frame_width + s->padding_x * 2)
 	{
-		width -= s->frame_width + s->padding_x * 2;
+		s_width -= s->frame_width + s->padding_x * 2;
 		s->nb_collumns += 1;
 	}
-	while (height > 0)
+	while (s_height >= s->frame_height + s->padding_y * 2)
 	{
-		height -= s->frame_height + s->padding_y * 2;
+		s_height -= s->frame_height + s->padding_y * 2;
 		s->nb_rows += 1;
 	}
-	if (width != 0 || height != 0)
+	if (s_width != 0 || s_height != 0)
 		return (ERR_FRAME_DIMENSION);
 	return (OK);
 }

@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 18:16:29 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/14 19:46:03 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_sprite
 {
 	mlx_image_t	*image;
 	char		*file_path;
-	int			frame_width;
-	int			frame_height;
+	uint32_t	frame_width;
+	uint32_t	frame_height;
 	uint32_t	padding_x;
 	uint32_t	padding_y;
 	uint32_t	nb_frames;
