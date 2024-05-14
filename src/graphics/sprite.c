@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/14 17:43:30 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/14 19:08:20 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,17 @@ t_error	parse_sprite(t_sprite *s)
 
 void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s)
 {
+	uint32_t	i;
 
 	s->image = load_png(mlx, s->file_path);
 	parse_sprite(s);
 	a->frames = (mlx_image_t **)calloc(s->nb_frames + 1, sizeof(mlx_image_t *));
+	i = 0;
+	while(i < s->nb_frames)
+	{
+		a->frames[i] = new_image(mlx, s->frame_width, s->frame_height);
+		i++;
+	}
 	a->frames[s->nb_frames] = NULL;
 	slice_sprite(a, s);
 	mlx_delete_image(mlx, s->image);
