@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/14 20:12:54 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:45:13 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s)
 	parse_sprite(s);
 	a->frames = (mlx_image_t **)calloc(s->nb_frames + 1, sizeof(mlx_image_t *));
 	i = 0;
-	while(i < s->nb_frames)
+	while (i < s->nb_frames)
 	{
 		a->frames[i] = new_image(mlx, s->frame_width, s->frame_height);
 		i++;
