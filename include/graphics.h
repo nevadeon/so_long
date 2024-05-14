@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 19:46:03 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:50:56 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define MENU_SPRITE	 "assets/menu/menu_sprite.png"
 # define MENU_BACKGROUND "assets/menu/old_bg.png"
-# define SELECT_SPRITE 	 "assets/menu/selected.png"
+# define SELECT_SPRITE 	 "assets/menu/select.png"
 # define START_BUTTON 	 "assets/menu/start.png"
 # define EXIT_BUTTON 	 "assets/menu/exit.png"
 
@@ -54,7 +54,7 @@ typedef struct s_game_visuals
 	mlx_image_t	*start_bt;
 	mlx_image_t	*exit_bt;
 	mlx_image_t	*foreground;
-	t_animation	selected_anim;
+	t_animation	select_anim;
 }	t_game_visuals;
 
 void		display_menu(t_game_visuals *graphs);
@@ -64,6 +64,7 @@ void		free_graphics(t_game_visuals *graphs);
 mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);
 void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s);
+void	print_image(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y);
 
 uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y);
 
