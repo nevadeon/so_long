@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 20:49:03 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:07:15 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,12 @@ void	free_graphics(t_game_visuals *graphs)
 	mlx_terminate(graphs->mlx);
 }
 
-void	init_select_anim(t_game_visuals *graphs)
-{
-	t_sprite	select_sprite;
-
-	select_sprite = (t_sprite){
-		.file_path = SELECT_SPRITE,
-		.nb_frames = 3,
-		.frame_width = 217,
-		.frame_height = 150,
-		.padding_x = 0,
-		.padding_y = 0,
-	};
-load_animation(graphs->mlx, &graphs->select_anim , &select_sprite);
-}
-
 void	init_graphics(t_game_visuals *graphs)
 {
 	mlx_t		*mlx;
 
-	mlx = mlx_init(WIDTH, HEIGHT, WINDOW_TITLE, false);
+	// mlx_set_setting(MLX_MAXIMIZED, true);
+	mlx = mlx_init(WIDTH, HEIGHT, WINDOW_TITLE, true);
 	if (!mlx)
 		handle_mlx_error();
 	*graphs = (t_game_visuals){
@@ -50,20 +36,25 @@ void	init_graphics(t_game_visuals *graphs)
 		.start_bt = load_png(mlx, START_BUTTON),
 		.exit_bt = load_png(mlx, EXIT_BUTTON)
 	};
+	init_menu_bg_anim(graphs);
 	init_select_anim(graphs);
 }
 
 void	display_menu(t_game_visuals *graphs)
 {
-	int	x;
-	int	y;
+	uint32_t	x;
+	uint32_t	y;
 
-	print_image(graphs->mlx, graphs->menu_bg, 0, 0);
+	x = graphs->mlx->width / 2 - graphs->menu_bg_anim.frames[0]->width / 2;
+	y = graphs->mlx->height / 2 - graphs->menu_bg_anim.frames[0]->height / 2;
+	print_image(graphs->mlx, graphs->menu_bg_anim.frames[0], x, y);
 	x = graphs->mlx->width / 2 - graphs->start_bt->width / 2;
 	y = graphs->mlx->height / 100 * 40;
 	print_image(graphs->mlx, graphs->start_bt, x, y);
 	x = graphs->mlx->width / 2 - graphs->exit_bt->width / 2;
 	y = graphs->mlx->height / 100 * 60;
 	print_image(graphs->mlx, graphs->exit_bt, x, y);
-	print_image(graphs->mlx, graphs->select_anim.frames[0], 0, 0);
+	// print_image(graphs->mlx, graphs->select_anim.frames[0], 0, 0);
+	// print_image(graphs->mlx, graphs->select_anim.frames[1], 0, 150);
+	// print_image(graphs->mlx, graphs->select_anim.frames[2], 0, 300);
 }
