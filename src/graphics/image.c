@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:16:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 20:44:38 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:48:05 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,28 @@ void	print_image(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y)
 {
 	if (mlx_image_to_window(mlx, image, x, y) == -1)
 		handle_mlx_error();
+}
+
+void	copy_image(mlx_image_t *dest, mlx_image_t *src,
+	uint32_t x_start, uint32_t y_start)
+{
+	uint32_t	pixel;
+	uint32_t	x;
+	uint32_t	y;
+
+	y = 0;
+	while (y < src->height)
+	{
+		x = 0;
+		while (x < src->width)
+		{
+			if (x + x_start < dest->width && y + y_start < dest->height)
+			{
+				pixel = get_pixel_value(src, x, y);
+				mlx_put_pixel(dest, x + x_start, y + y_start, pixel);
+			}
+			x++;
+		}
+		y++;
+	}
 }

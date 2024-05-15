@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 02:33:41 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:05:08 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
-# include "so_long.h"
 # include "MLX42.h"   //graphic lib
 
 # define WINDOW_TITLE "so_long"
-# define WIDTH 	861
-# define HEIGHT	633
+# define WIDTH 	1309
+# define HEIGHT	995
 
-# define MENU_SPRITE	 "assets/menu/menu_sprite.png"
 # define MENU_BACKGROUND "assets/menu/old_bg.png"
-# define SELECT_SPRITE 	 "assets/menu/select.png"
+# define MENU_SPRITE	 "assets/menu/menu_background_sprite.png"
+# define SELECT_SPRITE 	 "assets/menu/select_sprite.png"
 # define START_BUTTON 	 "assets/menu/start.png"
 # define EXIT_BUTTON 	 "assets/menu/exit.png"
 
@@ -30,21 +29,23 @@ typedef uint32_t	t_uint;
 
 typedef struct s_sprite
 {
-	mlx_image_t	*image;
 	char		*file_path;
+	mlx_image_t	*image;
+	uint32_t	nb_frames;
+	uint32_t	nb_collumns;
+	uint32_t	nb_rows;
 	uint32_t	frame_width;
 	uint32_t	frame_height;
 	uint32_t	padding_x;
 	uint32_t	padding_y;
-	uint32_t	nb_frames;
-	uint32_t	nb_collumns;
-	uint32_t	nb_rows;
 }	t_sprite;
 
 typedef struct s_animation
 {
 	mlx_image_t	**frames;
 	uint32_t	current_frame;
+	double		accum;
+	int			frame_speed;
 }	t_animation;
 
 typedef struct s_game_visuals
@@ -54,12 +55,19 @@ typedef struct s_game_visuals
 	mlx_image_t	*start_bt;
 	mlx_image_t	*exit_bt;
 	mlx_image_t	*foreground;
+	mlx_image_t	*background;
 	t_animation	select_anim;
+	t_animation	menu_anim;
 }	t_game_visuals;
 
-void		display_menu(t_game_visuals *graphs);
 void		init_graphics(t_game_visuals *graphs);
+void		init_menu_bg_anim(t_game_visuals *graphs);
+void		init_select_anim(t_game_visuals *graphs);
+void		display_menu(t_game_visuals *graphs);
 void		free_graphics(t_game_visuals *graphs);
+
+void		copy_image(mlx_image_t *dest, mlx_image_t *src,
+				uint32_t x_start, uint32_t y_start);
 
 mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);

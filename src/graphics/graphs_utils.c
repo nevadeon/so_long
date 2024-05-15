@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   graphs_utilsls.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 17:46:41 by ndavenne         ###   ########.fr       */
+/*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
+/*   Updated: 2024/05/15 17:57:23 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+void	free_graphics(t_game_visuals *graphs)
 {
-	t_game_map		map;
-	t_game_visuals	graphs;
-
-	parse_inputs(argc, argv, &map);
-	so_long(&map, &graphs);
-	free_graphics(&graphs);
-	free_map(map.grid);
-	return (EXIT_SUCCESS);
+	mlx_delete_image(graphs->mlx, graphs->menu_bg);
+	mlx_delete_image(graphs->mlx, graphs->exit_bt);
+	mlx_delete_image(graphs->mlx, graphs->start_bt);
+	mlx_delete_image(graphs->mlx, graphs->foreground);
+	mlx_terminate(graphs->mlx);
 }
