@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:40:13 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 11:03:35 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:13:00 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ static uint32_t	_get_rgba(int r, int g, int b, int a)
 
 uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y)
 {
-	uint8_t	*pixel_start;
+	uint8_t	*pixel;
 
 	if (x > img->width || y > img->height)
 		return (0xFFFFFF00);
-	pixel_start = img->pixels + (y * img->width + x) * sizeof(uint32_t);
-	return (get_rgba(*(pixel_start), *(pixel_start + 1),
-			*(pixel_start + 2), *(pixel_start + 3)));
+	pixel = img->pixels + (y * img->width + x) * sizeof(uint32_t);
+	return (_get_rgba(*(pixel), *(pixel + 1), *(pixel + 2), *(pixel + 3)));
 }
