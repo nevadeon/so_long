@@ -6,11 +6,27 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:16:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 20:46:10 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 20:51:49 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	print_image(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y)
+{
+	if (mlx_image_to_window(mlx, image, x, y) == -1)
+		handle_mlx_error();
+}
+
+mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height)
+{
+	mlx_image_t	*img;
+
+	img = mlx_new_image(mlx, width, height);
+	if (!img)
+		handle_mlx_error();
+	return (img);
+}
 
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path)
 {
@@ -25,22 +41,6 @@ mlx_image_t	*load_png(mlx_t	*mlx, char *file_path)
 		handle_mlx_error();
 	mlx_delete_texture(texture);
 	return (image);
-}
-
-mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height)
-{
-	mlx_image_t	*img;
-
-	img = mlx_new_image(mlx, width, height);
-	if (!img)
-		handle_mlx_error();
-	return (img);
-}
-
-void	print_image(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y)
-{
-	if (mlx_image_to_window(mlx, image, x, y) == -1)
-		handle_mlx_error();
 }
 
 void	copy_image(mlx_image_t *dest, mlx_image_t *src,
