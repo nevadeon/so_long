@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/14 20:45:13 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 02:32:47 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
 {
 	uint32_t	pixel;
-	uint32_t	x_end;
-	uint32_t	y_end;
 	uint32_t	x;
 	uint32_t	y;
 
-	x_end = x_start + s->frame_width;
-	y_end = y_start + s->frame_height;
 	y = 0;
 	while (y < s->frame_height)
 	{

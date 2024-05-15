@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 20:50:56 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 02:33:41 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void		free_graphics(t_game_visuals *graphs);
 
 mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);
-void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s);
-void	print_image(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y);
+void		load_animation(mlx_t *mlx, t_animation *a, t_sprite *s);
+void		print_image(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y);
 
 uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y);
 
