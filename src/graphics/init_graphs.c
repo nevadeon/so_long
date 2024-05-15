@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:51:09 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 17:46:06 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 19:13:14 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_menu_bg_anim(t_game_visuals *graphs)
 		.padding_x = 10,
 		.padding_y = 10
 	};
-	load_animation(graphs->mlx, &graphs->menu_anim, &menu_bg_sprite);
+	load_animation(graphs->mlx, &graphs->menu_bg, &menu_bg_sprite);
 }
 
 void	init_graphics(t_game_visuals *graphs)
@@ -53,7 +53,6 @@ void	init_graphics(t_game_visuals *graphs)
 		.mlx = mlx,
 		.background = new_image(mlx, WIDTH, HEIGHT),
 		.foreground = new_image(mlx, WIDTH, HEIGHT),
-		.menu_bg = load_png(mlx, MENU_BACKGROUND),
 		.start_bt = load_png(mlx, START_BUTTON),
 		.exit_bt = load_png(mlx, EXIT_BUTTON)
 	};
