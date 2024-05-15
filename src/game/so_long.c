@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 19:13:49 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 20:42:22 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	so_long(t_game_map *map, t_game_visuals *gv)
 	if (mlx_image_to_window(gv->mlx, gv->background, 0, 0) == -1)
 		handle_mlx_error();
 	print_image(gv->mlx, gv->background, 0, 0);
+	mlx_set_instance_depth(gv->background->instances, 1);
+	// print_image(gv->mlx, gv->foreground, 0, 0);
 	mlx_loop_hook(gv->mlx, update_graphics, gv);
 	mlx_loop(gv->mlx);
 }
