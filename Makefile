@@ -21,11 +21,11 @@ map/map_utils\
 map/map_tools\
 errors\
 main\
-graphics/image\
-graphics/image_utils\
-graphics/sprite\
 graphics/init_graphs\
+graphics/sprite\
 graphics/graphs_utils\
+graphics/image\
+graphics/pixel\
 game/so_long\
 
 SRC_FOLDER = src
