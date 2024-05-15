@@ -6,13 +6,13 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:44:11 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/07 14:20:50 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:04:09 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static const char	*error_message[] = {
+static const char	*_error_message[] = {
 	"Error\nHow the hell did you get this error message ?",
 	"Error\ntoo many arguments",
 	"Error\nfile name too short",
@@ -35,7 +35,7 @@ char	*get_error_message(t_error error_code)
 {
 	if (error_code < 0 || error_code > ERR_MAX)
 		error(ERR_MAX);
-	return ((char *) error_message[error_code]);
+	return ((char *) _error_message[error_code]);
 }
 
 void	error(t_error error_code)
