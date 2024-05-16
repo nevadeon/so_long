@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 19:07:17 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:42:50 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ typedef struct s_sprite
 typedef struct s_animation
 {
 	mlx_image_t	**frames;
-	uint32_t	current;
-	double		accum;
-	int			frame_speed;
+	uint32_t	current_frame;
+	uint32_t	refresh_time;
+	double		time_counter;
 }	t_animation;
 
 typedef struct s_game_visuals
@@ -56,7 +56,7 @@ typedef struct s_game_visuals
 	mlx_image_t	*foreground;
 	mlx_image_t	*background;
 	t_animation	select_anim;
-	t_animation	menu_bg;
+	t_animation	menu_bg_anim;
 }	t_game_visuals;
 
 void		init_graphics(t_game_visuals *graphs);

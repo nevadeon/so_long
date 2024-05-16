@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/15 19:09:44 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:42:16 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
 		while (x < s->frame_width)
 		{
 			pixel = get_pixel_value(s->image, x_start + x, y_start + y);
-			mlx_put_pixel(a->frames[a->current], x, y, pixel);
+			mlx_put_pixel(a->frames[a->current_frame], x, y, pixel);
 			x++;
 		}
 		y++;
@@ -39,17 +39,17 @@ void	slice_sprite(t_animation *a, t_sprite *s)
 	uint32_t	x_start;
 	uint32_t	y_start;
 
-	a->current = 0;
+	a->current_frame = 0;
 	j = 0;
 	while (j < s->nb_rows)
 	{
 		i = 0;
-		while (i < s->nb_collumns && a->current < s->nb_frames)
+		while (i < s->nb_collumns && a->current_frame < s->nb_frames)
 		{
 			x_start = s->frame_width * i + s->padding_x * (i * 2 + 1);
 			y_start = s->frame_height * j + s->padding_y * (j * 2 + 1);
 			add_frame(a, s, x_start, y_start);
-			a->current += 1;
+			a->current_frame += 1;
 			i++;
 		}
 		j++;
