@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/16 16:42:50 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/16 20:12:34 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,10 @@ typedef struct s_game_visuals
 	t_animation	menu_bg_anim;
 }	t_game_visuals;
 
-void		init_graphics(t_game_visuals *graphs);
-void		init_menu_bg_anim(t_game_visuals *graphs);
-void		init_select_anim(t_game_visuals *graphs);
-void		display_menu(t_game_visuals *graphs);
-void		free_graphics(t_game_visuals *graphs);
+void		init_graphics(t_game_visuals *gv);
+void		init_menu_bg_anim(t_game_visuals *gv);
+void		init_select_anim(t_game_visuals *gv);
+void		free_graphics(t_game_visuals *gv);
 
 void		copy_image(mlx_image_t *dest, mlx_image_t *src,
 				uint32_t x_start, uint32_t y_start);
@@ -71,7 +70,7 @@ void		copy_image(mlx_image_t *dest, mlx_image_t *src,
 mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);
 void		load_animation(mlx_t *mlx, t_animation *a, t_sprite *s);
-void		print_image(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y);
+void		image_to_window(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y);
 
 uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y);
 

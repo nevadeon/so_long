@@ -6,13 +6,13 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:16:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 20:51:49 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/16 20:12:34 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	print_image(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y)
+void	image_to_window(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y)
 {
 	if (mlx_image_to_window(mlx, image, x, y) == -1)
 		handle_mlx_error();
