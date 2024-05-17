@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 20:27:05 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 21:56:04 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef enum e_game_status
 
 typedef enum e_menu_select
 {
+	SELECT_MIN,
 	SELECT_START,
 	SELECT_EXIT,
 	SELECT_MAX
