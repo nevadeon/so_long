@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 15:28:12 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:53:31 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	update_graphics(void *param)
 	uint32_t		y;
 
 	gv = (t_game_visuals *) param;
-	update_animation(&gv->menu_bg_anim, gv->mlx->delta_time, 0, 0);
-	x = gv->mlx->width / 100 * 52 - gv->start_bt->width / 2;
-	y = gv->mlx->height / 100 * 77 - gv->start_bt->width / 2;
+	x = WIDTH / 100 * 52 - gv->start_bt->width / 2;
+	y = HEIGHT / 100 * 77 - gv->start_bt->width / 2;
 	update_animation(&gv->select_anim, gv->mlx->delta_time, x, y);
+	update_animation(&gv->menu_bg_anim, gv->mlx->delta_time, 0, 0);
 }
 
 void	display_menu(t_game_visuals *gv)
@@ -44,14 +44,12 @@ void	display_menu(t_game_visuals *gv)
 	uint32_t	y;
 
 	image_to_window(gv->mlx, gv->menu_bg_anim.render_layer, 0, 0);
-	image_to_window(gv->mlx, gv->select_anim.render_layer, 0, 0);
-	x = gv->mlx->width / 100 * 52 - gv->start_bt->width / 2;
-	y = gv->mlx->height / 100 * 77 - gv->start_bt->width / 2;
+	x = WIDTH / 100 * 52 - gv->start_bt->width / 2;
+	y = HEIGHT / 100 * 77 - gv->start_bt->width / 2;
 	image_to_window(gv->mlx, gv->start_bt, x, y);
-	y = gv->mlx->height / 100 * 95 - gv->start_bt->width / 2;
+	y = HEIGHT / 100 * 95 - gv->start_bt->width / 2;
 	image_to_window(gv->mlx, gv->exit_bt, x, y);
-	// gv->start_bt->instances[0].z = 1;
-	// gv->exit_bt->instances[0].z = 2;
+	image_to_window(gv->mlx, gv->select_anim.render_layer, 0, 0);
 }
 
 void	so_long(t_game_map *map, t_game_visuals *gv)
