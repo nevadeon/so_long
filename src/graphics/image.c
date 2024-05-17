@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:16:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 20:25:28 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 20:30:27 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	clear_image(mlx_image_t *image)
 		{
 			mlx_put_pixel(image, x, y, 0xFF000000);
 			x++;
-		}	
+		}
 		y++;
 	}
 }
