@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 22:24:02 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 22:31:56 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ void	update_graphics(void *param)
 		if (mlx_is_key_down(gv->mlx, MLX_KEY_UP)
 			&& gv->selected_button > SELECT_MIN + 1)
 			gv->selected_button -= 1;
+		if (mlx_is_key_down(gv->mlx, MLX_KEY_ENTER)
+			&& gv->selected_button == SELECT_EXIT)
+			exit(OK);
 	}
 	x = _select_coords[gv->selected_button][X];
 	y = _select_coords[gv->selected_button][Y];
