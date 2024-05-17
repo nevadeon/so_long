@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:51:09 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 18:17:27 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 19:37:08 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	init_graphics(t_game_visuals *gv)
 		.start_bt = load_png(mlx, START_BUTTON),
 		.exit_bt = load_png(mlx, EXIT_BUTTON),
 		.game_status = IN_MENU,
-		.menu_select = SELECT_START
+		.selected_button = SELECT_START
 	};
 	init_menu_bg_anim(gv);
 	init_select_anim(gv);

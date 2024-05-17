@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 19:12:04 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 20:27:05 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define SELECT_SPRITE	"assets/menu/select_sprite.png"
 # define START_BUTTON	"assets/menu/start.png"
 # define EXIT_BUTTON	"assets/menu/exit.png"
+
+# define X 0
+# define Y 1
 
 typedef enum e_game_status
 {
@@ -67,7 +70,7 @@ typedef struct s_game_visuals
 	t_animation		select_anim;
 	t_animation		menu_bg_anim;
 	t_game_status	game_status;
-	t_menu_select	menu_select;
+	t_menu_select	selected_button;
 }	t_game_visuals;
 
 void		init_graphics(t_game_visuals *gv);
@@ -77,6 +80,7 @@ void		free_graphics(t_game_visuals *gv);
 
 void		copy_image(mlx_image_t *dest, mlx_image_t *src,
 				uint32_t x_start, uint32_t y_start);
+void		clear_image(mlx_image_t *image);
 
 mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);

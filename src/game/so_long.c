@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 19:09:19 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 20:27:08 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	update_animation(t_animation *a, double dt, uint32_t x, uint32_t y)
 		a->time_counter -= a->refresh_time;
 		if (a->frames[a->current_frame] == NULL)
 			a->current_frame = 0;
+		clear_image(a->render_layer);
 		copy_image(a->render_layer, a->frames[a->current_frame], x, y);
 		a->current_frame++;
 	}
@@ -37,8 +38,15 @@ void	update_graphics(void *param)
 	uint32_t		y;
 
 	gv = (t_game_visuals *) param;
-	x = _select_coords[gv->menu_select][0];
-	y = _select_coords[gv->menu_select][1];
+	if (gv->game_status == IN_MENU)
+	{
+		if (mlx_is_key_down(gv->mlx, MLX_KEY_DOWN) && gv->selected_button < SELECT_EXIT)
+			gv->selected_button += 1;
+		if (mlx_is_key_down(gv->mlx, MLX_KEY_UP) && gv->selected_button > SELECT_START)
+			gv->selected_button -= 1;
+	}
+	x = _select_coords[gv->selected_button][X];
+	y = _select_coords[gv->selected_button][Y];
 	update_animation(&gv->select_anim, gv->mlx->delta_time, x, y);
 	update_animation(&gv->menu_bg_anim, gv->mlx->delta_time, 0, 0);
 }
@@ -49,11 +57,11 @@ void	display_menu(t_game_visuals *gv)
 	uint32_t	y;
 
 	image_to_window(gv->mlx, gv->menu_bg_anim.render_layer, 0, 0);
-	x = _select_coords[SELECT_START][0];
-	y = _select_coords[SELECT_START][1];
+	x = _select_coords[SELECT_START][X];
+	y = _select_coords[SELECT_START][Y];
 	image_to_window(gv->mlx, gv->start_bt, x, y);
-	x = _select_coords[SELECT_EXIT][0];
-	y = _select_coords[SELECT_EXIT][1];
+	x = _select_coords[SELECT_EXIT][X];
+	y = _select_coords[SELECT_EXIT][Y];
 	image_to_window(gv->mlx, gv->exit_bt, x, y);
 	image_to_window(gv->mlx, gv->select_anim.render_layer, 0, 0);
 }
