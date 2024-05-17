@@ -3,7 +3,7 @@ NAME = so_long
 CC = cc
 RM = rm -rf
 
-CFLAGS += -Wall -Wextra -Werror -Iinclude -g
+CFLAGS += -Wall -Wextra -Werror -Iinclude
 CLINKS = -ldl -lglfw -pthread -lm
 
 LIBFT_FOLDER = lib
@@ -57,4 +57,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clear clean fclean re
+test: CFLAGS += -g
+test: re
+
+.PHONY: all bonus clear clean fclean re test
