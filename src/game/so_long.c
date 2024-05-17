@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 15:53:31 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:18:07 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void	display_menu(t_game_visuals *gv)
 	image_to_window(gv->mlx, gv->select_anim.render_layer, 0, 0);
 }
 
-void	so_long(t_game_map *map, t_game_visuals *gv)
+void	so_long(t_game_map *map, t_game_visuals *gv, t_game_env *env)
 {
 	(void)map;
+	(void)env;
 	init_graphics(gv);
 	display_menu(gv);
 	mlx_loop_hook(gv->mlx, update_graphics, gv);

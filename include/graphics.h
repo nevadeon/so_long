@@ -6,14 +6,12 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 16:03:02 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:25:19 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
-
-# include "MLX42.h"   //graphic lib
 
 # define WINDOW_TITLE "so_long"
 # define WIDTH 	1309
@@ -23,18 +21,6 @@
 # define SELECT_SPRITE	"assets/menu/select_sprite.png"
 # define START_BUTTON	"assets/menu/start.png"
 # define EXIT_BUTTON	"assets/menu/exit.png"
-
-typedef enum e_game_status
-{
-	IN_MENU,
-	PLAYING
-}	t_game_status;
-
-typedef enum e_menu_selection
-{
-	SELECT_START,
-	SELECT_EXIT
-}	t_menu_selection;
 
 typedef uint32_t	t_uint;
 
