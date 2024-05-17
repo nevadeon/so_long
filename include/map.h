@@ -6,12 +6,14 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 16:32:29 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 18:27:25 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
+
+# include "so_long.h"
 
 # define MASK 128
 # define DEFAULT_MAP_PATH "maps/default.ber"

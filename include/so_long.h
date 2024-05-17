@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:22:48 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 16:34:39 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:50:38 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,12 @@
 # include "map.h"
 # include "graphics.h"
 
-typedef enum e_game_status
-{
-	IN_MENU,
-	PLAYING
-}	t_game_status;
-
-typedef enum e_menu_selection
-{
-	SELECT_START,
-	SELECT_EXIT,
-	SELECT_MAX
-}	t_menu_selection;
-
 typedef struct s_game_env
 {
-	t_game_status		game_status;
-	t_menu_selection	menu_selection;
+	
 }	t_game_env;
 
-void	so_long(t_game_map *map, t_game_visuals *gv, t_game_env *env);
+void	so_long(t_game_map *map, t_game_visuals *gv);
+// void	init_game(t_game_env *env);
 
 #endif

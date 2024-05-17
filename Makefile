@@ -20,13 +20,14 @@ map/get_map\
 map/map_utils\
 map/map_tools\
 errors\
-main\
-graphics/init_graphs\
-graphics/sprite\
 graphics/graphs_utils\
 graphics/image\
 graphics/pixel\
+graphics/sprite\
+graphics/graphs_init\
 game/so_long\
+game/game_init\
+main\
 
 SRC_FOLDER = src
 OBJ_FOLDER = bin

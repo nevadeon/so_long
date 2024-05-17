@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_graphs.c                                      :+:      :+:    :+:   */
+/*   graphs_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:51:09 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 15:23:03 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 18:17:27 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	init_graphics(t_game_visuals *gv)
 	*gv = (t_game_visuals){
 		.mlx = mlx,
 		.start_bt = load_png(mlx, START_BUTTON),
-		.exit_bt = load_png(mlx, EXIT_BUTTON)
+		.exit_bt = load_png(mlx, EXIT_BUTTON),
+		.game_status = IN_MENU,
+		.menu_select = SELECT_START
 	};
 	init_menu_bg_anim(gv);
 	init_select_anim(gv);
