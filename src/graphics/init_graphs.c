@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:51:09 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/16 22:17:24 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:23:03 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	init_select_anim(t_game_visuals *gv)
 		.padding_y = 0
 	};
 	gv->select_anim = (t_animation){
-		.refresh_time = 300,
+		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
+		.refresh_time = 250,
 		.time_counter = 0
 	};
 	load_animation(gv->mlx, &gv->select_anim, &select_sprite);
@@ -44,7 +45,8 @@ void	init_menu_bg_anim(t_game_visuals *gv)
 		.padding_y = 10
 	};
 	gv->menu_bg_anim = (t_animation){
-		.refresh_time = 100,
+		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
+		.refresh_time = 120,
 		.time_counter = 0
 	};
 	load_animation(gv->mlx, &gv->menu_bg_anim, &menu_bg_sprite);
@@ -59,8 +61,6 @@ void	init_graphics(t_game_visuals *gv)
 		handle_mlx_error();
 	*gv = (t_game_visuals){
 		.mlx = mlx,
-		.background = new_image(mlx, WIDTH, HEIGHT),
-		.foreground = new_image(mlx, WIDTH, HEIGHT),
 		.start_bt = load_png(mlx, START_BUTTON),
 		.exit_bt = load_png(mlx, EXIT_BUTTON)
 	};

@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 17:46:41 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:18:33 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 
 	parse_inputs(argc, argv, &map);
 	so_long(&map, &graphs);
-	free_graphics(&graphs);
+	// free_graphics(&graphs);
 	free_map(map.grid);
 	return (EXIT_SUCCESS);
 }

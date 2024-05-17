@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/16 20:12:34 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:22:33 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 # define WIDTH 	1309
 # define HEIGHT	995
 
-# define MENU_BACKGROUND "assets/menu/old_bg.png"
-# define MENU_SPRITE	 "assets/menu/menu_background_sprite.png"
-# define SELECT_SPRITE 	 "assets/menu/select_sprite.png"
-# define START_BUTTON 	 "assets/menu/start.png"
-# define EXIT_BUTTON 	 "assets/menu/exit.png"
+# define MENU_SPRITE	"assets/menu/menu_background_sprite.png"
+# define SELECT_SPRITE	"assets/menu/select_sprite.png"
+# define START_BUTTON	"assets/menu/start.png"
+# define EXIT_BUTTON	"assets/menu/exit.png"
 
 typedef uint32_t	t_uint;
 
@@ -43,6 +42,7 @@ typedef struct s_sprite
 typedef struct s_animation
 {
 	mlx_image_t	**frames;
+	mlx_image_t	*render_layer;
 	uint32_t	current_frame;
 	uint32_t	refresh_time;
 	double		time_counter;
@@ -53,8 +53,6 @@ typedef struct s_game_visuals
 	mlx_t		*mlx;
 	mlx_image_t	*start_bt;
 	mlx_image_t	*exit_bt;
-	mlx_image_t	*foreground;
-	mlx_image_t	*background;
 	t_animation	select_anim;
 	t_animation	menu_bg_anim;
 }	t_game_visuals;

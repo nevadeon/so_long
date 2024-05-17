@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libndav.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 19:24:54 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 00:34:49 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/05/17 10:42:48 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEXA_LOW "0123456789abcdef"
 # define HEXA_UPP "0123456789ABCDEF"
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 255
+#  define BUFFER_SIZE 4096
 # endif
 
 typedef struct s_list
