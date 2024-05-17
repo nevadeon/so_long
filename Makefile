@@ -59,5 +59,6 @@ re: fclean all
 
 test: CFLAGS += -g
 test: re
+	gdb -tui ./$(NAME)
 
 .PHONY: all bonus clear clean fclean re test
