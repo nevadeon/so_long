@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/20 22:25:16 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/20 22:42:03 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 static const uint32_t	_button_coords[][2] = {
 {0, 0},
 {572, 585},
-{572, 746},
-{572, 900}
+{572, 746}
 };
 
 void	update_animation(t_animation *a, double dt, uint32_t x, uint32_t y)
 {
 	a->time_counter += 1000 * dt;
-	if (a->time_counter > a->refresh_time)
+	if (a->time_counter > a->refresh_time || a->force_refresh == true)
 	{
-		a->time_counter -= a->refresh_time;
+		if (a->force_refresh == true)
+			a->force_refresh = false;
+		else
+			a->time_counter -= a->refresh_time;
 		if (a->frames[a->current_frame] == NULL)
 			a->current_frame = 0;
 		clear_image(a->render_layer);
@@ -53,10 +55,16 @@ void	update_menu(mlx_key_data_t keydata, void *param)
 	gv = param;
 	if (gv->game_status == IN_MENU && keydata.action == MLX_PRESS)
 	{
-		if (keydata.key == MLX_KEY_DOWN	&& gv->selected_button < BTN_MAX - 1)
+		if (keydata.key == MLX_KEY_DOWN && gv->selected_button < BTN_MAX - 1)
+		{
 			gv->selected_button += 1;
+			gv->select_anim.force_refresh = true;
+		}
 		else if (keydata.key == MLX_KEY_UP && gv->selected_button > BTN_MIN + 1)
+		{
 			gv->selected_button -= 1;
+			gv->select_anim.force_refresh = true;
+		}
 	}
 }
 

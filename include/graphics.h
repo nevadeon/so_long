@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/20 22:26:04 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/20 22:38:58 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef enum e_menu_buttons
 	BTN_MIN,
 	BTN_START,
 	BTN_EXIT,
-	SELECT_TEST,
 	BTN_MAX
 }	t_menu_buttons;
 
@@ -62,6 +61,7 @@ typedef struct s_animation
 	uint32_t	current_frame;
 	uint32_t	refresh_time;
 	double		time_counter;
+	bool		force_refresh;
 }	t_animation;
 
 typedef struct s_game_visuals
