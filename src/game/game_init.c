@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:21:33 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 17:50:50 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/20 22:24:45 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 // {
 // 	*env = (t_game_env){
 // 		.game_status = IN_MENU,
-// 		.menu_selection = SELECT_START
+// 		.menu_selection = BTN_START
 // 	};
 // }

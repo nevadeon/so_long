@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 21:56:04 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/20 22:26:04 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ typedef enum e_game_status
 	PLAYING
 }	t_game_status;
 
-typedef enum e_menu_select
+typedef enum e_menu_buttons
 {
-	SELECT_MIN,
-	SELECT_START,
-	SELECT_EXIT,
-	SELECT_MAX
-}	t_menu_select;
+	BTN_MIN,
+	BTN_START,
+	BTN_EXIT,
+	SELECT_TEST,
+	BTN_MAX
+}	t_menu_buttons;
 
 typedef uint32_t	t_uint;
 
@@ -71,7 +72,7 @@ typedef struct s_game_visuals
 	t_animation		select_anim;
 	t_animation		menu_bg_anim;
 	t_game_status	game_status;
-	t_menu_select	selected_button;
+	t_menu_buttons	selected_button;
 }	t_game_visuals;
 
 void		init_graphics(t_game_visuals *gv);

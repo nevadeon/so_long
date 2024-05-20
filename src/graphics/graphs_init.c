@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:51:09 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 21:52:26 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/20 22:25:14 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_select_anim(t_game_visuals *gv)
 	};
 	gv->select_anim = (t_animation){
 		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
-		.refresh_time = 300,
+		.refresh_time = 200,
 		.time_counter = 0
 	};
 	load_animation(gv->mlx, &gv->select_anim, &select_sprite);
@@ -46,7 +46,7 @@ void	init_menu_bg_anim(t_game_visuals *gv)
 	};
 	gv->menu_bg_anim = (t_animation){
 		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
-		.refresh_time = 120,
+		.refresh_time = 100,
 		.time_counter = 0
 	};
 	load_animation(gv->mlx, &gv->menu_bg_anim, &menu_bg_sprite);
@@ -64,7 +64,7 @@ void	init_graphics(t_game_visuals *gv)
 		.start_bt = load_png(mlx, START_BUTTON),
 		.exit_bt = load_png(mlx, EXIT_BUTTON),
 		.game_status = IN_MENU,
-		.selected_button = SELECT_START
+		.selected_button = BTN_START
 	};
 	init_menu_bg_anim(gv);
 	init_select_anim(gv);
