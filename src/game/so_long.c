@@ -67,6 +67,13 @@ void	update_menu(mlx_key_data_t keydata, void *param)
 			gv->selected_button -= 1;
 			gv->select_anim.force_refresh = true;
 		}
+		else if (keydata.key == MLX_KEY_ENTER)
+		{
+			if (gv->selected_button == BTN_START)
+				gv->game_status = PLAYING;
+			if (gv->selected_button == BTN_EXIT)
+				exit(OK);
+		}
 	}
 }
 
