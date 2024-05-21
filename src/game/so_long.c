@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/21 02:24:51 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/21 02:41:27 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	update_menu(mlx_key_data_t keydata, void *param)
 	t_game_visuals	*gv;
 
 	gv = param;
+	if (keydata.key == MLX_KEY_P && keydata.action == MLX_PRESS)
+		gv->game_status = IN_MENU;
 	if (gv->game_status == IN_MENU && keydata.action == MLX_PRESS)
 	{
 		if (keydata.key == MLX_KEY_DOWN && gv->selected_button < BTN_MAX - 1)
