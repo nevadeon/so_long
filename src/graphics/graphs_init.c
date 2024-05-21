@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:51:09 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/20 22:25:14 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/21 02:31:14 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_select_anim(t_game_visuals *gv)
 	t_sprite	select_sprite;
 
 	select_sprite = (t_sprite){
-		.file_path = SELECT_SPRITE,
+		.file_path = PATH_SELECT_SPRITE,
 		.nb_frames = 4,
 		.frame_width = 217,
 		.frame_height = 150,
@@ -26,7 +26,7 @@ void	init_select_anim(t_game_visuals *gv)
 	};
 	gv->select_anim = (t_animation){
 		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
-		.refresh_time = 200,
+		.refresh_time = 300,
 		.time_counter = 0
 	};
 	load_animation(gv->mlx, &gv->select_anim, &select_sprite);
@@ -37,7 +37,7 @@ void	init_menu_bg_anim(t_game_visuals *gv)
 	t_sprite	menu_bg_sprite;
 
 	menu_bg_sprite = (t_sprite){
-		.file_path = MENU_SPRITE,
+		.file_path = PATH_MENUBG_SPRITE,
 		.nb_frames = 24,
 		.frame_width = 1309,
 		.frame_height = 995,
@@ -61,8 +61,8 @@ void	init_graphics(t_game_visuals *gv)
 		handle_mlx_error();
 	*gv = (t_game_visuals){
 		.mlx = mlx,
-		.start_bt = load_png(mlx, START_BUTTON),
-		.exit_bt = load_png(mlx, EXIT_BUTTON),
+		.start_bt = load_png(mlx, PATH_START_BUTTON),
+		.exit_bt = load_png(mlx, PATH_EXIT_BUTTON),
 		.game_status = IN_MENU,
 		.selected_button = BTN_START
 	};

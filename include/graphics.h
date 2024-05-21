@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/20 22:38:58 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/21 02:30:21 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # define WIDTH 	1309
 # define HEIGHT	995
 
-# define MENU_SPRITE	"assets/menu/menu_background_sprite.png"
-# define SELECT_SPRITE	"assets/menu/select_sprite.png"
-# define START_BUTTON	"assets/menu/start.png"
-# define EXIT_BUTTON	"assets/menu/exit.png"
+# define PATH_MENUBG_SPRITE	"assets/menu/menu_background_sprite.png"
+# define PATH_SELECT_SPRITE	"assets/menu/select_sprite.png"
+# define PATH_START_BUTTON	"assets/menu/start.png"
+# define PATH_EXIT_BUTTON	"assets/menu/exit.png"
 
 # define X 0
 # define Y 1
@@ -28,7 +28,8 @@
 typedef enum e_game_status
 {
 	IN_MENU,
-	PLAYING
+	PLAYING,
+	TRANSITION
 }	t_game_status;
 
 typedef enum e_menu_buttons
