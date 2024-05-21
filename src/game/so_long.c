@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/20 22:42:03 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/21 02:24:51 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ void	update_animation(t_animation *a, double dt, uint32_t x, uint32_t y)
 	if (a->time_counter > a->refresh_time || a->force_refresh == true)
 	{
 		if (a->force_refresh == true)
+		{
 			a->force_refresh = false;
+			clear_image(a->render_layer);
+		}
 		else
 			a->time_counter -= a->refresh_time;
 		if (a->frames[a->current_frame] == NULL)
 			a->current_frame = 0;
-		clear_image(a->render_layer);
 		copy_image(a->render_layer, a->frames[a->current_frame], x, y);
 		a->current_frame++;
 	}
