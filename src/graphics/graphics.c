@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 17:52:10 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/21 02:41:27 by ndavenne         ###   ########.fr       */
+/*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
+/*   Updated: 2024/05/22 13:00:07 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,35 +50,6 @@ void	update_graphics(void *param)
 	update_animation(&gv->menu_bg_anim, gv->mlx->delta_time, 0, 0);
 }
 
-void	update_menu(mlx_key_data_t keydata, void *param)
-{
-	t_game_visuals	*gv;
-
-	gv = param;
-	if (keydata.key == MLX_KEY_P && keydata.action == MLX_PRESS)
-		gv->game_status = IN_MENU;
-	if (gv->game_status == IN_MENU && keydata.action == MLX_PRESS)
-	{
-		if (keydata.key == MLX_KEY_DOWN && gv->selected_button < BTN_MAX - 1)
-		{
-			gv->selected_button += 1;
-			gv->select_anim.force_refresh = true;
-		}
-		else if (keydata.key == MLX_KEY_UP && gv->selected_button > BTN_MIN + 1)
-		{
-			gv->selected_button -= 1;
-			gv->select_anim.force_refresh = true;
-		}
-		else if (keydata.key == MLX_KEY_ENTER)
-		{
-			if (gv->selected_button == BTN_START)
-				gv->game_status = PLAYING;
-			if (gv->selected_button == BTN_EXIT)
-				exit(OK);
-		}
-	}
-}
-
 void	display_menu(t_game_visuals *gv)
 {
 	uint32_t	x;
@@ -92,14 +63,4 @@ void	display_menu(t_game_visuals *gv)
 	y = _button_coords[BTN_EXIT][Y];
 	image_to_window(gv->mlx, gv->exit_bt, x, y);
 	image_to_window(gv->mlx, gv->select_anim.render_layer, 0, 0);
-}
-
-void	so_long(t_game_map *map, t_game_visuals *gv)
-{
-	(void)map;
-	init_graphics(gv);
-	display_menu(gv);
-	mlx_key_hook(gv->mlx, update_menu, gv);
-	mlx_loop_hook(gv->mlx, update_graphics, gv);
-	mlx_loop(gv->mlx);
 }

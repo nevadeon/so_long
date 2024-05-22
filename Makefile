@@ -20,13 +20,14 @@ map/get_map\
 map/map_utils\
 map/map_tools\
 errors\
-graphics/graphs_utils\
 graphics/image\
 graphics/pixel\
 graphics/sprite\
-graphics/graphs_init\
-game/so_long\
+graphics/graphics_init\
+graphics/graphics\
+graphics/graphics_tools\
 game/game_init\
+game/menu_logic\
 main\
 
 SRC_FOLDER = src

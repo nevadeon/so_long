@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/21 02:30:21 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:58:52 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,12 @@ typedef struct s_game_visuals
 void		init_graphics(t_game_visuals *gv);
 void		init_menu_bg_anim(t_game_visuals *gv);
 void		init_select_anim(t_game_visuals *gv);
-void		free_graphics(t_game_visuals *gv);
 
+void		update_menu(mlx_key_data_t keydata, void *param);
+void		update_graphics(void *param);
+void		display_menu(t_game_visuals *gv);
+
+void		free_graphics(t_game_visuals *gv);
 void		copy_image(mlx_image_t *dest, mlx_image_t *src,
 				uint32_t x_start, uint32_t y_start);
 void		clear_image(mlx_image_t *image);
