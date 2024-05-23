@@ -6,14 +6,13 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/22 13:00:07 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:36:18 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static const uint32_t	_button_coords[][2] = {
-{0, 0},
 {572, 585},
 {572, 746}
 };

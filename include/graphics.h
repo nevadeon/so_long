@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/22 12:58:52 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:39:25 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef enum e_game_status
 
 typedef enum e_menu_buttons
 {
-	BTN_MIN,
 	BTN_START,
 	BTN_EXIT,
 	BTN_MAX

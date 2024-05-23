@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:10:44 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/22 12:51:20 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:40:04 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	update_menu(mlx_key_data_t keydata, void *param)
 	{
 		if (keydata.key == MLX_KEY_DOWN && gv->selected_button < BTN_MAX - 1)
 		{
-			gv->selected_button += 1;
+			gv->selected_button++;
 			gv->select_anim.force_refresh = true;
 		}
-		else if (keydata.key == MLX_KEY_UP && gv->selected_button > BTN_MIN + 1)
+		else if (keydata.key == MLX_KEY_UP && gv->selected_button > 1)
 		{
-			gv->selected_button -= 1;
+			gv->selected_button--;
 			gv->select_anim.force_refresh = true;
 		}
 		else if (keydata.key == MLX_KEY_ENTER)
