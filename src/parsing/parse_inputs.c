@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_inputs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleaas.coms    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:13:15 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/07 14:18:24 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/12/23 08:43:26 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	parse_inputs(int argc, char *argv[], t_game_map *map)
 	error_code = parse_map(map);
 	if (error_code != OK)
 	{
-		ft_putendl_fd(get_error_message(error_code), STDERR_FILENO);
+		ft_dputendl(STDERR_FILENO, get_error_message(error_code));
 		if (error_code != ERR_MAP_SIZE)
 			print_map(map->grid);
 		free_map(map->grid);

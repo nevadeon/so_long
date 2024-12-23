@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleaas.coms    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:51 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 17:08:28 by ndavenne         ###   ########.fr       */
+/*   Updated: 2024/12/23 08:34:29 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ void	print_map(char **map)
 		while (map[y][++x] != '\0')
 		{
 			if (map[y][x] & MASK)
-				ft_printf(2, COLOR_ERROR, map[y][x] ^ MASK);
+				ft_dprintf(2, COLOR_ERROR, map[y][x] ^ MASK);
 			else if (map[y][x] == '1')
-				ft_printf(2, COLOR_WALL, map[y][x]);
+				ft_dprintf(2, COLOR_WALL, map[y][x]);
 			else if (map[y][x] == 'C' || map[y][x] == 'P' || map[y][x] == 'E')
-				ft_printf(2, COLOR_PCE, map[y][x]);
+				ft_dprintf(2, COLOR_PCE, map[y][x]);
 			else
-				ft_printf(2, COLOR_GROUND, map[y][x]);
+				ft_dprintf(2, COLOR_GROUND, map[y][x]);
 		}
-		ft_printf(2, "\n");
+		ft_dprintf(2, "\n");
 	}
 }
 

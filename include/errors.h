@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleaas.coms    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 22:28:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 00:15:11 by nevadeon         ###   ########.fr       */
+/*   Updated: 2024/12/23 08:54:57 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef enum e_error
  * @param error_code The error code
  * @return The corresponding error message
  */
-char	*get_error_message(t_error error_code);
+const char	*get_error_message(t_error error_code);
 
 /**
  * @brief Put an error mesage in the standard error file descriptor and exit
@@ -62,12 +62,12 @@ char	*get_error_message(t_error error_code);
  * 
  * @param error_code The error code
  */
-void	error(t_error error_code);
+void		error(t_error error_code);
 
 /**
  * @brief Print the global error variable of the mlx library and exit
  * the program
  */
-void	handle_mlx_error(void);
+void		handle_mlx_error(void);
 
 #endif

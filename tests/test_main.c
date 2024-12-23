@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphics_tools.c                                   :+:      :+:    :+:   */
+/*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleaas.coms    +#+  +:+       +#+        */
+/*   By: ndavenne <ndavenne@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/22 12:57:00 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/12/23 09:15:48 by ndavenne         ###   ########.fr       */
+/*   Created: 2024/12/09 12:06:29 by ndavenne          #+#    #+#             */
+/*   Updated: 2024/12/17 13:07:00 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "test_push_swap.h"
 
-void	free_graphics(t_game_visuals *gv)
+int	main(void)
 {
-	mlx_terminate(gv->mlx);
-	free(gv->select_anim.frames);
-	free(gv->menu_bg_anim.frames);
+	assert(min(1, 2, 3, 4) == 1);
+	assert(min(1, 2, 3, 4) == 0);
+	return (0);
 }

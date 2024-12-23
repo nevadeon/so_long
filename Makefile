@@ -1,65 +1,101 @@
-NAME = so_long
+NAME := so_long
 
-CC = cc
-RM = rm -rf
+CC := cc
 
-CFLAGS += -Wall -Wextra -Werror -Iinclude
-CLINKS = -ldl -lglfw -pthread -lm
+# Flags
+CFLAGS = -Wall -Werror -Wextra -I$(INC_FOLDER) -I$(LIBFT_FOLDER)/$(INC_FOLDER)
+LDFLAGS = -L$(LIBFT_FOLDER) -lndav -L$(LIB_FOLDER) -lmlx42 -ldl -lglfw -pthread -lm
 
-LIBFT_FOLDER = lib
-LIBFT = $(LIBFT_FOLDER)/libndav.a
+# Directories
+SRC_FOLDER := src
+OBJ_FOLDER := obj
+INC_FOLDER := include
 
-LIB_FOLDER = lib
-LIBMLX = $(LIB_FOLDER)/libmlx42.a
+# Sources and objects
+SRC := $(shell find $(SRC_FOLDER) -type f -name "*.c")
+OBJ := $(patsubst $(SRC_FOLDER)/%.c, $(OBJ_FOLDER)/%.o, $(SRC))
 
-FILES = parsing/map_tests_1\
-parsing/parse_inputs\
-parsing/map_tests_2\
-parsing/parse_map\
-map/get_map\
-map/map_utils\
-map/map_tools\
-errors\
-graphics/image\
-graphics/pixel\
-graphics/sprite\
-graphics/graphics_init\
-graphics/graphics\
-graphics/graphics_tools\
-game/game_init\
-game/menu_logic\
-main\
+# Library
+LIB_FOLDER := lib
+LIBFT_FOLDER := $(LIB_FOLDER)/libndav
+LIBFT := $(LIBFT_FOLDER)/libndav.a
+LIBMLX := $(LIB_FOLDER)/libmlx42.a
 
-SRC_FOLDER = src
-OBJ_FOLDER = bin
+# Tests
+TEST_BIN := test_bin
+TEST_FOLDER := tests
 
-SRC = $(addprefix $(SRC_FOLDER)/, $(addsuffix .c, $(FILES)))
-OBJ = $(addprefix $(OBJ_FOLDER)/, $(addsuffix .o, $(FILES)))
+# Tests sources and objects
+TEST_SRC := $(shell find $(TEST_FOLDER) -type f -name "*.c")
+TEST_OBJ := $(patsubst $(TEST_FOLDER)/%.c, $(OBJ_FOLDER)/$(TEST_FOLDER)/%.o, $(TEST_SRC))
+TEST_LINK_OBJ := $(filter-out $(OBJ_FOLDER)/main.o, $(OBJ)) $(TEST_OBJ)
+
+# Tests flags
+DEBUG_CFLAGS := -g
+TEST_CFLAGS := -I$(TEST_FOLDER)/$(INC_FOLDER) -DINCLUDE_TEST_HEADER
+VALGRIND_FLAGS := --quiet --leak-check=full --show-leak-kinds=all
+GDB_FLAGS := --quiet --args
+
+TEST_ARGS := 99 0 25 -38 10 7 42
+
+# ============================================================================ #
+#        Main rules                                                            #
+# ============================================================================ #
 
 all: $(NAME)
 
-bonus: $(NAME)
-
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBMLX) $(LIBFT) $(CLINKS)
-
-$(LIBFT):
-	make -C $(LIBFT_FOLDER)
+	@$(CC) $(CFLAGS) -o $@ $(OBJ) $(LDFLAGS)
 
 $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-clean:
-	$(RM) $(OBJ_FOLDER)
-
-fclean: clean
-	$(RM) $(NAME)
+	@$(CC) $(CFLAGS) -o $@ -c $<
+	@./update_progress_bar.sh "Compiling $(NAME):"
 
 re: fclean all
 
-test: CFLAGS += -g
-test: re
-	gdb -tui ./$(NAME)
+clean:
+	@rm -rf $(OBJ_FOLDER)
 
-.PHONY: all bonus clear clean fclean re test
+fclean: clean
+	@rm -f $(NAME)
+
+# ============================================================================ #
+#        Library rules                                                         #
+# ============================================================================ #
+
+$(LIBFT):
+	@$(MAKE) -s -C $(LIBFT_FOLDER)
+
+libre:
+	@$(MAKE) -s -C $(LIBFT_FOLDER) re
+
+# ============================================================================ #
+#        Test rules                                                            #
+# ============================================================================ #
+
+$(TEST_BIN): $(TEST_LINK_OBJ)
+	@$(CC) $(CFLAGS) -o $@ $(TEST_LINK_OBJ) $(LDFLAGS)
+	@printf "$(GREEN)✔ Binaire de test $(TEST_BIN) créé.\n$(RESET_COLOR)"
+
+$(OBJ_FOLDER)/$(TEST_FOLDER)/%.o: $(TEST_FOLDER)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+test: CFLAGS += $(TEST_CFLAGS)
+test: $(TEST_BIN)
+	@printf "$(YELLOW)Lancement des tests...\n$(RESET_COLOR)"
+	@./$(TEST_BIN)
+
+valgrind: CFLAGS += $(DEBUG_CFLAGS)
+valgrind: libtest re
+	valgrind $(VALGRIND_FLAGS) ./$(NAME) $(TEST_ARGS)
+
+gdb: CFLAGS += $(DEBUG_CFLAGS)
+gdb: libtest re
+	gdb $(GDB_FLAGS) ./$(NAME) $(TEST_ARGS)
+
+libtest:
+	@make -s -C $(LIB_FOLDER) test
+
+.PHONY: all clean fclean lclean re libre libtest test valgrind gdb
