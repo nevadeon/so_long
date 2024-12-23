@@ -11,7 +11,7 @@ TOTAL=$(find src -type f | wc -l)
 PERCENTAGE=$(bc <<< "scale=0; 100 * $CURRENT / $TOTAL")
 
 TERMINAL_LEN=$(tput cols)
-BAR_LEN=$(bc <<< "scale=0; $TERMINAL_LEN * 30 / 100");
+BAR_LEN=$(bc <<< "scale=0; $TERMINAL_LEN * 36 / 100");
 LEFT_TEXT_LEN=$(echo -n "$LEFT_TEXT" | wc -m)
 PERCENTAGE_LEN=$(echo -n "$PERCENTAGE" | wc -m)
 SPACE=$((TERMINAL_LEN - LEFT_TEXT_LEN - PERCENTAGE_LEN - BAR_LEN - 4))
