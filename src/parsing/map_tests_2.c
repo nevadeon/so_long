@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:54:34 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 17:03:31 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:00:29 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_error	check_map_size(t_game_map *map)
 
 t_error	is_rectangle(char **grid, size_t map_width)
 {
-	size_t		len;
-	uint32_t	y;
+	size_t	len;
+	size_t	y;
 
 	y = -1;
 	while (grid[++y] != NULL)
@@ -45,9 +45,9 @@ t_error	is_rectangle(char **grid, size_t map_width)
 
 t_error	check_unreachable(char **grid)
 {
-	bool		found_unreach;
-	uint32_t	x;
-	uint32_t	y;
+	bool	found_unreach;
+	size_t	x;
+	size_t	y;
 
 	found_unreach = false;
 	y = -1;

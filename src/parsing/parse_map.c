@@ -6,13 +6,13 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 17:04:57 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:32:01 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	mark_reachable_items(char **grid, uint32_t x, uint32_t y)
+void	mark_reachable_items(char **grid, size_t x, size_t y)
 {
 	if (grid[y][x] == '1' || grid[y][x] & MASK)
 		return ;

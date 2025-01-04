@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nevadeon <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:36:19 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/10 00:42:36 by nevadeon         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:39:18 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

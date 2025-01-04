@@ -6,12 +6,14 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:46:30 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/23 17:39:25 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 02:03:30 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
+
+# include <time.h>
 
 # define WINDOW_TITLE "so_long"
 # define WIDTH 	1309
@@ -39,27 +41,25 @@ typedef enum e_menu_buttons
 	BTN_MAX
 }	t_menu_buttons;
 
-typedef uint32_t	t_uint;
-
 typedef struct s_sprite
 {
 	char		*file_path;
 	mlx_image_t	*image;
-	uint32_t	nb_frames;
-	uint32_t	nb_collumns;
-	uint32_t	nb_rows;
-	uint32_t	frame_width;
-	uint32_t	frame_height;
-	uint32_t	padding_x;
-	uint32_t	padding_y;
+	size_t		nb_frames;
+	size_t		nb_collumns;
+	size_t		nb_rows;
+	size_t		frame_width;
+	size_t		frame_height;
+	size_t		padding_x;
+	size_t		padding_y;
 }	t_sprite;
 
 typedef struct s_animation
 {
 	mlx_image_t	**frames;
 	mlx_image_t	*render_layer;
-	uint32_t	current_frame;
-	uint32_t	refresh_time;
+	size_t		current_frame;
+	size_t		update_delay;
 	double		time_counter;
 	bool		force_refresh;
 }	t_animation;
@@ -85,15 +85,15 @@ void		display_menu(t_game_visuals *gv);
 
 void		free_graphics(t_game_visuals *gv);
 void		copy_image(mlx_image_t *dest, mlx_image_t *src,
-				uint32_t x_start, uint32_t y_start);
+				size_t x_start, size_t y_start);
 void		clear_image(mlx_image_t *image);
 
-mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height);
+mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height);
 mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);
 void		load_animation(mlx_t *mlx, t_animation *a, t_sprite *s);
 void		image_to_window(mlx_t *mlx, mlx_image_t *image,
-				uint32_t x, uint32_t y);
+				size_t x, size_t y);
 
-uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y);
+uint32_t	get_pixel_value(mlx_image_t *img, size_t x, size_t y);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleaas.coms    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:52:51 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/12/23 08:34:29 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:38:58 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	free_map(char **grid)
 
 void	reset_map(char **grid)
 {
-	uint32_t	x;
-	uint32_t	y;
+	size_t	x;
+	size_t	y;
 
 	y = -1;
 	while (grid[++y] != NULL)
@@ -66,8 +66,8 @@ void	print_map(char **map)
 
 void	get_player_position(t_game_map *map)
 {
-	uint32_t	y;
-	uint32_t	x;
+	size_t	y;
+	size_t	x;
 
 	y = -1;
 	while (map->grid[++y] != NULL)

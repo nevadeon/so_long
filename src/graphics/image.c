@@ -6,19 +6,19 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:16:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 20:30:27 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:46:35 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	image_to_window(mlx_t *mlx, mlx_image_t *image, uint32_t x, uint32_t y)
+void	image_to_window(mlx_t *mlx, mlx_image_t *image, size_t x, size_t y)
 {
 	if (mlx_image_to_window(mlx, image, x, y) == -1)
 		handle_mlx_error();
 }
 
-mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height)
+mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height)
 {
 	mlx_image_t	*img;
 
@@ -44,11 +44,11 @@ mlx_image_t	*load_png(mlx_t	*mlx, char *file_path)
 }
 
 void	copy_image(mlx_image_t *dest, mlx_image_t *src,
-	uint32_t x_start, uint32_t y_start)
+	size_t x_start, size_t y_start)
 {
 	uint32_t	pixel;
-	uint32_t	x;
-	uint32_t	y;
+	size_t		x;
+	size_t		y;
 
 	y = 0;
 	while (y < src->height)
@@ -69,8 +69,8 @@ void	copy_image(mlx_image_t *dest, mlx_image_t *src,
 
 void	clear_image(mlx_image_t *image)
 {
-	uint32_t	y;
-	uint32_t	x;
+	size_t	y;
+	size_t	x;
 
 	y = 0;
 	while (y < image->height)

@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:51:09 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/22 13:04:30 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 02:22:13 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_select_anim(t_game_visuals *gv)
 	};
 	gv->select_anim = (t_animation){
 		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
-		.refresh_time = 300,
+		.update_delay = 300,
 		.time_counter = 0
 	};
 	load_animation(gv->mlx, &gv->select_anim, &select_sprite);
@@ -46,7 +46,7 @@ void	init_menu_bg_anim(t_game_visuals *gv)
 	};
 	gv->menu_bg_anim = (t_animation){
 		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
-		.refresh_time = 100,
+		.update_delay = 120,
 		.time_counter = 0
 	};
 	load_animation(gv->mlx, &gv->menu_bg_anim, &menu_bg_sprite);

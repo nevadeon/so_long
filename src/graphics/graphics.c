@@ -6,21 +6,21 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:22:20 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/23 18:36:18 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 02:05:19 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static const uint32_t	_button_coords[][2] = {
+static const size_t	_button_coords[][2] = {
 {572, 585},
 {572, 746}
 };
 
-void	update_animation(t_animation *a, double dt, uint32_t x, uint32_t y)
+void	update_animation(t_animation *a, double dt, size_t x, size_t y)
 {
 	a->time_counter += 1000 * dt;
-	if (a->time_counter > a->refresh_time || a->force_refresh == true)
+	if (a->time_counter > a->update_delay || a->force_refresh == true)
 	{
 		if (a->force_refresh == true)
 		{
@@ -28,7 +28,7 @@ void	update_animation(t_animation *a, double dt, uint32_t x, uint32_t y)
 			clear_image(a->render_layer);
 		}
 		else
-			a->time_counter -= a->refresh_time;
+			a->time_counter -= a->update_delay;
 		if (a->frames[a->current_frame] == NULL)
 			a->current_frame = 0;
 		copy_image(a->render_layer, a->frames[a->current_frame], x, y);
@@ -39,8 +39,8 @@ void	update_animation(t_animation *a, double dt, uint32_t x, uint32_t y)
 void	update_graphics(void *param)
 {
 	t_game_visuals	*gv;
-	uint32_t		x;
-	uint32_t		y;
+	size_t			x;
+	size_t			y;
 
 	gv = (t_game_visuals *) param;
 	x = _button_coords[gv->selected_button][X];
@@ -51,8 +51,8 @@ void	update_graphics(void *param)
 
 void	display_menu(t_game_visuals *gv)
 {
-	uint32_t	x;
-	uint32_t	y;
+	size_t	x;
+	size_t	y;
 
 	image_to_window(gv->mlx, gv->menu_bg_anim.render_layer, 0, 0);
 	x = _button_coords[BTN_START][X];

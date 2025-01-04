@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_inputs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleaas.coms    +#+  +:+       +#+        */
+/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:13:15 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/12/23 08:43:26 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:28:55 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

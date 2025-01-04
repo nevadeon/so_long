@@ -6,17 +6,17 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:55:14 by nevadeon          #+#    #+#             */
-/*   Updated: 2024/05/16 16:42:16 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:41:57 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
+void	add_frame(t_animation *a, t_sprite *s, size_t x_start, size_t y_start)
 {
 	uint32_t	pixel;
-	uint32_t	x;
-	uint32_t	y;
+	size_t		x;
+	size_t		y;
 
 	y = 0;
 	while (y < s->frame_height)
@@ -34,10 +34,10 @@ void	add_frame(t_animation *a, t_sprite *s, t_uint x_start, t_uint y_start)
 
 void	slice_sprite(t_animation *a, t_sprite *s)
 {
-	uint32_t	i;
-	uint32_t	j;
-	uint32_t	x_start;
-	uint32_t	y_start;
+	size_t	i;
+	size_t	j;
+	size_t	x_start;
+	size_t	y_start;
 
 	a->current_frame = 0;
 	j = 0;
@@ -58,8 +58,8 @@ void	slice_sprite(t_animation *a, t_sprite *s)
 
 t_error	parse_sprite(t_sprite *s)
 {
-	uint32_t	s_width;
-	uint32_t	s_height;
+	size_t	s_width;
+	size_t	s_height;
 
 	s_width = s->image->width;
 	s_height = s->image->height;
@@ -80,7 +80,7 @@ t_error	parse_sprite(t_sprite *s)
 
 void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s)
 {
-	uint32_t	i;
+	size_t	i;
 
 	s->image = load_png(mlx, s->file_path);
 	parse_sprite(s);

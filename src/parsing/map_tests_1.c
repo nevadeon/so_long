@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:59:47 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/14 17:03:30 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:39:51 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_error	check_characters(char **grid)
 {
-	bool		found_error;
-	uint32_t	x;
-	uint32_t	y;
+	bool	found_error;
+	size_t	x;
+	size_t	y;
 
 	found_error = false;
 	y = -1;
@@ -41,9 +41,9 @@ t_error	check_characters(char **grid)
 
 t_error	check_outer_walls(char **grid, size_t map_width, size_t map_height)
 {
-	bool		found_error;
-	uint32_t	x;
-	uint32_t	y;
+	bool	found_error;
+	size_t	x;
+	size_t	y;
 
 	found_error = false;
 	y = -1;
@@ -68,9 +68,9 @@ t_error	check_outer_walls(char **grid, size_t map_width, size_t map_height)
 
 t_error	count_player(char **grid)
 {
-	uint32_t	nb_player;
-	uint32_t	x;
-	uint32_t	y;
+	size_t	nb_player;
+	size_t	x;
+	size_t	y;
 
 	nb_player = 0;
 	y = -1;
@@ -94,9 +94,9 @@ t_error	count_player(char **grid)
 
 t_error	count_exit(char **grid)
 {
-	uint32_t	nb_exit;
-	uint32_t	x;
-	uint32_t	y;
+	size_t	nb_exit;
+	size_t	x;
+	size_t	y;
 
 	nb_exit = 0;
 	y = -1;
@@ -120,9 +120,9 @@ t_error	count_exit(char **grid)
 
 t_error	count_collectible(char **grid)
 {
-	uint32_t	nb_collectibles;
-	uint32_t	x;
-	uint32_t	y;
+	size_t	nb_collectibles;
+	size_t	x;
+	size_t	y;
 
 	nb_collectibles = 0;
 	y = -1;

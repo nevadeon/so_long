@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_utils.c                                      :+:      :+:    :+:   */
+/*   pixel.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:40:13 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/15 17:47:59 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 01:43:33 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 /**
  * In MLX42 Colors are as follows:
- * 
+ *
  * 0x|00|00|00|00
- *   |R |G |B |A 
- * 
+ *   |R |G |B |A
+ *
  * R 0xFF000000
  * G 0x00FF0000
  * B 0x0000FF00
@@ -29,7 +29,7 @@ static uint32_t	_get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-uint32_t	get_pixel_value(mlx_image_t *img, uint32_t x, uint32_t y)
+uint32_t	get_pixel_value(mlx_image_t *img, size_t x, size_t y)
 {
 	uint8_t	*pixel;
 
