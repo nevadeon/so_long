@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:22:48 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/05/17 17:50:38 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:19:55 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@
 
 typedef struct s_game_env
 {
-	
-}	t_game_env;
 
-void	so_long(t_game_map *map, t_game_visuals *gv);
+}	t_game_env;
 // void	init_game(t_game_env *env);
 
 #endif
