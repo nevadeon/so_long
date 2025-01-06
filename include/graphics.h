@@ -78,7 +78,9 @@ void		init_menu_bg_anim(t_game_visuals *gv);
 void		init_select_anim(t_game_visuals *gv);
 void		free_graphics(t_game_visuals *gv);
 
-void		update_menu(mlx_key_data_t keydata, void *param);
+void		user_key_press(mlx_key_data_t keydata, void *param);
+void		menu_logic(mlx_key_data_t keydata, t_game_visuals *gv);
+void		game_logic(mlx_key_data_t keydata, t_game_visuals *gv);
 void		update_graphics(void *param);
 void		display_menu(t_game_visuals *gv);
 

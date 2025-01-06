@@ -26,9 +26,11 @@ void	update_graphics(void *param)
 	size_t			y;
 
 	gv = (t_game_visuals *) param;
-	x = get_button_coords(gv->selected_button, X);
-	y = get_button_coords(gv->selected_button, Y);
-	update_animation(&gv->select_anim, gv->mlx->delta_time, x, y);
-	update_animation(&gv->menu_bg_anim, gv->mlx->delta_time, 0, 0);
+	if (gv->game_status == IN_MENU)
+	{
+		x = get_button_coords(gv->selected_button, X);
+		y = get_button_coords(gv->selected_button, Y);
+		update_animation(&gv->select_anim, gv->mlx->delta_time, x, y);
+		update_animation(&gv->menu_bg_anim, gv->mlx->delta_time, 0, 0);
+	}
 }
-
