@@ -32,6 +32,7 @@ void	slice_sprite(t_animation *a, t_sprite *s)
 	while (j < s->nb_rows)
 	{
 		i = 0;
+		//a->current_frame < s->nb_frames useless ??
 		while (i < s->nb_collumns && a->current_frame < s->nb_frames)
 		{
 			x_start = s->frame_width * i + s->padding_x * (i * 2 + 1);
@@ -70,9 +71,9 @@ void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s)
 {
 	size_t	i;
 
-	s->image = load_png(mlx, s->file_path);
+	s->image = image_from_png(mlx, s->file_path);
 	parse_sprite(s);
-	a->frames = (mlx_image_t **)calloc(s->nb_frames + 1, sizeof(mlx_image_t *));
+	a->frames = calloc(s->nb_frames + 1, sizeof(mlx_image_t *));
 	i = 0;
 	while (i < s->nb_frames)
 	{

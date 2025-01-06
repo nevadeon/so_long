@@ -14,8 +14,8 @@ void	init_select_anim(t_game_visuals *gv)
 	};
 	gv->select_anim = (t_animation){
 		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
-		.update_delay = 300,
-		.time_counter = 0
+		.update_delay_ms = 300,
+		.time_counter_ms = 0
 	};
 	load_animation(gv->mlx, &gv->select_anim, &select_sprite);
 }
@@ -34,8 +34,8 @@ void	init_menu_bg_anim(t_game_visuals *gv)
 	};
 	gv->menu_bg_anim = (t_animation){
 		.render_layer = new_image(gv->mlx, WIDTH, HEIGHT),
-		.update_delay = 120,
-		.time_counter = 0
+		.update_delay_ms = 120,
+		.time_counter_ms = 0
 	};
 	load_animation(gv->mlx, &gv->menu_bg_anim, &menu_bg_sprite);
 }
@@ -49,8 +49,8 @@ void	init_graphics(t_game_visuals *gv)
 		handle_mlx_error();
 	*gv = (t_game_visuals){
 		.mlx = mlx,
-		.start_bt = load_png(mlx, PATH_START_BUTTON),
-		.exit_bt = load_png(mlx, PATH_EXIT_BUTTON),
+		.start_bt = image_from_png(mlx, PATH_START_BUTTON),
+		.exit_bt = image_from_png(mlx, PATH_EXIT_BUTTON),
 		.game_status = IN_MENU,
 		.selected_button = BTN_START
 	};

@@ -5,7 +5,7 @@ void	update_menu(mlx_key_data_t keydata, void *param)
 	t_game_visuals	*gv;
 
 	gv = param;
-	if (keydata.key == MLX_KEY_P && keydata.action == MLX_PRESS)
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		gv->game_status = IN_MENU;
 	if (gv->game_status == IN_MENU && keydata.action == MLX_PRESS)
 	{
@@ -14,7 +14,7 @@ void	update_menu(mlx_key_data_t keydata, void *param)
 			gv->selected_button++;
 			gv->select_anim.force_refresh = true;
 		}
-		else if (keydata.key == MLX_KEY_UP && gv->selected_button > 1)
+		else if (keydata.key == MLX_KEY_UP && gv->selected_button > 0)
 		{
 			gv->selected_button--;
 			gv->select_anim.force_refresh = true;

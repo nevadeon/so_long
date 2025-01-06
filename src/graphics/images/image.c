@@ -16,7 +16,7 @@ mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height)
 	return (img);
 }
 
-mlx_image_t	*load_png(mlx_t	*mlx, char *file_path)
+mlx_image_t	*image_from_png(mlx_t	*mlx, char *file_path)
 {
 	mlx_image_t		*image;
 	mlx_texture_t	*texture;
@@ -57,18 +57,24 @@ void	copy_image(mlx_image_t *dest, mlx_image_t *src,
 
 void	clear_image(mlx_image_t *image)
 {
-	size_t	y;
-	size_t	x;
-
-	y = 0;
-	while (y < image->height)
-	{
-		x = 0;
-		while (x < image->width)
-		{
-			mlx_put_pixel(image, x, y, 0xFF000000);
-			x++;
-		}
-		y++;
-	}
+	memset(image->pixels, 0xFF000000, \
+		image->width * image->height * sizeof(int32_t));
 }
+
+// void	clear_image(mlx_image_t *image)
+// {
+// 	size_t	y;
+// 	size_t	x;
+
+// 	y = 0;
+// 	while (y < image->height)
+// 	{
+// 		x = 0;
+// 		while (x < image->width)
+// 		{
+// 			mlx_put_pixel(image, x, y, 0xFF000000);
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }

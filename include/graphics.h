@@ -12,8 +12,11 @@
 # define PATH_START_BUTTON	"assets/menu/start.png"
 # define PATH_EXIT_BUTTON	"assets/menu/exit.png"
 
-# define X 0
-# define Y 1
+typedef enum e_xy
+{
+	X = 0,
+	Y = 1
+}	t_xy;
 
 typedef enum e_game_status
 {
@@ -26,8 +29,15 @@ typedef enum e_menu_buttons
 {
 	BTN_START,
 	BTN_EXIT,
+	BTN_TEST,
 	BTN_MAX
 }	t_menu_buttons;
+
+typedef struct s_coords
+{
+	size_t	x;
+	size_t	y;
+}	t_coords;
 
 typedef struct s_sprite
 {
@@ -47,8 +57,8 @@ typedef struct s_animation
 	mlx_image_t	**frames;
 	mlx_image_t	*render_layer;
 	size_t		current_frame;
-	size_t		update_delay;
-	double		time_counter;
+	size_t		update_delay_ms;
+	double		time_counter_ms;
 	bool		force_refresh;
 }	t_animation;
 
@@ -66,22 +76,22 @@ typedef struct s_game_visuals
 void		init_graphics(t_game_visuals *gv);
 void		init_menu_bg_anim(t_game_visuals *gv);
 void		init_select_anim(t_game_visuals *gv);
+void		free_graphics(t_game_visuals *gv);
 
 void		update_menu(mlx_key_data_t keydata, void *param);
 void		update_graphics(void *param);
 void		display_menu(t_game_visuals *gv);
 
-void		free_graphics(t_game_visuals *gv);
+size_t		get_button_coords(t_menu_buttons button, t_xy xy);
+
+mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height);
+mlx_image_t	*image_from_png(mlx_t	*mlx, char *file_path);
 void		copy_image(mlx_image_t *dest, mlx_image_t *src,
 				size_t x_start, size_t y_start);
 void		clear_image(mlx_image_t *image);
-
-mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height);
-mlx_image_t	*load_png(mlx_t	*mlx, char *file_path);
 void		load_animation(mlx_t *mlx, t_animation *a, t_sprite *s);
 void		image_to_window(mlx_t *mlx, mlx_image_t *image,
 				size_t x, size_t y);
-
 uint32_t	get_pixel_value(mlx_image_t *img, size_t x, size_t y);
 
 #endif
