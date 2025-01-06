@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_rectangle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:50:14 by ndavenne         ###   ########.fr       */
+/*   Created: 2025/01/06 10:35:53 by ndavenne          #+#    #+#             */
+/*   Updated: 2025/01/06 10:36:09 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+t_error	is_rectangle(char **grid, size_t map_width)
 {
-	t_game_map		map;
-	t_game_visuals	gv;
+	size_t	len;
+	size_t	y;
 
-	parse_args(argc, argv, &map);
-	init_graphics(&gv);
-	display_menu(&gv);
-	mlx_key_hook(gv.mlx, update_menu, &gv);
-	mlx_loop_hook(gv.mlx, update_graphics, &gv);
-	mlx_loop(gv.mlx);
-	// free_graphics(&gv);
-	free_map(map.grid);
-	return (EXIT_SUCCESS);
+	y = -1;
+	while (grid[++y] != NULL)
+	{
+		len = -1;
+		while (grid[y][++len] != '\0')
+			;
+		if (len != map_width)
+		{
+			len = -1;
+			while (grid[y][++len] != '\0')
+				grid[y][len] |= MASK;
+			return (ERR_RECT);
+		}
+	}
+	return (OK);
 }

@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   count_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:50:14 by ndavenne         ###   ########.fr       */
+/*   Created: 2025/01/06 10:39:13 by ndavenne          #+#    #+#             */
+/*   Updated: 2025/01/06 10:39:18 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+t_error	count_player(char **grid)
 {
-	t_game_map		map;
-	t_game_visuals	gv;
+	size_t	nb_player;
+	size_t	x;
+	size_t	y;
 
-	parse_args(argc, argv, &map);
-	init_graphics(&gv);
-	display_menu(&gv);
-	mlx_key_hook(gv.mlx, update_menu, &gv);
-	mlx_loop_hook(gv.mlx, update_graphics, &gv);
-	mlx_loop(gv.mlx);
-	// free_graphics(&gv);
-	free_map(map.grid);
-	return (EXIT_SUCCESS);
+	nb_player = 0;
+	y = -1;
+	while (grid[++y] != NULL)
+	{
+		x = -1;
+		while (grid[y][++x] != '\0')
+		{
+			if (grid[y][x] == 'P')
+			{
+				grid[y][x] |= MASK;
+				nb_player += 1;
+			}
+		}
+	}
+	if (nb_player != 1)
+		return (ERR_PLAYER);
+	reset_map(grid);
+	return (OK);
 }

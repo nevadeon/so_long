@@ -52,7 +52,7 @@ $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	@./update_progress_bar.sh "Compiling $(NAME):"
 
-re: fclean all
+re: libre fclean all
 
 clean:
 	@rm -rf $(OBJ_FOLDER)

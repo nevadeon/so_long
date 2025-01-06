@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_map_size.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:50:14 by ndavenne         ###   ########.fr       */
+/*   Created: 2025/01/06 10:37:28 by ndavenne          #+#    #+#             */
+/*   Updated: 2025/01/06 10:37:36 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+t_error	check_map_size(t_game_map *map)
 {
-	t_game_map		map;
-	t_game_visuals	gv;
-
-	parse_args(argc, argv, &map);
-	init_graphics(&gv);
-	display_menu(&gv);
-	mlx_key_hook(gv.mlx, update_menu, &gv);
-	mlx_loop_hook(gv.mlx, update_graphics, &gv);
-	mlx_loop(gv.mlx);
-	// free_graphics(&gv);
-	free_map(map.grid);
-	return (EXIT_SUCCESS);
+	map->width = ft_strlen(map->grid[0]);
+	map->height = dim2_len((void **) map->grid);
+	if (map->height > 40 || map->width > 40)
+		return (ERR_MAP_SIZE);
+	return (OK);
 }

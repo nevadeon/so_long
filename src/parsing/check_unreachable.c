@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_unreachable.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:50:14 by ndavenne         ###   ########.fr       */
+/*   Created: 2025/01/06 10:36:44 by ndavenne          #+#    #+#             */
+/*   Updated: 2025/01/06 10:36:56 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+t_error	check_unreachable(char **grid)
 {
-	t_game_map		map;
-	t_game_visuals	gv;
+	bool	found_unreach;
+	size_t	x;
+	size_t	y;
 
-	parse_args(argc, argv, &map);
-	init_graphics(&gv);
-	display_menu(&gv);
-	mlx_key_hook(gv.mlx, update_menu, &gv);
-	mlx_loop_hook(gv.mlx, update_graphics, &gv);
-	mlx_loop(gv.mlx);
-	// free_graphics(&gv);
-	free_map(map.grid);
-	return (EXIT_SUCCESS);
+	found_unreach = false;
+	y = -1;
+	while (grid[++y] != NULL)
+	{
+		x = -1;
+		while (grid[y][++x] != '\0')
+		{
+			if (grid[y][x] & MASK)
+				grid[y][x] ^= MASK;
+			else if (grid[y][x] == 'E' || grid[y][x] == 'C')
+			{
+				found_unreach = true;
+				grid[y][x] |= MASK;
+			}
+		}
+	}
+	if (found_unreach == true)
+		return (ERR_UNREACH);
+	return (OK);
 }

@@ -6,22 +6,11 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:42:46 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/04 01:32:01 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 10:34:10 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	mark_reachable_items(char **grid, size_t x, size_t y)
-{
-	if (grid[y][x] == '1' || grid[y][x] & MASK)
-		return ;
-	grid[y][x] |= MASK;
-	mark_reachable_items(grid, x + 1, y);
-	mark_reachable_items(grid, x - 1, y);
-	mark_reachable_items(grid, x, y - 1);
-	mark_reachable_items(grid, x, y + 1);
-}
 
 t_error	parse_map(t_game_map *map)
 {

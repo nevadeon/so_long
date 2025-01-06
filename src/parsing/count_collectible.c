@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   count_collectible.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:50:05 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:50:14 by ndavenne         ###   ########.fr       */
+/*   Created: 2025/01/06 10:38:00 by ndavenne          #+#    #+#             */
+/*   Updated: 2025/01/06 10:38:08 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+t_error	count_collectible(char **grid)
 {
-	t_game_map		map;
-	t_game_visuals	gv;
+	size_t	nb_collectibles;
+	size_t	x;
+	size_t	y;
 
-	parse_args(argc, argv, &map);
-	init_graphics(&gv);
-	display_menu(&gv);
-	mlx_key_hook(gv.mlx, update_menu, &gv);
-	mlx_loop_hook(gv.mlx, update_graphics, &gv);
-	mlx_loop(gv.mlx);
-	// free_graphics(&gv);
-	free_map(map.grid);
-	return (EXIT_SUCCESS);
+	nb_collectibles = 0;
+	y = -1;
+	while (grid[++y] != NULL)
+	{
+		x = -1;
+		while (grid[y][++x] != '\0')
+		{
+			if (grid[y][x] == 'C')
+			{
+				grid[y][x] |= MASK;
+				nb_collectibles += 1;
+			}
+		}
+	}
+	if (nb_collectibles < 1)
+		return (ERR_COL);
+	reset_map(grid);
+	return (OK);
 }

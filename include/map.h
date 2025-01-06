@@ -6,7 +6,7 @@
 /*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:53:03 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/04 01:33:55 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 10:52:00 by ndavenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,7 @@ typedef struct s_game_map
                                     PARSING
 ==============================================================================*/
 
-void	parse_inputs(int argc, char *argv[], t_game_map *map);
-
-/**
- * @brief Verify that user gave a correct map file name
- *
- * @param argc The number of strings given to the program
- * @param filename The name of the text file that contains map data
- */
-void	parse_arg(int argc, char *filename);
+void	parse_args(int argc, char *argv[], t_game_map *map);
 
 /**
  * @brief Launch all map test functions and return an error code if map is
