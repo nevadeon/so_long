@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static const size_t	_button_coords[][2] = {
+static const size_t	g_button_coords[][2] = {
 {572, 585},
 {572, 746}
 };
@@ -31,8 +31,8 @@ void	update_graphics(void *param)
 	size_t			y;
 
 	gv = (t_game_visuals *) param;
-	x = _button_coords[gv->selected_button][X];
-	y = _button_coords[gv->selected_button][Y];
+	x = g_button_coords[gv->selected_button][X];
+	y = g_button_coords[gv->selected_button][Y];
 	update_animation(&gv->select_anim, gv->mlx->delta_time, x, y);
 	update_animation(&gv->menu_bg_anim, gv->mlx->delta_time, 0, 0);
 }
@@ -43,11 +43,11 @@ void	display_menu(t_game_visuals *gv)
 	size_t	y;
 
 	image_to_window(gv->mlx, gv->menu_bg_anim.render_layer, 0, 0);
-	x = _button_coords[BTN_START][X];
-	y = _button_coords[BTN_START][Y];
+	x = g_button_coords[BTN_START][X];
+	y = g_button_coords[BTN_START][Y];
 	image_to_window(gv->mlx, gv->start_bt, x, y);
-	x = _button_coords[BTN_EXIT][X];
-	y = _button_coords[BTN_EXIT][Y];
+	x = g_button_coords[BTN_EXIT][X];
+	y = g_button_coords[BTN_EXIT][Y];
 	image_to_window(gv->mlx, gv->exit_bt, x, y);
 	image_to_window(gv->mlx, gv->select_anim.render_layer, 0, 0);
 }

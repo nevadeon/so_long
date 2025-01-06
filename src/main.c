@@ -11,7 +11,6 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(gv.mlx, update_menu, &gv);
 	mlx_loop_hook(gv.mlx, update_graphics, &gv);
 	mlx_loop(gv.mlx);
-	// free_graphics(&gv);
 	free_map(map.grid);
 	return (EXIT_SUCCESS);
 }
