@@ -14,10 +14,4 @@
 # include "map.h"
 # include "graphics.h"
 
-typedef struct s_game_env
-{
-
-}	t_game_env;
-// void	init_game(t_game_env *env);
-
 #endif

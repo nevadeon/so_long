@@ -3,14 +3,14 @@
 int	main(int argc, char *argv[])
 {
 	t_game_map		map;
-	t_game_visuals	gv;
+	t_game_env	env;
 
 	parse_args(argc, argv, &map);
-	init_graphics(&gv);
-	display_menu(&gv);
-	mlx_key_hook(gv.mlx, user_key_press, &gv);
-	mlx_loop_hook(gv.mlx, update_graphics, &gv);
-	mlx_loop(gv.mlx);
+	init_graphics(&env);
+	display_menu(&env);
+	mlx_key_hook(env.mlx, user_key_press, &env);
+	mlx_loop_hook(env.mlx, update_graphics, &env);
+	mlx_loop(env.mlx);
 	free_map(map.grid);
 	return (EXIT_SUCCESS);
 }

@@ -62,7 +62,7 @@ typedef struct s_animation
 	bool		force_refresh;
 }	t_animation;
 
-typedef struct s_game_visuals
+typedef struct s_game_env
 {
 	mlx_t			*mlx;
 	mlx_image_t		*start_bt;
@@ -73,18 +73,18 @@ typedef struct s_game_visuals
 	t_animation		menu_bg_anim;
 	t_game_status	game_status;
 	t_menu_buttons	selected_button;
-}	t_game_visuals;
+}	t_game_env;
 
-void		init_graphics(t_game_visuals *gv);
-void		init_menu_bg_anim(t_game_visuals *gv);
-void		init_select_anim(t_game_visuals *gv);
-void		free_graphics(t_game_visuals *gv);
+void		init_graphics(t_game_env *env);
+void		init_menu_bg_anim(t_game_env *env);
+void		init_select_anim(t_game_env *env);
+void		free_graphics(t_game_env *env);
 
 void		user_key_press(mlx_key_data_t keydata, void *param);
-void		menu_logic(mlx_key_data_t keydata, t_game_visuals *gv);
-void		game_logic(mlx_key_data_t keydata, t_game_visuals *gv);
+void		menu_logic(mlx_key_data_t keydata, t_game_env *env);
+void		game_logic(mlx_key_data_t keydata, t_game_env *env);
 void		update_graphics(void *param);
-void		display_menu(t_game_visuals *gv);
+void		display_menu(t_game_env *env);
 
 size_t		get_button_coords(t_menu_buttons button, t_xy xy);
 

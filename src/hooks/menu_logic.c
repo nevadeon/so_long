@@ -1,24 +1,24 @@
 #include "so_long.h"
 
-void	menu_logic(mlx_key_data_t keydata, t_game_visuals *gv)
+void	menu_logic(mlx_key_data_t keydata, t_game_env *env)
 {
 	if (keydata.action == MLX_PRESS)
 	{
-		if (keydata.key == MLX_KEY_DOWN && gv->selected_button < BTN_MAX - 1)
-			gv->selected_button++;
-		else if (keydata.key == MLX_KEY_UP && gv->selected_button > 0)
-			gv->selected_button--;
+		if (keydata.key == MLX_KEY_DOWN && env->selected_button < BTN_MAX - 1)
+			env->selected_button++;
+		else if (keydata.key == MLX_KEY_UP && env->selected_button > 0)
+			env->selected_button--;
 		else if (keydata.key == MLX_KEY_ENTER)
 		{
-			if (gv->selected_button == BTN_START)
+			if (env->selected_button == BTN_START)
 			{
-				gv->game_status = PLAYING;
-				gv->start_bt->instances[0].enabled = false;
-				gv->exit_bt->instances[0].enabled = false;
+				env->game_status = PLAYING;
+				env->start_bt->instances[0].enabled = false;
+				env->exit_bt->instances[0].enabled = false;
 			}
-			else if (gv->selected_button == BTN_EXIT)
+			else if (env->selected_button == BTN_EXIT)
 				exit(OK);
 		}
-		gv->select_anim.force_refresh = true;
+		env->select_anim.force_refresh = true;
 	}
 }

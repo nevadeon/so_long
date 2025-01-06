@@ -21,16 +21,16 @@ void	update_animation(t_animation *a, double deltatime_s, size_t x, size_t y)
 
 void	update_graphics(void *param)
 {
-	t_game_visuals	*gv;
-	size_t			x;
-	size_t			y;
+	t_game_env	*env;
+	size_t		x;
+	size_t		y;
 
-	gv = (t_game_visuals *) param;
-	if (gv->game_status == IN_MENU)
+	env = (t_game_env *) param;
+	if (env->game_status == IN_MENU)
 	{
-		x = get_button_coords(gv->selected_button, X);
-		y = get_button_coords(gv->selected_button, Y);
-		update_animation(&gv->select_anim, gv->mlx->delta_time, x, y);
-		update_animation(&gv->menu_bg_anim, gv->mlx->delta_time, 0, 0);
+		x = get_button_coords(env->selected_button, X);
+		y = get_button_coords(env->selected_button, Y);
+		update_animation(&env->select_anim, env->mlx->delta_time, x, y);
+		update_animation(&env->menu_bg_anim, env->mlx->delta_time, 0, 0);
 	}
 }
