@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_rectangle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:35:53 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:36:09 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:22 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

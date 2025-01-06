@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:39:13 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:39:18 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:21 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

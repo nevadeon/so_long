@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_unreachable.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:36:44 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:36:56 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:18 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

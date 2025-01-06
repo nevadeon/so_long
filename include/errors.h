@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleaas.coms    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 22:28:12 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/12/23 08:54:57 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:53 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERRORS_H
 # define ERRORS_H
 
-# include "so_long.h" 
+# include "so_long.h"
 # include "MLX42.h"   //graphic lib
 # include "libndav.h"
 # include "graphics.h"
@@ -44,13 +44,13 @@ typedef enum e_error
 }	t_error;
 
 /*==============================================================================
-                                ERROR MANAGEMENT                                
+                                ERROR MANAGEMENT
 ==============================================================================*/
 
 /**
- * @brief Take an error code and look in the error_message table for the 
+ * @brief Take an error code and look in the error_message table for the
  * correspongind message
- * 
+ *
  * @param error_code The error code
  * @return The corresponding error message
  */
@@ -59,7 +59,7 @@ const char	*get_error_message(t_error error_code);
 /**
  * @brief Put an error mesage in the standard error file descriptor and exit
  * the program
- * 
+ *
  * @param error_code The error code
  */
 void		error(t_error error_code);

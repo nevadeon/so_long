@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:51:09 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/04 02:22:13 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:02:59 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

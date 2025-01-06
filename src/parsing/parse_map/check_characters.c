@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_characters.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:40:11 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:40:17 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:16 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

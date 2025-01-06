@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics_tools.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:57:00 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/04 01:48:07 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:00 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

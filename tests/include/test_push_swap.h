@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_push_swap.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <ndavenne@student.42lehavre.fr    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:07:38 by ndavenne          #+#    #+#             */
-/*   Updated: 2024/12/17 13:13:23 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:50 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mark_reachable_items.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:33:38 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:34:12 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:23 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

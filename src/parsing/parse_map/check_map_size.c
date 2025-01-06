@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_size.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndavenne <github@noedavenne.aleeas.com>    +#+  +:+       +#+        */
+/*   By: nevadeon <github@glhf.slmail.me>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:37:28 by ndavenne          #+#    #+#             */
-/*   Updated: 2025/01/06 10:37:36 by ndavenne         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:03:17 by nevadeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
