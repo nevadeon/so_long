@@ -67,6 +67,8 @@ typedef struct s_game_visuals
 	mlx_t			*mlx;
 	mlx_image_t		*start_bt;
 	mlx_image_t		*exit_bt;
+	mlx_image_t		*background;
+	mlx_image_t		*foreground;
 	t_animation		select_anim;
 	t_animation		menu_bg_anim;
 	t_game_status	game_status;
