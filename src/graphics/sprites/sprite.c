@@ -45,7 +45,7 @@ void	slice_sprite(t_animation *a, t_sprite *s)
 	}
 }
 
-t_error	parse_sprite(t_sprite *s)
+void	parse_sprite(t_sprite *s)
 {
 	size_t	s_width;
 	size_t	s_height;
@@ -63,8 +63,7 @@ t_error	parse_sprite(t_sprite *s)
 		s->nb_rows += 1;
 	}
 	if (s_width != 0 || s_height != 0)
-		return (ERR_FRAME_DIMENSION);
-	return (OK);
+		error(ERR_FRAME_DIMENSION);
 }
 
 void	load_animation(mlx_t *mlx, t_animation *a, t_sprite *s)

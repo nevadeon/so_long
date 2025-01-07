@@ -17,7 +17,7 @@ const char	*get_error_message(t_error error_code)
 		[ERR_EXIT] = "Error\nMap must have exactly 1 exit\n", \
 		[ERR_COL] = "Error\nMap must have at least 1 collectible\n", \
 		[ERR_UNREACH] = "Error\nUnreachable exit or collectible\n", \
-		[ERR_FRAME_DIMENSION] = "Error\nThe dev is a fucking morron", \
+		[ERR_FRAME_DIMENSION] = "Error\nIncorrect sprite dimension\n", \
 		[ERR_BUTTON_COORD] = "Error\nButton coords was called with inv index", \
 		[ERR_MAX] = "Error\nIndex is out of char *error_message[] boundaries", \
 	};
