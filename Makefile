@@ -36,7 +36,7 @@ TEST_CFLAGS := -I$(TEST_FOLDER)/$(INC_FOLDER) -DINCLUDE_TEST_HEADER
 VALGRIND_FLAGS := --quiet --leak-check=full --show-leak-kinds=all
 GDB_FLAGS := --quiet --args
 
-TEST_ARGS := 99 0 25 -38 10 7 42
+TEST_ARGS :=
 
 # ============================================================================ #
 #        Main rules                                                            #
@@ -52,7 +52,7 @@ $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $<
 	@./update_progress_bar.sh "Compiling $(NAME):"
 
-re: libre fclean all
+re: fclean all
 
 clean:
 	@rm -rf $(OBJ_FOLDER)
@@ -96,6 +96,6 @@ gdb: libtest re
 	gdb $(GDB_FLAGS) ./$(NAME) $(TEST_ARGS)
 
 libtest:
-	@make -s -C $(LIB_FOLDER) test
+	@make -s -C $(LIBFT_FOLDER) test
 
 .PHONY: all clean fclean lclean re libre libtest test valgrind gdb
