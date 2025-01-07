@@ -11,6 +11,8 @@
 # define PATH_SELECT_SPRITE	"assets/menu/select_sprite.png"
 # define PATH_START_BUTTON	"assets/menu/start.png"
 # define PATH_EXIT_BUTTON	"assets/menu/exit.png"
+# define PATH_IDLE_KNIGHT_SPRITE "assets/knight/idle_knight.png"
+# define PATH_MOVING_KNIGHT_SPRITE "assets/knight/moving_knight.png"
 
 typedef enum e_xy
 {
@@ -24,6 +26,12 @@ typedef enum e_game_status
 	PLAYING,
 	TRANSITION
 }	t_game_status;
+
+typedef enum e_knight_status
+{
+	IDLE,
+	MOVING
+}	t_knight_status;
 
 typedef enum e_menu_buttons
 {
@@ -71,8 +79,12 @@ typedef struct s_game_env
 	mlx_image_t		*foreground;
 	t_animation		select_anim;
 	t_animation		menu_bg_anim;
+	t_animation		idle_knight;
+	t_animation		moving_knight;
 	t_game_status	game_status;
+	t_knight_status	knight_status;
 	t_menu_buttons	selected_button;
+	bool		 	mov_status;
 }	t_game_env;
 
 void		init_graphics(t_game_env *env);
