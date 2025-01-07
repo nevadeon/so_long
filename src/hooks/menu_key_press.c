@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	menu_logic(mlx_key_data_t keydata, t_game_env *env)
+void	menu_key_press(mlx_key_data_t keydata, t_game_env *env)
 {
 	if (keydata.action == MLX_PRESS)
 	{
@@ -15,6 +15,7 @@ void	menu_logic(mlx_key_data_t keydata, t_game_env *env)
 				env->game_status = PLAYING;
 				env->start_bt->instances[0].enabled = false;
 				env->exit_bt->instances[0].enabled = false;
+				env->menu_bg_anim.render_layer->instances[0].enabled = false;
 			}
 			else if (env->selected_button == BTN_EXIT)
 				exit(OK);

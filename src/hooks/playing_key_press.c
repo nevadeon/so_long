@@ -1,11 +1,13 @@
 #include "so_long.h"
 
-void	game_logic(mlx_key_data_t keydata, t_game_env *env)
+void	playing_key_press(mlx_key_data_t keydata, t_game_env *env)
 {
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
 		env->game_status = IN_MENU;
 		env->start_bt->instances[0].enabled = true;
 		env->exit_bt->instances[0].enabled = true;
+		env->menu_bg_anim.render_layer->instances[0].enabled = true;
+		env->select_anim.render_layer->instances[0].enabled = true;
 	}
 }

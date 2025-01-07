@@ -6,7 +6,7 @@ void	user_key_press(mlx_key_data_t keydata, void *param)
 
 	env = param;
 	if (env->game_status == PLAYING)
-		game_logic(keydata, env);
+		playing_key_press(keydata, env);
 	else if (env->game_status == IN_MENU)
-		menu_logic(keydata, env);
+		menu_key_press(keydata, env);
 }

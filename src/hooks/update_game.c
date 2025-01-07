@@ -29,7 +29,7 @@ bool	is_moving(mlx_t *mlx)
 	return (false);
 }
 
-void	update_graphics(void *param)
+void	update_game(void *param)
 {
 	t_game_env	*env;
 	size_t		x;
@@ -45,8 +45,8 @@ void	update_graphics(void *param)
 	}
 	else if (env->game_status == PLAYING)
 	{
-		x = WIDTH / 2 - env->moving_knight.frames[0]->width / 2;
-		y = HEIGHT / 2 - env->moving_knight.frames[0]->height / 2;
+		x = WIDTH / 2 - env->moving_knight.render_layer->width / 2;
+		y = HEIGHT / 2 - env->moving_knight.render_layer->height / 2;
 		if (is_moving(env->mlx))
 			update_animation(&env->moving_knight, env->mlx->delta_time, x, y);
 		else

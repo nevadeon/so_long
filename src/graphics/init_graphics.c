@@ -94,8 +94,7 @@ void	init_graphics(t_game_env *env)
 		.exit_bt = image_from_png(mlx, PATH_EXIT_BUTTON),
 		.game_status = IN_MENU,
 		.selected_button = BTN_START,
-		.knight_status = IDLE,
-		.mov_status = false
+		.knight_status = IDLE
 	};
 	init_menu_bg_anim(env);
 	init_select_anim(env);

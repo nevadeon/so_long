@@ -84,7 +84,6 @@ typedef struct s_game_env
 	t_game_status	game_status;
 	t_knight_status	knight_status;
 	t_menu_buttons	selected_button;
-	bool		 	mov_status;
 }	t_game_env;
 
 void		init_graphics(t_game_env *env);
@@ -93,9 +92,9 @@ void		init_select_anim(t_game_env *env);
 void		free_graphics(t_game_env *env);
 
 void		user_key_press(mlx_key_data_t keydata, void *param);
-void		menu_logic(mlx_key_data_t keydata, t_game_env *env);
-void		game_logic(mlx_key_data_t keydata, t_game_env *env);
-void		update_graphics(void *param);
+void		menu_key_press(mlx_key_data_t keydata, t_game_env *env);
+void		playing_key_press(mlx_key_data_t keydata, t_game_env *env);
+void		update_game(void *param);
 void		display_menu(t_game_env *env);
 
 size_t		get_button_coords(t_menu_buttons button, t_xy xy);
