@@ -2,82 +2,77 @@
 
 void	init_select_anim(t_game_env *env)
 {
-	t_sprite	select_sprite;
+	t_animation anim;
 
-	select_sprite = (t_sprite){
-		.file_path = PATH_SELECT_SPRITE,
-		.nb_frames = 4,
+	anim = (t_animation){
+		.render_layer = env->foreground,
+		.sprite_sheet = texture_from_png(PATH_SELECT_SPRITE),
+		.frame_count = 4,
 		.frame_width = 217,
 		.frame_height = 150,
-		.padding_x = 0,
-		.padding_y = 0
+		.frame_duration_ms = 300,
 	};
-	env->select_anim = (t_animation){
-		.render_layer = env->foreground,
-		.update_delay_ms = 300,
-		.time_counter_ms = 0
-	};
-	load_animation(env->mlx, &env->select_anim, &select_sprite);
+	env->select_anim = anim;
 }
 
 void	init_menu_bg_anim(t_game_env *env)
 {
-	t_sprite	menu_bg_sprite;
+	t_animation anim;
 
-	menu_bg_sprite = (t_sprite){
-		.file_path = PATH_MENUBG_SPRITE,
-		.nb_frames = 24,
+	anim = (t_animation){
+		.render_layer = new_image(env->mlx, WIDTH, HEIGHT),
+		.sprite_sheet = texture_from_png(PATH_MENUBG_SPRITE),
+		.frame_count = 24,
+		.frame_duration_ms = 120,
 		.frame_width = 1309,
 		.frame_height = 995,
 		.padding_x = 10,
-		.padding_y = 10
+		.padding_y = 10,
 	};
-	env->menu_bg_anim = (t_animation){
-		.render_layer = new_image(env->mlx, WIDTH, HEIGHT),
-		.update_delay_ms = 120,
-		.time_counter_ms = 0
-	};
-	load_animation(env->mlx, &env->menu_bg_anim, &menu_bg_sprite);
+	env->menu_bg_anim = anim;
 }
 
 void	init_idle_knight_anim(t_game_env *env)
 {
-	t_sprite	idle_knight_sprite;
+	t_animation anim;
 
-	idle_knight_sprite = (t_sprite){
-		.file_path = PATH_IDLE_KNIGHT_SPRITE,
-		.nb_frames = 6,
+	anim = (t_animation){
+		.render_layer = env->foreground,
+		.sprite_sheet = texture_from_png(PATH_IDLE_KNIGHT_SPRITE),
+		.frame_count = 6,
 		.frame_width = 192,
 		.frame_height = 192,
-		.padding_x = 0,
-		.padding_y = 0
+		.frame_duration_ms = 120,
 	};
-	env->idle_knight = (t_animation){
-		.render_layer = env->foreground,
-		.update_delay_ms = 120,
-		.time_counter_ms = 0
-	};
-	load_animation(env->mlx, &env->idle_knight, &idle_knight_sprite);
+	anim.dest_x = WIDTH / 2 - anim.frame_width / 2;
+	anim.dest_y = HEIGHT / 2 - anim.frame_height / 2;
+	env->idle_knight = anim;
 }
 
 void	init_moving_knight_anim(t_game_env *env)
 {
-	t_sprite	moving_knight_sprite;
+	t_animation anim;
 
-	moving_knight_sprite = (t_sprite){
-		.file_path = PATH_MOVING_KNIGHT_SPRITE,
-		.nb_frames = 6,
+	anim = (t_animation){
+		.render_layer = env->foreground,
+		.sprite_sheet = texture_from_png(PATH_MOVING_KNIGHT_SPRITE),
+		.frame_count = 6,
 		.frame_width = 192,
 		.frame_height = 192,
-		.padding_x = 0,
-		.padding_y = 0
+		.frame_duration_ms = 120,
 	};
-	env->moving_knight = (t_animation){
-		.render_layer = env->foreground,
-		.update_delay_ms = 120,
-		.time_counter_ms = 0
-	};
-	load_animation(env->mlx, &env->moving_knight, &moving_knight_sprite);
+	anim.dest_x = WIDTH / 2 - anim.frame_width / 2;
+	anim.dest_y = HEIGHT / 2 - anim.frame_height / 2;
+	env->moving_knight = anim;
+}
+
+void	display_menu(t_game_env *env)
+{
+	image_to_window(env->mlx, env->menu_bg_anim.render_layer, 0, 0);
+	image_to_window(env->mlx, env->start_bt,
+		get_button_coords(BTN_START, X), get_button_coords(BTN_START, Y));
+	image_to_window(env->mlx, env->exit_bt,
+		get_button_coords(BTN_EXIT, X), get_button_coords(BTN_EXIT, Y));
 }
 
 void	init_graphics(t_game_env *env)
@@ -100,4 +95,6 @@ void	init_graphics(t_game_env *env)
 	init_select_anim(env);
 	init_idle_knight_anim(env);
 	init_moving_knight_anim(env);
+	display_menu(env);
+	image_to_window(env->mlx, env->foreground, 0, 0);
 }

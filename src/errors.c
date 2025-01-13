@@ -19,6 +19,7 @@ const char	*get_error_message(t_error error_code)
 		[ERR_UNREACH] = "Error\nUnreachable exit or collectible\n", \
 		[ERR_FRAME_DIMENSION] = "Error\nIncorrect sprite dimension\n", \
 		[ERR_BUTTON_COORD] = "Error\nButton coords was called with inv index", \
+		[ERR_RENDER_COORD] = "Error\nRender image was called with inv index", \
 		[ERR_MAX] = "Error\nIndex is out of char *error_message[] boundaries", \
 	};
 

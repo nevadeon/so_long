@@ -26,3 +26,13 @@ uint32_t	get_pixel_value(mlx_image_t *img, size_t x, size_t y)
 	pixel = img->pixels + (y * img->width + x) * sizeof(uint32_t);
 	return (_get_rgba(*(pixel), *(pixel + 1), *(pixel + 2), *(pixel + 3)));
 }
+
+uint32_t	get_pixel_value2(mlx_texture_t *img, size_t x, size_t y)
+{
+	uint8_t	*pixel;
+
+	if (x > img->width || y > img->height)
+		return (0xFFFFFF00);
+	pixel = img->pixels + (y * img->width + x) * sizeof(uint32_t);
+	return (_get_rgba(*(pixel), *(pixel + 1), *(pixel + 2), *(pixel + 3)));
+}
