@@ -3,24 +3,24 @@
 const char	*get_error_message(t_error error_code)
 {
 	static const char	*message[] = {\
-		[OK] = "Error\nHow the hell did you get this error message ?", \
-		[ERR_ARGS] = "Error\ntoo many arguments", \
-		[ERR_NAME] = "Error\nfile name too short", \
-		[ERR_EXT] = "Error\nincorrect file extension", \
-		[ERR_OPEN] = "Error\nFound no corresponding file", \
-		[ERR_EMPTY_MAP] = "Error\nEmpty map", \
-		[ERR_MAP_SIZE] = "Error\nMap is too big", \
-		[ERR_RECT] = "Error\nMap is not a rectangle\n", \
-		[ERR_WALL] = "Error\nOpening in exterior walls\n", \
-		[ERR_CHAR] = "Error\nMap contains an unexpected character\n", \
-		[ERR_PLAYER] = "Error\nMap must have exactly 1 player\n", \
-		[ERR_EXIT] = "Error\nMap must have exactly 1 exit\n", \
-		[ERR_COL] = "Error\nMap must have at least 1 collectible\n", \
-		[ERR_UNREACH] = "Error\nUnreachable exit or collectible\n", \
-		[ERR_FRAME_DIMENSION] = "Error\nIncorrect sprite dimension\n", \
-		[ERR_BUTTON_COORD] = "Error\nButton coords was called with inv index", \
-		[ERR_RENDER_COORD] = "Error\nRender image was called with inv index", \
-		[ERR_MAX] = "Error\nIndex is out of char *error_message[] boundaries", \
+		[OK] = "How the hell did you get this error message ?", \
+		[ERR_ARGS] = "too many arguments", \
+		[ERR_NAME] = "file name too short", \
+		[ERR_EXT] = "incorrect file extension", \
+		[ERR_OPEN] = "Found no corresponding file", \
+		[ERR_EMPTY_MAP] = "Empty map", \
+		[ERR_MAP_SIZE] = "Map is too big", \
+		[ERR_RECT] = "Map is not a rectangle", \
+		[ERR_WALL] = "Opening in exterior walls", \
+		[ERR_CHAR] = "Map contains an unexpected character", \
+		[ERR_PLAYER] = "Map must have exactly 1 player", \
+		[ERR_EXIT] = "Map must have exactly 1 exit", \
+		[ERR_COL] = "Map must have at least 1 collectible", \
+		[ERR_UNREACH] = "Unreachable exit or collectible", \
+		[ERR_FRAME_DIMENSION] = "Incorrect sprite dimension", \
+		[ERR_BUTTON_COORD] = "Get_button_coords() was called with inv index", \
+		[ERR_RENDER_COORD] = "Render_animation() was called with inv index", \
+		[ERR_MAX] = "Get_error_message() was called with invalid index", \
 	};
 
 	if (error_code < 0 || error_code > ERR_MAX)
@@ -30,7 +30,7 @@ const char	*get_error_message(t_error error_code)
 
 void	error(t_error error_code)
 {
-	ft_dputendl(STDERR_FILENO, get_error_message(error_code));
+	ft_dprintf(STDERR_FILENO, "Error\n%s\n", get_error_message(error_code));
 	exit(error_code);
 }
 
