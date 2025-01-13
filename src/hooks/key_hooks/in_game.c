@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	playing_key_press(mlx_key_data_t keydata, t_game_env *env)
+void	in_game_key_logic(mlx_key_data_t keydata, t_game_env *env)
 {
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{

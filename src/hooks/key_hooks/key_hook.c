@@ -1,12 +1,12 @@
 #include "so_long.h"
 
-void	user_key_press(mlx_key_data_t keydata, void *param)
+void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_game_env	*env;
 
 	env = param;
 	if (env->game_status == PLAYING)
-		playing_key_press(keydata, env);
+		in_game_key_logic(keydata, env);
 	else if (env->game_status == IN_MENU)
-		menu_key_press(keydata, env);
+		in_menu_key_logic(keydata, env);
 }

@@ -81,9 +81,9 @@ void		init_menu_bg_anim(t_game_env *env);
 void		init_select_anim(t_game_env *env);
 void		free_graphics(t_game_env *env);
 
-void		user_key_press(mlx_key_data_t keydata, void *param);
-void		menu_key_press(mlx_key_data_t keydata, t_game_env *env);
-void		playing_key_press(mlx_key_data_t keydata, t_game_env *env);
+void		key_hook(mlx_key_data_t keydata, void *param);
+void		in_menu_key_logic(mlx_key_data_t keydata, t_game_env *env);
+void		in_game_key_logic(mlx_key_data_t keydata, t_game_env *env);
 void		update_game(void *param);
 void		display_menu(t_game_env *env);
 
