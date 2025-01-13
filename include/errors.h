@@ -27,10 +27,9 @@ typedef enum e_error
 	ERR_EXIT,
 	ERR_COL,
 	ERR_UNREACH,
-	ERR_FRAME_DIMENSION,
-	ERR_BUTTON_COORD,
-	ERR_RENDER_COORD,
-	ERR_MAX
+	ERR_BUTTON_INDEX,
+	ERR_RENDER_INDEX,
+	ERR_MAX_INDEX
 }	t_error;
 
 /*==============================================================================

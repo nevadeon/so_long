@@ -8,6 +8,6 @@ size_t	get_button_coords(t_menu_buttons button, t_coords_index index)
 	};
 
 	if (button > BTN_MAX || button < 0 || index > Y || index < X)
-		error(ERR_BUTTON_COORD);
+		error(ERR_BUTTON_INDEX);
 	return (button_coords[button][index]);
 }

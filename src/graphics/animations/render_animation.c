@@ -19,7 +19,7 @@ void	render_animation(t_animation a)
 		|| src_y + a.frame_height > a.sprite_sheet->height
 		|| a.dest_x + a.frame_width > a.render_layer->width
 		|| a.dest_y + a.frame_height > a.render_layer->height)
-		error(ERR_RENDER_COORD);
+		error(ERR_RENDER_INDEX);
 	if (a.mirrored == true)
 		src_x += a.frame_width;
 	render_image(a, src_x, src_y);
