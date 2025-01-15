@@ -15,7 +15,7 @@ t_error	count_player(char **grid)
 		{
 			if (grid[y][x] == 'P')
 			{
-				grid[y][x] |= MASK;
+				grid[y][x] |= (1 << 7);
 				nb_player += 1;
 			}
 		}

@@ -17,7 +17,7 @@ t_error	check_outer_walls(char **grid, size_t map_width, size_t map_height)
 					|| y == map_height - 1) && grid[y][x] != '1')
 			{
 				found_error = true;
-				grid[y][x] |= MASK;
+				grid[y][x] |= (1 << 7);
 			}
 		}
 	}

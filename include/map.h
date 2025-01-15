@@ -3,7 +3,6 @@
 
 # include "so_long.h"
 
-# define MASK 128
 # define DEFAULT_MAP_PATH "maps/default.ber"
 
 /*------------------------------------------------------------------------------
@@ -44,7 +43,7 @@ t_error	parse_map(t_game_map *map);
  * distinguish the parts of the map that are reachable and those that aren't. In
  * detail, from the starting x and y of the player, use a recursive algorythm
  * to go through the entire accessible part of the map. Everytime an untouched
- * character is met, it is marqued with a binary MASK (that basically turns the
+ * character is met, it is marqued with a binary 1 << 7 (that basically turns the
  * char into a negative one). The function exit every time a wall (aka a '1') or
  *  a marqued character (aka a negative char) is met.
  *
@@ -88,7 +87,7 @@ void	free_map(char **grid);
 
 /**
  * @brief Cycle through an array of strings and reverse a previously applied
- * binary MASK
+ * binary 1 << 7
  *
  * @param map The array of strings
  */

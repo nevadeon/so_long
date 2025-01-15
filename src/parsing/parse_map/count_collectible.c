@@ -15,7 +15,7 @@ t_error	count_collectible(char **grid)
 		{
 			if (grid[y][x] == 'C')
 			{
-				grid[y][x] |= MASK;
+				grid[y][x] |= (1 << 7);
 				nb_collectibles += 1;
 			}
 		}

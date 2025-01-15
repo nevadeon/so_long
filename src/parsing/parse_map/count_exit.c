@@ -15,7 +15,7 @@ t_error	count_exit(char **grid)
 		{
 			if (grid[y][x] == 'E')
 			{
-				grid[y][x] |= MASK;
+				grid[y][x] |= (1 << 7);
 				nb_exit += 1;
 			}
 		}
