@@ -6,6 +6,7 @@
 # define WINDOW_TITLE "so_long"
 # define WIDTH 	1309
 # define HEIGHT	995
+# define TILE_SIZE 64
 
 # define PATH_MENUBG_SPRITE	"assets/menu/menu_background_sprite.png"
 # define PATH_SELECT_SPRITE	"assets/menu/select_sprite.png"
@@ -67,6 +68,8 @@ typedef struct s_game_env
 	mlx_image_t		*exit_bt;
 	mlx_image_t		*background;
 	mlx_image_t		*foreground;
+	mlx_image_t		*sand;
+	mlx_image_t		*water;
 	t_animation		select_anim;
 	t_animation		menu_bg_anim;
 	t_animation		idle_knight;
@@ -96,7 +99,7 @@ void		render_image(t_animation a, size_t src_x, size_t src_y);
 mlx_texture_t	*texture_from_png(char *file_path);
 mlx_image_t	*image_from_png(mlx_t	*mlx, char *file_path);
 mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height);
-void		image_to_window(mlx_t *mlx, mlx_image_t *image, size_t x, size_t y);
+int32_t		image_to_window(mlx_t *mlx, mlx_image_t *image, size_t x, size_t y);
 
 void		clear_image(mlx_image_t *image);
 uint32_t	get_pixel_value2(mlx_texture_t *img, size_t x, size_t y);

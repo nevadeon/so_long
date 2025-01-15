@@ -75,6 +75,36 @@ void	display_menu(t_game_env *env)
 		get_button_coords(BTN_EXIT, X), get_button_coords(BTN_EXIT, Y));
 }
 
+void	display_map(t_game_env *env)
+{
+	t_game_map map;
+	size_t	instance_index;
+	size_t	x;
+	size_t	y;
+
+	y = -1;
+	while (++y < map.height)
+	{
+		x = -1;
+		while (++x < map.width)
+		{
+			if (map.grid[y][x] == '1')
+			{
+				instance_index = image_to_window(env->mlx, env->water, 0, 0);
+				env->water->instances[instance_index].x = WIDTH / 2 + ((x - map.player_x) * TILE_SIZE - TILE_SIZE / 2);
+				env->water->instances[instance_index].y = HEIGHT / 2 + ((y - map.player_y) * TILE_SIZE - TILE_SIZE / 2);
+			}
+			else
+			{
+				instance_index = image_to_window(env->mlx, env->sand, 0, 0);
+				env->sand->instances[instance_index].x = WIDTH / 2 + ((x - map.player_x) * TILE_SIZE - TILE_SIZE / 2);
+				env->sand->instances[instance_index].y = HEIGHT / 2 + ((y - map.player_y) * TILE_SIZE - TILE_SIZE / 2);
+			}
+
+		}
+	}
+}
+
 void	init_graphics(t_game_env *env)
 {
 	mlx_t		*mlx;
@@ -87,6 +117,8 @@ void	init_graphics(t_game_env *env)
 		.foreground = new_image(mlx, WIDTH, HEIGHT),
 		.start_bt = image_from_png(mlx, PATH_START_BUTTON),
 		.exit_bt = image_from_png(mlx, PATH_EXIT_BUTTON),
+		.water = image_from_png(mlx, "assets/Water/Water.png"),
+		.sand = image_from_png(mlx, "assets/Ground/sand.png"),
 		.game_status = IN_MENU,
 		.selected_button = BTN_START,
 		.knight_status = IDLE
@@ -97,4 +129,5 @@ void	init_graphics(t_game_env *env)
 	init_moving_knight_anim(env);
 	display_menu(env);
 	image_to_window(env->mlx, env->foreground, 0, 0);
+	display_map(env);
 }
