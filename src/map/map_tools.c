@@ -22,8 +22,8 @@ void	reset_map(char **grid)
 		x = -1;
 		while (grid[y][++x] != '\0')
 		{
-			if (grid[y][x] & (1 << 7))
-				grid[y][x] ^= (1 << 7);
+			if (grid[y][x] & 1 << 7)
+				grid[y][x] ^= 1 << 7;
 		}
 	}
 }
@@ -39,8 +39,8 @@ void	print_map(char **map)
 		x = -1;
 		while (map[y][++x] != '\0')
 		{
-			if (map[y][x] & (1 << 7))
-				ft_dprintf(2, COLOR_ERROR, map[y][x] ^ (1 << 7));
+			if (map[y][x] & 1 << 7)
+				ft_dprintf(2, COLOR_ERROR, map[y][x] ^ 1 << 7);
 			else if (map[y][x] == '1')
 				ft_dprintf(2, COLOR_WALL, map[y][x]);
 			else if (map[y][x] == 'C' || map[y][x] == 'P' || map[y][x] == 'E')

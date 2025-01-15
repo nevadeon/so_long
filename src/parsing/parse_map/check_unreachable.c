@@ -13,12 +13,12 @@ t_error	check_unreachable(char **grid)
 		x = -1;
 		while (grid[y][++x] != '\0')
 		{
-			if (grid[y][x] & (1 << 7))
-				grid[y][x] ^= (1 << 7);
+			if (grid[y][x] & 1 << 7)
+				grid[y][x] ^= 1 << 7;
 			else if (grid[y][x] == 'E' || grid[y][x] == 'C')
 			{
 				found_unreach = true;
-				grid[y][x] |= (1 << 7);
+				grid[y][x] |= 1 << 7;
 			}
 		}
 	}

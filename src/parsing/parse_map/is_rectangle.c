@@ -15,7 +15,7 @@ t_error	is_rectangle(char **grid, size_t map_width)
 		{
 			len = -1;
 			while (grid[y][++len] != '\0')
-				grid[y][len] |= (1 << 7);
+				grid[y][len] |= 1 << 7;
 			return (ERR_RECT);
 		}
 	}

@@ -17,7 +17,7 @@ t_error	check_characters(char **grid)
 				&& grid[y][x] != '0' && grid[y][x] != '1')
 			{
 				found_error = true;
-				grid[y][x] |= (1 << 7);
+				grid[y][x] |= 1 << 7;
 			}
 		}
 	}
