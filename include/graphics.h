@@ -5,8 +5,11 @@
 
 typedef mlx_texture_t t_texture;
 
-void		init_graphics(t_game_env *env);
+void		init_graphics(t_game_env *env, t_game_map map);
 void		free_graphics(t_game_env *env);
+
+void	display_map(t_game_env *env);
+void	display_menu(t_game_env *env);
 
 //hooks
 void		key_hook(mlx_key_data_t keydata, void *param);

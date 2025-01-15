@@ -6,6 +6,7 @@
 # define WINDOW_TITLE "so_long"
 # define WIDTH	1309
 # define HEIGHT	995
+# define TILE_SIZE 64
 
 # define PATH_MENUBG_SPRITE	"assets/menu/menu_background_sprite.png"
 # define PATH_SELECT_SPRITE	"assets/menu/select_sprite.png"
@@ -78,6 +79,8 @@ typedef struct s_game_env
 	mlx_image_t		*exit_bt;
 	mlx_image_t		*background;
 	mlx_image_t		*foreground;
+	mlx_image_t		*water;
+	mlx_image_t		*sand;
 	t_animation		select_anim;
 	t_animation		menu_bg_anim;
 	t_animation		idle_knight;

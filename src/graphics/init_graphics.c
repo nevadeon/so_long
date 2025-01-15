@@ -77,35 +77,34 @@ void	display_menu(t_game_env *env)
 
 void	display_map(t_game_env *env)
 {
-	t_game_map map;
 	size_t	instance_index;
 	size_t	x;
 	size_t	y;
 
 	y = -1;
-	while (++y < map.height)
+	while (env->map.grid[++y] != NULL)
 	{
 		x = -1;
-		while (++x < map.width)
+		while (env->map.grid[y][++x] != '\0')
 		{
-			if (map.grid[y][x] == '1')
+			if (env->map.grid[y][x] == '1')
 			{
 				instance_index = image_to_window(env->mlx, env->water, 0, 0);
-				env->water->instances[instance_index].x = WIDTH / 2 + ((x - map.player_x) * TILE_SIZE - TILE_SIZE / 2);
-				env->water->instances[instance_index].y = HEIGHT / 2 + ((y - map.player_y) * TILE_SIZE - TILE_SIZE / 2);
+				env->water->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
+				env->water->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE - TILE_SIZE / 2);
 			}
 			else
 			{
 				instance_index = image_to_window(env->mlx, env->sand, 0, 0);
-				env->sand->instances[instance_index].x = WIDTH / 2 + ((x - map.player_x) * TILE_SIZE - TILE_SIZE / 2);
-				env->sand->instances[instance_index].y = HEIGHT / 2 + ((y - map.player_y) * TILE_SIZE - TILE_SIZE / 2);
+				env->sand->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
+				env->sand->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE - TILE_SIZE / 2);
 			}
 
 		}
 	}
 }
 
-void	init_graphics(t_game_env *env)
+void	init_graphics(t_game_env *env, t_game_map map)
 {
 	mlx_t		*mlx;
 
@@ -114,6 +113,7 @@ void	init_graphics(t_game_env *env)
 		handle_mlx_error();
 	*env = (t_game_env){
 		.mlx = mlx,
+		.map = map,
 		.foreground = new_image(mlx, WIDTH, HEIGHT),
 		.start_bt = image_from_png(mlx, PATH_START_BUTTON),
 		.exit_bt = image_from_png(mlx, PATH_EXIT_BUTTON),
@@ -127,7 +127,7 @@ void	init_graphics(t_game_env *env)
 	init_select_anim(env);
 	init_idle_knight_anim(env);
 	init_moving_knight_anim(env);
+	display_map(env);
 	display_menu(env);
 	image_to_window(env->mlx, env->foreground, 0, 0);
-	display_map(env);
 }

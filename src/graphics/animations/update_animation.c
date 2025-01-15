@@ -35,11 +35,13 @@ void	update_animation(t_animation *a, double deltatime_s)
 			a->needs_refresh = false;
 		}
 		else
+		{
 			a->elapsed_time_ms -= a->frame_duration_ms;
-		if (a->bounce == true)
-			_update_bounce_animation(a);
-		else
-			a->current_frame = (a->current_frame + 1) % a->frame_count;
+			if (a->bounce == true)
+				_update_bounce_animation(a);
+			else
+				a->current_frame = (a->current_frame + 1) % a->frame_count;
+		}
 		render_animation(*a);
 	}
 }

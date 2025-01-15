@@ -20,9 +20,11 @@ void	in_menu_key_logic(mlx_key_data_t keydata, t_game_env *env)
 		if (env->selected_button == BTN_START)
 		{
 			env->game_status = PLAYING;
-			env->start_bt->instances[0].enabled = false;
-			env->exit_bt->instances[0].enabled = false;
-			env->menu_bg_anim.render_layer->instances[0].enabled = false;
+			env->menu_bg_anim.render_layer->enabled = false;
+			env->start_bt->enabled = false;
+			env->exit_bt->enabled = false;
+			env->sand->enabled = true;
+			env->water->enabled = true;
 			env->idle_knight.needs_refresh = true;
 		}
 		else if (env->selected_button == BTN_EXIT)
