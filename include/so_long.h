@@ -15,4 +15,6 @@
 # include "map.h"
 # include "graphics.h"
 
+void	start_game(t_game_env *env);
+
 #endif

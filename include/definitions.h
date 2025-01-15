@@ -70,25 +70,26 @@ typedef struct s_game_map
 	size_t		height;
 	size_t		player_x;
 	size_t		player_y;
+	long		player_pos_x;
+	long		player_pos_y;
 }	t_game_map;
 
 typedef struct s_game_env
 {
 	mlx_t			*mlx;
+	mlx_image_t		*foreground;
 	mlx_image_t		*start_bt;
 	mlx_image_t		*exit_bt;
-	mlx_image_t		*background;
-	mlx_image_t		*foreground;
 	mlx_image_t		*water;
 	mlx_image_t		*sand;
-	t_animation		select_anim;
 	t_animation		menu_bg_anim;
+	t_animation		select_anim;
 	t_animation		idle_knight;
 	t_animation		moving_knight;
 	t_game_status	game_status;
-	bool			knight_status;
 	t_menu_buttons	selected_button;
 	t_game_map		map;
+	bool			is_player_moving;
 }	t_game_env;
 
 #endif

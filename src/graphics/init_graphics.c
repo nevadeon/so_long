@@ -66,44 +66,6 @@ void	init_moving_knight_anim(t_game_env *env)
 	env->moving_knight = anim;
 }
 
-void	display_menu(t_game_env *env)
-{
-	image_to_window(env->mlx, env->menu_bg_anim.render_layer, 0, 0);
-	image_to_window(env->mlx, env->start_bt,
-		get_button_coords(BTN_START, X), get_button_coords(BTN_START, Y));
-	image_to_window(env->mlx, env->exit_bt,
-		get_button_coords(BTN_EXIT, X), get_button_coords(BTN_EXIT, Y));
-}
-
-void	display_map(t_game_env *env)
-{
-	size_t	instance_index;
-	size_t	x;
-	size_t	y;
-
-	y = -1;
-	while (env->map.grid[++y] != NULL)
-	{
-		x = -1;
-		while (env->map.grid[y][++x] != '\0')
-		{
-			if (env->map.grid[y][x] == '1')
-			{
-				instance_index = image_to_window(env->mlx, env->water, 0, 0);
-				env->water->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
-				env->water->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE - TILE_SIZE / 2);
-			}
-			else
-			{
-				instance_index = image_to_window(env->mlx, env->sand, 0, 0);
-				env->sand->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
-				env->sand->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE - TILE_SIZE / 2);
-			}
-
-		}
-	}
-}
-
 void	init_graphics(t_game_env *env, t_game_map map)
 {
 	mlx_t		*mlx;
@@ -121,13 +83,9 @@ void	init_graphics(t_game_env *env, t_game_map map)
 		.sand = image_from_png(mlx, "assets/Ground/sand.png"),
 		.game_status = IN_MENU,
 		.selected_button = BTN_START,
-		.knight_status = IDLE
 	};
 	init_menu_bg_anim(env);
 	init_select_anim(env);
 	init_idle_knight_anim(env);
 	init_moving_knight_anim(env);
-	display_map(env);
-	display_menu(env);
-	image_to_window(env->mlx, env->foreground, 0, 0);
 }
