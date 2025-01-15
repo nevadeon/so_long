@@ -17,7 +17,6 @@ const char	*get_error_message(t_error error_code)
 		[ERR_EXIT] = "Map must have exactly 1 exit", \
 		[ERR_COL] = "Map must have at least 1 collectible", \
 		[ERR_UNREACH] = "Unreachable exit or collectible", \
-		[ERR_FRAME_DIMENSION] = "Incorrect sprite dimension", \
 		[ERR_BUTTON_INDEX] = "Get_button_coords() was called with inv index", \
 		[ERR_RENDER_INDEX] = "Render_animation() was called with inv index", \
 		[ERR_MAX_INDEX] = "Get_error_message() was called with invalid index", \

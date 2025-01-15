@@ -9,6 +9,7 @@
 # include <stdbool.h>	//bool true false
 
 # include "MLX42.h"		//graphic lib
+# include "definitions.h"
 # include "libndav.h"
 # include "errors.h"
 # include "map.h"

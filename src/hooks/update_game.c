@@ -28,5 +28,18 @@ void	update_game(void *param)
 			update_animation(&env->moving_knight, env->mlx->delta_time);
 		else
 			update_animation(&env->idle_knight, env->mlx->delta_time);
+		int test = 1;
+		if (mlx_is_key_down(env->mlx, MLX_KEY_B))
+			test = 3; 
+
+		if (mlx_is_key_down(env->mlx, MLX_KEY_LEFT))
+			env->moving_knight.render_layer->instances[0].x -= 10*test;
+		if (mlx_is_key_down(env->mlx, MLX_KEY_RIGHT))
+			env->moving_knight.render_layer->instances[0].x += 10*test;
+		if (mlx_is_key_down(env->mlx, MLX_KEY_UP))
+			env->moving_knight.render_layer->instances[0].y -= 10*test;
+		if (mlx_is_key_down(env->mlx, MLX_KEY_DOWN))
+			env->moving_knight.render_layer->instances[0].y += 10*test;
+
 	}
 }

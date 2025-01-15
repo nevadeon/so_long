@@ -28,4 +28,5 @@ void	in_menu_key_logic(mlx_key_data_t keydata, t_game_env *env)
 		else if (env->selected_button == BTN_EXIT)
 			exit(OK);
 	}
+	
 }

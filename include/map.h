@@ -14,20 +14,11 @@
 # define COLOR_PCE "\033[48;2;173;226;93m\033[30m%c\033[0m"
 # define COLOR_WALL "\033[48;2;108;169;189m\033[30m%c\033[0m"
 
-typedef struct s_game_map
-{
-	char	**grid;
-	size_t	width;
-	size_t	height;
-	size_t	player_x;
-	size_t	player_y;
-}	t_game_map;
-
 /*==============================================================================
                                     PARSING
 ==============================================================================*/
 
-void	parse_args(int argc, char *argv[], t_game_map *map);
+t_game_map	process_args(int argc, char *argv[]);
 
 /**
  * @brief Launch all map test functions and return an error code if map is

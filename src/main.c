@@ -2,14 +2,12 @@
 
 int	main(int argc, char *argv[])
 {
-	t_game_map		map;
 	t_game_env	env;
 
-	parse_args(argc, argv, &map);
+	env.map = process_args(argc, argv);
 	init_graphics(&env);
 	mlx_key_hook(env.mlx, key_hook, &env);
 	mlx_loop_hook(env.mlx, update_game, &env);
 	mlx_loop(env.mlx);
-	free_map(map.grid);
 	return (EXIT_SUCCESS);
 }
