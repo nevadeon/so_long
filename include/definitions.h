@@ -8,13 +8,13 @@
 # define HEIGHT	995
 # define TILE_SIZE 64
 
-# define PATH_MENUBG_SPRITE	"assets/menu/menu_background_sprite.png"
-# define PATH_SELECT_SPRITE	"assets/menu/select_sprite.png"
-# define PATH_START_BUTTON	"assets/menu/start.png"
-# define PATH_EXIT_BUTTON	"assets/menu/exit.png"
-# define PATH_IDLE_KNIGHT_SPRITE "assets/knight/idle_knight.png"
-# define PATH_MOVING_KNIGHT_SPRITE "assets/knight/moving_knight.png"
-
+# define PATH_MENU_BG		"assets/UI/Menu/Menu_background.png"
+# define PATH_SELECT		"assets/UI/Menu/Select_sprite.png"
+# define PATH_START_BUTTON	"assets/UI/Menu/Start.png"
+# define PATH_EXIT_BUTTON	"assets/UI/Menu/Exit.png"
+# define PATH_BLUE_KNIGHT	"assets/Factions/Knights/Warrior/Warrior_Blue.png"
+# define PATH_WATER			"assets/Terrain/Water/Water.png"
+# define PATH_SAND			"assets/Terrain/Ground/Sand.png"
 
 typedef enum e_coords_index
 {

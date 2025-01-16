@@ -34,5 +34,4 @@ mlx_image_t	*image_from_png(mlx_t	*mlx, char *file_path);
 mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height);
 int32_t		image_to_window(mlx_t *mlx, mlx_image_t *image, size_t x, size_t y);
 
-bool	is_moving(mlx_t *mlx);
 #endif

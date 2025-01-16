@@ -6,7 +6,7 @@ void	init_select_anim(t_game_env *env)
 
 	anim = (t_animation){
 		.render_layer = env->foreground,
-		.sprite_sheet = texture_from_png(PATH_SELECT_SPRITE),
+		.sprite_sheet = texture_from_png(PATH_SELECT),
 		.frame_count = 4,
 		.frame_width = 217,
 		.frame_height = 150,
@@ -21,7 +21,7 @@ void	init_menu_bg_anim(t_game_env *env)
 
 	anim = (t_animation){
 		.render_layer = new_image(env->mlx, WIDTH, HEIGHT),
-		.sprite_sheet = texture_from_png(PATH_MENUBG_SPRITE),
+		.sprite_sheet = texture_from_png(PATH_MENU_BG),
 		.frame_count = 24,
 		.frame_duration_ms = 120,
 		.frame_width = 1309,
@@ -38,7 +38,8 @@ void	init_idle_knight_anim(t_game_env *env)
 
 	anim = (t_animation){
 		.render_layer = env->foreground,
-		.sprite_sheet = texture_from_png(PATH_IDLE_KNIGHT_SPRITE),
+		.sprite_sheet = texture_from_png(PATH_BLUE_KNIGHT),
+		.start_frame = 0,
 		.frame_count = 6,
 		.frame_width = 192,
 		.frame_height = 192,
@@ -55,7 +56,8 @@ void	init_moving_knight_anim(t_game_env *env)
 
 	anim = (t_animation){
 		.render_layer = env->foreground,
-		.sprite_sheet = texture_from_png(PATH_MOVING_KNIGHT_SPRITE),
+		.sprite_sheet = texture_from_png(PATH_BLUE_KNIGHT),
+		.start_frame = 6,
 		.frame_count = 6,
 		.frame_width = 192,
 		.frame_height = 192,
@@ -79,8 +81,8 @@ void	init_graphics(t_game_env *env, t_game_map map)
 		.foreground = new_image(mlx, WIDTH, HEIGHT),
 		.start_bt = image_from_png(mlx, PATH_START_BUTTON),
 		.exit_bt = image_from_png(mlx, PATH_EXIT_BUTTON),
-		.water = image_from_png(mlx, "assets/Water/Water.png"),
-		.sand = image_from_png(mlx, "assets/Ground/sand.png"),
+		.water = image_from_png(mlx, PATH_WATER),
+		.sand = image_from_png(mlx, PATH_SAND),
 		.game_status = IN_MENU,
 		.selected_button = BTN_START,
 	};
