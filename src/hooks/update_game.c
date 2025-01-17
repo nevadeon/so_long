@@ -77,6 +77,7 @@ void	update_positions(t_game_env *env)
 	update_instances_positions(env->sand, dx, dy);
 }
 
+//TODO add collectibles and exit collisions
 void	in_game_update(t_game_env *env)
 {
 	static double	elapsed_time_ms = 0;

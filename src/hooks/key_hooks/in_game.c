@@ -44,6 +44,8 @@ static void	_update_knight_animation(t_game_env *env, t_player_data *player)
 
 void	in_game_key_logic(mlx_key_data_t keydata, t_game_env *env)
 {
+	_update_player_status(env, &env->player);
+	_update_knight_animation(env, &env->player);
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
 		env->game_status = IN_MENU;
@@ -54,6 +56,4 @@ void	in_game_key_logic(mlx_key_data_t keydata, t_game_env *env)
 		env->sand->enabled=false;
 		env->select_anim.needs_refresh = true;
 	}
-	_update_player_status(env, &env->player);
-	_update_knight_animation(env, &env->player);
 }

@@ -28,7 +28,7 @@ void	display_map(t_game_env *env)
 		}
 	}
 }
-
+//TODO add display collectibles and exit
 void	start_game(t_game_env *env)
 {
 	env->map.player_pos_x = env->map.player_x * TILE_SIZE + TILE_SIZE / 2;
