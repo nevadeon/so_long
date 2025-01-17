@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	update_player_status(t_game_env *env, t_player_data *player)
+static void	_update_player_status(t_game_env *env, t_player_data *player)
 {
 	player->is_left = mlx_is_key_down(env->mlx, MLX_KEY_LEFT);
 	player->is_right = mlx_is_key_down(env->mlx, MLX_KEY_RIGHT);
@@ -20,7 +20,7 @@ void	update_player_status(t_game_env *env, t_player_data *player)
 		|| player->is_up || player->is_down);
 }
 
-void	update_knight_animation(t_game_env *env, t_player_data *player)
+static void	_update_knight_animation(t_game_env *env, t_player_data *player)
 {
 	if (player->is_moving)
 	{
@@ -54,6 +54,6 @@ void	in_game_key_logic(mlx_key_data_t keydata, t_game_env *env)
 		env->sand->enabled=false;
 		env->select_anim.needs_refresh = true;
 	}
-	update_player_status(env, &env->player);
-	update_knight_animation(env, &env->player);
+	_update_player_status(env, &env->player);
+	_update_knight_animation(env, &env->player);
 }

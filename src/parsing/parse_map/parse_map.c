@@ -16,7 +16,7 @@ t_error	parse_map(t_game_map *map)
 		return (ERR_PLAYER);
 	if (count_exit(map->grid))
 		return (ERR_EXIT);
-	if (count_collectible(map->grid))
+	if (count_collectible(map->grid, &map->nb_collectibles))
 		return (ERR_COL);
 	get_player_position(map);
 	mark_reachable_items(map->grid, map->player_x, map->player_y);

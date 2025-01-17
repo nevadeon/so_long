@@ -16,6 +16,7 @@ t_game_map	process_args(int argc, char *argv[])
 	t_game_map	map;
 	t_error		error_code;
 
+	map = (t_game_map){0};
 	if (argc > 2)
 		error(ERR_ARGS);
 	if (argc == 2)

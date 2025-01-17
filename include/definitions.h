@@ -38,12 +38,12 @@ typedef enum e_menu_buttons
 
 typedef struct s_player_data
 {
-	bool	is_moving;
-	bool	was_moving;
 	bool	is_left;
 	bool	is_right;
 	bool	is_up;
 	bool	is_down;
+	bool	is_moving;
+	bool	was_moving;
 } t_player_data;
 
 typedef struct s_animation{
@@ -76,6 +76,7 @@ typedef struct s_game_map
 	size_t		player_y;
 	long		player_pos_x;
 	long		player_pos_y;
+	size_t		nb_collectibles;
 }	t_game_map;
 
 typedef struct s_game_env
