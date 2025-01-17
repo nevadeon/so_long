@@ -34,4 +34,7 @@ mlx_image_t	*image_from_png(mlx_t	*mlx, char *file_path);
 mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height);
 int32_t		image_to_window(mlx_t *mlx, mlx_image_t *image, size_t x, size_t y);
 
+void	update_player_status(t_game_env *env, t_player_data *player);
+void	update_knight_animation(t_game_env *env, t_player_data *player);
+
 #endif

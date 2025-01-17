@@ -29,18 +29,22 @@ typedef enum e_game_status
 	TRANSITION
 }	t_game_status;
 
-typedef enum e_knight_status
-{
-	IDLE,
-	MOVING
-}	t_knight_status;
-
 typedef enum e_menu_buttons
 {
 	BTN_START,
 	BTN_EXIT,
 	BTN_MAX
 }	t_menu_buttons;
+
+typedef struct s_player_data
+{
+	bool	is_moving;
+	bool	was_moving;
+	bool	is_left;
+	bool	is_right;
+	bool	is_up;
+	bool	is_down;
+} t_player_data;
 
 typedef struct s_animation{
 	mlx_texture_t	*sprite_sheet;		// Texture containing all frames of the animation
@@ -76,6 +80,7 @@ typedef struct s_game_map
 
 typedef struct s_game_env
 {
+	t_player_data	player;
 	mlx_t			*mlx;
 	mlx_image_t		*foreground;
 	mlx_image_t		*start_bt;
@@ -89,7 +94,6 @@ typedef struct s_game_env
 	t_game_status	game_status;
 	t_menu_buttons	selected_button;
 	t_game_map		map;
-	bool			is_player_moving;
 }	t_game_env;
 
 #endif
