@@ -24,7 +24,20 @@ void	display_map(t_game_env *env)
 				env->sand->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
 				env->sand->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE);
 			}
-
+			if (env->map.grid[y][x] == 'C')
+			{
+				instance_index = image_to_window(env->mlx, env->steak, 0, 0);
+				env->steak->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
+				env->steak->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE);
+				dprintf(2, "ok\n");
+			}
+			if (env->map.grid[y][x] == 'E')
+			{
+				instance_index = image_to_window(env->mlx, env->exit, 0, 0);
+				// env->exit->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
+				// env->exit->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE);
+				dprintf(2, "e\n");
+			}
 		}
 	}
 }

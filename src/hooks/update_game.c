@@ -75,6 +75,8 @@ void	update_positions(t_game_env *env)
 	env->map.player_pos_y += dy;
 	update_instances_positions(env->water, dx, dy);
 	update_instances_positions(env->sand, dx, dy);
+	update_instances_positions(env->steak, dx, dy);
+	update_instances_positions(env->exit, dx, dy);
 }
 
 //TODO add collectibles and exit collisions
