@@ -3,7 +3,7 @@
 
 # include "so_long.h"
 
-# define DEFAULT_MAP_PATH "maps/default.ber"
+# define DEFAULT_MAP_PATH "maps/valid_1.ber"
 
 /*------------------------------------------------------------------------------
                                map printing colors

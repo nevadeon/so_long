@@ -83,6 +83,8 @@ void	init_graphics(t_game_env *env, t_game_map map)
 		.exit_bt = image_from_png(mlx, PATH_EXIT_BUTTON),
 		.water = image_from_png(mlx, PATH_WATER),
 		.sand = image_from_png(mlx, PATH_SAND),
+		.exit = image_from_png(mlx, PATH_EXIT),
+		.steak = image_from_png(mlx, PATH_STEAK),
 		.game_status = IN_MENU,
 		.selected_button = BTN_START,
 	};

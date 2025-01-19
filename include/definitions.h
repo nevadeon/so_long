@@ -15,6 +15,8 @@
 # define PATH_BLUE_KNIGHT	"assets/Factions/Knights/Warrior/Warrior_Blue.png"
 # define PATH_WATER			"assets/Terrain/Water/Water.png"
 # define PATH_SAND			"assets/Terrain/Ground/Sand.png"
+# define PATH_STEAK			"assets/Deco/03.png"
+# define PATH_EXIT			"assets/Deco/06.png"
 
 typedef enum e_coords_index
 {
@@ -77,6 +79,7 @@ typedef struct s_game_map
 	long		player_pos_x;
 	long		player_pos_y;
 	size_t		nb_collectibles;
+	uint32_t	move_counter;
 }	t_game_map;
 
 typedef struct s_game_env
@@ -88,6 +91,8 @@ typedef struct s_game_env
 	mlx_image_t		*exit_bt;
 	mlx_image_t		*water;
 	mlx_image_t		*sand;
+	mlx_image_t		*exit;
+	mlx_image_t		*steak;
 	t_animation		menu_bg_anim;
 	t_animation		select_anim;
 	t_animation		idle_knight;
