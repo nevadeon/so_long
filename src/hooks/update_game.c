@@ -86,8 +86,6 @@ void	in_game_update(t_game_env *env)
 	if (elapsed_time_ms >= 15)
 	{
 		update_positions(env);
-		disable_outofview_instances(env->sand);
-		disable_outofview_instances(env->water);
 		elapsed_time_ms -= 15;
 	}
 	if (env->player.is_moving)

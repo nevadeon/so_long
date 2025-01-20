@@ -9,7 +9,6 @@ const char	*get_error_message(t_error error_code)
 		[ERR_EXT] = "incorrect file extension", \
 		[ERR_OPEN] = "Found no corresponding file", \
 		[ERR_EMPTY_MAP] = "Empty map", \
-		[ERR_MAP_SIZE] = "Map is too big", \
 		[ERR_RECT] = "Map is not a rectangle", \
 		[ERR_WALL] = "Opening in exterior walls", \
 		[ERR_CHAR] = "Map contains an unexpected character", \
@@ -20,6 +19,7 @@ const char	*get_error_message(t_error error_code)
 		[ERR_BUTTON_INDEX] = "Get_button_coords() was called with inv index", \
 		[ERR_RENDER_INDEX] = "Render_animation() was called with inv index", \
 		[ERR_MAX_INDEX] = "Get_error_message() was called with invalid index", \
+		[ERR_ARGV] = "Go in the right folder you dumbass" \
 	};
 
 	if (error_code < 0 || error_code > ERR_MAX_INDEX)

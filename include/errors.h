@@ -29,6 +29,7 @@ typedef enum e_error
 	ERR_UNREACH,
 	ERR_BUTTON_INDEX,
 	ERR_RENDER_INDEX,
+	ERR_ARGV,
 	ERR_MAX_INDEX
 }	t_error;
 

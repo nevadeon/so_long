@@ -17,6 +17,8 @@ t_game_map	process_args(int argc, char *argv[])
 	t_error		error_code;
 
 	map = (t_game_map){0};
+	if (strcmp(argv[0], "./so_long") != 0)
+		error(ERR_ARGV);
 	if (argc > 2)
 		error(ERR_ARGS);
 	if (argc == 2)
@@ -32,7 +34,7 @@ t_game_map	process_args(int argc, char *argv[])
 	if (error_code != OK)
 	{
 		ft_dputendl(STDERR_FILENO, get_error_message(error_code));
-		if (error_code != ERR_MAP_SIZE)
+		if (map.width < 50 && map.height < 100)
 			print_map(map.grid);
 		free_map(map.grid);
 		exit(error_code);

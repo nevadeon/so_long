@@ -3,7 +3,7 @@ NAME := so_long
 CC := cc
 
 # Flags
-CFLAGS = -Wall -Wextra -I$(INC_FOLDER) -I$(LIBFT_FOLDER)/$(INC_FOLDER)
+CFLAGS = -O3 -Wall -Wextra -I$(INC_FOLDER) -I$(LIBFT_FOLDER)/$(INC_FOLDER)
 LDFLAGS = -L$(LIBFT_FOLDER) -lndav -L$(LIB_FOLDER) -lmlx42 -ldl -lglfw -pthread -lm
 
 # Directories
