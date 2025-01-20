@@ -60,7 +60,6 @@ void	start_game(t_game_env *env)
 {
 	env->map.player_pos_x = env->map.player_x * TILE_SIZE + TILE_SIZE / 2;
 	env->map.player_pos_y = env->map.player_y * TILE_SIZE + TILE_SIZE / 2;
-	env->map.move_counter = 0;
 	display_ground(env);
 	display_collectible_exit(env);
 	image_to_window(env->mlx, env->menu_bg_anim.render_layer, 0, 0);

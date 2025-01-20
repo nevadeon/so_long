@@ -13,6 +13,7 @@ static void	_check_extension(char *filename)
 
 static void	get_map_from_args(int argc, char *argv[], t_game_map *map)
 {
+	*map = (t_game_map){0};
 	if (argc == 2)
 	{
 		_check_extension(argv[1]);
