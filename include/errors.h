@@ -16,7 +16,6 @@ typedef enum e_error
 	OK = 0,
 	ERR_ARGS,
 	ERR_NAME,
-	ERR_EXT,
 	ERR_OPEN,
 	ERR_EMPTY_MAP,
 	ERR_MAP_SIZE,

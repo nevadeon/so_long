@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static void	_update_player_status(t_game_env *env, t_player_data *player)
+static void	update_player_status(t_game_env *env, t_player_data *player)
 {
 	player->is_left = mlx_is_key_down(env->mlx, MLX_KEY_LEFT);
 	player->is_right = mlx_is_key_down(env->mlx, MLX_KEY_RIGHT);
@@ -16,11 +16,11 @@ static void	_update_player_status(t_game_env *env, t_player_data *player)
 		player->is_up = false;
 		player->is_down = false;
 	}
-	player->is_moving = (player->is_left || player->is_right
+	player->is_moving = (player->is_left || player->is_right \
 		|| player->is_up || player->is_down);
 }
 
-static void	_update_knight_animation(t_game_env *env, t_player_data *player)
+static void	update_knight_animation(t_game_env *env, t_player_data *player)
 {
 	if (player->is_moving)
 	{
@@ -44,16 +44,16 @@ static void	_update_knight_animation(t_game_env *env, t_player_data *player)
 
 void	in_game_key_logic(mlx_key_data_t keydata, t_game_env *env)
 {
-	_update_player_status(env, &env->player);
-	_update_knight_animation(env, &env->player);
+	update_player_status(env, &env->player);
+	update_knight_animation(env, &env->player);
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
 		env->game_status = IN_MENU;
 		env->menu_bg_anim.render_layer->enabled = true;
 		env->start_bt->enabled = true;
 		env->exit_bt->enabled = true;
-		env->water->enabled=false;
-		env->sand->enabled=false;
+		env->water->enabled = false;
+		env->sand->enabled = false;
 		env->select_anim.needs_refresh = true;
 	}
 }

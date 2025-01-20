@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static void	_update_selected_button(mlx_key_data_t keydata, t_game_env *env)
+static void	update_selected_button(mlx_key_data_t keydata, t_game_env *env)
 {
 	if (keydata.action == MLX_PRESS)
 	{
@@ -19,7 +19,7 @@ static void	_update_selected_button(mlx_key_data_t keydata, t_game_env *env)
 
 void	in_menu_key_logic(mlx_key_data_t keydata, t_game_env *env)
 {
-	_update_selected_button(keydata, env);
+	update_selected_button(keydata, env);
 	if (keydata.key == MLX_KEY_ENTER)
 	{
 		if (env->selected_button == BTN_START)

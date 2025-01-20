@@ -3,19 +3,17 @@
 
 # include "definitions.h"
 
-typedef mlx_texture_t t_texture;
+typedef mlx_texture_t	t_texture;
 
 void		init_graphics(t_game_env *env, t_game_map map);
 void		free_graphics(t_game_env *env);
-
-void	display_map(t_game_env *env);
-void	display_menu(t_game_env *env);
 
 //hooks
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		in_menu_key_logic(mlx_key_data_t keydata, t_game_env *env);
 void		in_game_key_logic(mlx_key_data_t keydata, t_game_env *env);
 void		update_game(void *param);
+void		update_positions(t_game_env *env);
 
 size_t		get_button_coords(t_menu_buttons button, t_coords_index xy);
 

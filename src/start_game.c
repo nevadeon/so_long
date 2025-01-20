@@ -24,7 +24,6 @@ void	display_ground(t_game_env *env)
 				env->sand->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
 				env->sand->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE);
 			}
-
 		}
 	}
 }
@@ -46,7 +45,6 @@ void	display_collectible_exit(t_game_env *env)
 				instance_index = image_to_window(env->mlx, env->steak, 0, 0);
 				env->steak->instances[instance_index].x = WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
 				env->steak->instances[instance_index].y = HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE);
-
 			}
 			if (env->map.grid[y][x] == 'E')
 			{

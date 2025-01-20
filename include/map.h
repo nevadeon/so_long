@@ -27,7 +27,7 @@ t_game_map	process_args(int argc, char *argv[]);
  * @param map The map structure
  * @return 0 if map is valid and error_code otherwise
  */
-t_error	parse_map(t_game_map *map);
+t_error		parse_map(t_game_map *map);
 
 /**
  * @brief In a nutshell, takes advandate of the 8th unused bit of ascii chars to
@@ -42,20 +42,20 @@ t_error	parse_map(t_game_map *map);
  * @param x The collumn of the current character
  * @param y The raw of the current character
  */
-void	mark_reachable_items(char **grid, size_t x, size_t y);
+void		mark_reachable_items(char **grid, size_t x, size_t y);
 
 /*------------------------------------------------------------------------------
                                    map tests
 ------------------------------------------------------------------------------*/
 
-t_error	check_map_size(t_game_map *map);
-t_error	is_rectangle(char **grid, size_t map_width);
-t_error	check_outer_walls(char **grid, size_t map_width, size_t map_height);
-t_error	count_collectible(char **grid, size_t *nb);
-t_error	check_characters(char **grid);
-t_error	count_player(char **grid);
-t_error	count_exit(char **grid);
-t_error	check_unreachable(char **grid);
+t_error		check_map_size(t_game_map *map);
+t_error		is_rectangle(char **grid, size_t map_width);
+t_error		check_outer_walls(char **grid, size_t map_width, size_t map_height);
+t_error		count_collectible(char **grid, size_t *nb);
+t_error		check_characters(char **grid);
+t_error		count_player(char **grid);
+t_error		count_exit(char **grid);
+t_error		check_unreachable(char **grid);
 
 /*==============================================================================
                                    MAP TOOLS
@@ -67,14 +67,14 @@ t_error	check_unreachable(char **grid);
  * @param file_name The text file that contains map data
  * @return A mallocated 2 dimensions array of strings
  */
-char	**get_map(char *file_name);
+char		**get_map(char *file_name);
 
 /**
  * @brief Free all mallocs from get_map function
  *
  * @param map The array of strings
  */
-void	free_map(char **grid);
+void		free_map(char **grid);
 
 /**
  * @brief Cycle through an array of strings and reverse a previously applied
@@ -82,14 +82,14 @@ void	free_map(char **grid);
  *
  * @param map The array of strings
  */
-void	reset_map(char **grid);
+void		reset_map(char **grid);
 
 /**
  * @brief Prints map data into terminal with colors
  *
  * @param map The array of strings
  */
-void	print_map(char **map);
+void		print_map(char **map);
 
 /**
  * @brief Gets the player position and stores it in map structure player_x and
@@ -97,7 +97,7 @@ void	print_map(char **map);
  *
  * @param map The map structure
  */
-void	get_player_position(t_game_map *map);
+void		get_player_position(t_game_map *map);
 
 /*------------------------------------------------------------------------------
                                    map utils
@@ -111,7 +111,7 @@ void	get_player_position(t_game_map *map);
  * @param str The string that will be added at the end of the copy
  * @return The newly constructed array
  */
-char	**_dim2join_free(char **tab, char *str);
+char		**_dim2join_free(char **tab, char *str);
 
 /**
  * @brief Calculate the size of a NULL terminated 2 dimensions array
@@ -119,7 +119,7 @@ char	**_dim2join_free(char **tab, char *str);
  * @param tab The 2 dimensions NULL terminated array
  * @return The lenght of the array
  */
-size_t	dim2_len(void **tab);
+size_t		dim2_len(void **tab);
 
 /**
  * @brief Copy a NULL terminated 2 dimensions array into another one
@@ -128,6 +128,6 @@ size_t	dim2_len(void **tab);
  * @param dest The destination array
  * @param src The source array
  */
-void	dim2_cpy(void **dest, void **src);
+void		dim2_cpy(void **dest, void **src);
 
 #endif

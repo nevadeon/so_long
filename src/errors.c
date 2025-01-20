@@ -5,8 +5,7 @@ const char	*get_error_message(t_error error_code)
 	static const char	*message[] = {\
 		[OK] = "How the hell did you get this error message ?", \
 		[ERR_ARGS] = "too many arguments", \
-		[ERR_NAME] = "file name too short", \
-		[ERR_EXT] = "incorrect file extension", \
+		[ERR_NAME] = "incorrect file name or extension", \
 		[ERR_OPEN] = "Found no corresponding file", \
 		[ERR_EMPTY_MAP] = "Empty map", \
 		[ERR_RECT] = "Map is not a rectangle", \

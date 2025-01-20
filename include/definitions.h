@@ -46,26 +46,56 @@ typedef struct s_player_data
 	bool	is_down;
 	bool	is_moving;
 	bool	was_moving;
-} t_player_data;
+}	t_player_data;
 
-typedef struct s_animation{
-	mlx_texture_t	*sprite_sheet;		// Texture containing all frames of the animation
-	mlx_image_t		*render_layer;		// The image that is displayed on screen
-	size_t			dest_x;				// X position in the render image
-	size_t			dest_y;				// Y position in the render image
-	size_t			frame_width;		// Width of a single frame
-	size_t			frame_height;		// Height of a single frame
-	size_t			padding_x;			// Number of pixels arround each frame on the x axis
-	size_t			padding_y;			// Number of pixels arround each frame on the y axis
-	size_t			start_frame;		// First frame index in the sprite sheet
-	size_t			frame_count;		// Total number of frames in the animation
-	size_t			current_frame;		// Current frame counter
-	bool			mirrored;			// Indicates if the frame will be horizontally mirrored
-	bool			bounce;				// Indicates if the animation should bounce (1 2 3 2 1 2 3 instead of 1 2 3 1 2 3)
-	bool			playing_in_reverse;	// Indicates if the animation is playing backwards
-	bool			needs_refresh;		// Indicates if the animation needs to be refreshed immediatly
-	double			frame_duration_ms;	// Duration of a single frame in milliseconds
-	double			elapsed_time_ms;	// Time that passed since the last frame in milliseconds
+/**
+ * @brief Contains all date used to render an animation.
+ *
+ * @param sprite_sheet The texture containing all frames of the animation.
+ * @param render_layer The image that is displayed on the screen.
+ * @param dest_x The X position in the render image where the animation will be
+ * drawn.
+ * @param dest_y The Y position in the render image where the animation will be
+ * drawn.
+ * @param frame_width The width of a single frame in the sprite sheet.
+ * @param frame_height The height of a single frame in the sprite sheet.
+ * @param padding_x The number of pixels around each frame on the X axis.
+ * @param padding_y The number of pixels around each frame on the Y axis.
+ * @param start_frame The index of the first frame in the sprite sheet.
+ * @param frame_count The total number of frames in the animation.
+ * @param current_frame The current frame being displayed in the animation.
+ * @param mirrored A boolean indicating whether the frame should be horizontally
+ * mirrored.
+ * @param bounce A boolean that determines if the animation should bounce (i.e.,
+ * play in a 1 2 3 2 1 loop).
+ * @param playing_in_reverse A boolean indicating whether the animation is
+ * playing backwards (in reverse order).
+ * @param needs_refresh A boolean indicating if the animation needs to be
+ * refreshed immediately (used for fast updates).
+ * @param frame_duration_ms The duration in milliseconds that each frame should
+ * be displayed.
+ * @param elapsed_time_ms The elapsed time in milliseconds since the last frame
+ * change.
+ */
+typedef struct s_animation
+{
+	mlx_texture_t	*sprite_sheet;
+	mlx_image_t		*render_layer;
+	size_t			dest_x;
+	size_t			dest_y;
+	size_t			frame_width;
+	size_t			frame_height;
+	size_t			padding_x;
+	size_t			padding_y;
+	size_t			start_frame;
+	size_t			frame_count;
+	size_t			current_frame;
+	bool			mirrored;
+	bool			bounce;
+	bool			playing_in_reverse;
+	bool			needs_refresh;
+	double			frame_duration_ms;
+	double			elapsed_time_ms;
 }	t_animation;
 
 typedef struct s_game_map

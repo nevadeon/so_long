@@ -2,7 +2,7 @@
 
 void	init_select_anim(t_game_env *env)
 {
-	t_animation anim;
+	t_animation	anim;
 
 	anim = (t_animation){
 		.render_layer = env->foreground,
@@ -17,7 +17,7 @@ void	init_select_anim(t_game_env *env)
 
 void	init_menu_bg_anim(t_game_env *env)
 {
-	t_animation anim;
+	t_animation	anim;
 
 	anim = (t_animation){
 		.render_layer = new_image(env->mlx, WIDTH, HEIGHT),
@@ -34,7 +34,7 @@ void	init_menu_bg_anim(t_game_env *env)
 
 void	init_idle_knight_anim(t_game_env *env)
 {
-	t_animation anim;
+	t_animation	anim;
 
 	anim = (t_animation){
 		.render_layer = env->foreground,
@@ -52,7 +52,7 @@ void	init_idle_knight_anim(t_game_env *env)
 
 void	init_moving_knight_anim(t_game_env *env)
 {
-	t_animation anim;
+	t_animation	anim;
 
 	anim = (t_animation){
 		.render_layer = env->foreground,

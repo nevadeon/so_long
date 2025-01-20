@@ -1,5 +1,16 @@
 #include "so_long.h"
 
+static void	_mark_reachable_items(char **grid, size_t x, size_t y)
+{
+	if (grid[y][x] == '1' || grid[y][x] & 1 << 7)
+		return ;
+	grid[y][x] |= 1 << 7;
+	_mark_reachable_items(grid, x + 1, y);
+	_mark_reachable_items(grid, x - 1, y);
+	_mark_reachable_items(grid, x, y - 1);
+	_mark_reachable_items(grid, x, y + 1);
+}
+
 t_error	parse_map(t_game_map *map)
 {
 	if (map->grid[0] == NULL)
@@ -19,7 +30,7 @@ t_error	parse_map(t_game_map *map)
 	if (count_collectible(map->grid, &map->nb_collectibles))
 		return (ERR_COL);
 	get_player_position(map);
-	mark_reachable_items(map->grid, map->player_x, map->player_y);
+	_mark_reachable_items(map->grid, map->player_x, map->player_y);
 	if (check_unreachable(map->grid))
 		return (ERR_UNREACH);
 	reset_map(map->grid);
