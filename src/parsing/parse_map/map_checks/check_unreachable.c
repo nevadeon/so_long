@@ -2,9 +2,9 @@
 
 t_error	check_unreachable(char **grid)
 {
-	bool	found_unreach;
-	size_t	x;
-	size_t	y;
+	bool		found_unreach;
+	uint32_t	x;
+	uint32_t	y;
 
 	found_unreach = false;
 	y = -1;

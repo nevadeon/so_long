@@ -17,7 +17,7 @@ static uint32_t	_get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-uint32_t	get_pixel_value(mlx_texture_t *img, size_t x, size_t y)
+uint32_t	get_pixel_value(mlx_texture_t *img, uint32_t x, uint32_t y)
 {
 	uint8_t	*pixel;
 

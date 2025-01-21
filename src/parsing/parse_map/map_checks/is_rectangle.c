@@ -1,9 +1,9 @@
 #include "so_long.h"
 
-t_error	is_rectangle(char **grid, size_t map_width)
+t_error	is_rectangle(char **grid, uint32_t map_width)
 {
-	size_t	len;
-	size_t	y;
+	uint32_t	len;
+	uint32_t	y;
 
 	y = -1;
 	while (grid[++y] != NULL)

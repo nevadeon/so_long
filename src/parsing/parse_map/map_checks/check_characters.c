@@ -2,9 +2,9 @@
 
 t_error	check_characters(char **grid)
 {
-	bool	found_error;
-	size_t	x;
-	size_t	y;
+	bool		found_error;
+	uint32_t	x;
+	uint32_t	y;
 
 	found_error = false;
 	y = -1;

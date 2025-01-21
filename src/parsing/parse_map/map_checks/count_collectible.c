@@ -1,9 +1,9 @@
 #include "so_long.h"
 
-t_error	count_collectible(char **grid, size_t *nb_collectibles)
+t_error	count_collectible(char **grid, uint32_t *nb_collectibles)
 {
-	size_t	x;
-	size_t	y;
+	uint32_t	x;
+	uint32_t	y;
 
 	y = -1;
 	while (grid[++y] != NULL)

@@ -42,16 +42,16 @@ t_error		parse_map(t_game_map *map);
  * @param x The collumn of the current character
  * @param y The raw of the current character
  */
-void		mark_reachable_items(char **grid, size_t x, size_t y);
+void		_mark_reachable_items(char **grid, uint32_t x, uint32_t y);
 
 /*------------------------------------------------------------------------------
                                    map tests
 ------------------------------------------------------------------------------*/
 
 t_error		check_map_size(t_game_map *map);
-t_error		is_rectangle(char **grid, size_t map_width);
-t_error		check_outer_walls(char **grid, size_t map_width, size_t map_height);
-t_error		count_collectible(char **grid, size_t *nb);
+t_error		is_rectangle(char **grid, uint32_t width);
+t_error		check_outer_walls(char **grid, uint32_t width, uint32_t height);
+t_error		count_collectible(char **grid, uint32_t *nb);
 t_error		check_characters(char **grid);
 t_error		count_player(char **grid);
 t_error		count_exit(char **grid);
@@ -119,7 +119,7 @@ char		**_dim2join_free(char **tab, char *str);
  * @param tab The 2 dimensions NULL terminated array
  * @return The lenght of the array
  */
-size_t		dim2_len(void **tab);
+uint32_t	dim2_len(void **tab);
 
 /**
  * @brief Copy a NULL terminated 2 dimensions array into another one

@@ -8,8 +8,8 @@ void	clear_image(mlx_image_t *image)
 
 // void	clear_image(mlx_image_t *image)
 // {
-// 	size_t	y;
-// 	size_t	x;
+// 	uint32_t	y;
+// 	uint32_t	x;
 
 // 	y = 0;
 // 	while (y < image->height)

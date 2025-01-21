@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-mlx_image_t	*new_image(mlx_t *mlx, size_t width, size_t height)
+mlx_image_t	*new_image(mlx_t *mlx, uint32_t width, uint32_t height)
 {
 	mlx_image_t	*img;
 

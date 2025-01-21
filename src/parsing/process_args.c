@@ -2,7 +2,7 @@
 
 static void	_check_extension(char *filename)
 {
-	size_t	len;
+	uint32_t	len;
 
 	len = ft_strlen(filename);
 	if (len < 5)

@@ -1,8 +1,8 @@
 #include "so_long.h"
 
-size_t	get_button_coords(t_menu_buttons button, t_coords_index index)
+uint32_t	get_button_coords(t_menu_buttons button, t_coords_index index)
 {
-	static const size_t	button_coords[][2] = {\
+	static const uint32_t	button_coords[][2] = {\
 		[BTN_START] = {572, 585}, \
 		[BTN_EXIT] = {572, 746}, \
 	};

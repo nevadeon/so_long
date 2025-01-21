@@ -16,5 +16,11 @@
 # include "graphics.h"
 
 void	start_game(t_game_env *env);
+void	exit_game(t_game_env *env);
+
+//hooks
+void	key_hook(mlx_key_data_t keydata, void *param);
+void	update_game(void *param);
+void	update_positions(t_game_env *env);
 
 #endif

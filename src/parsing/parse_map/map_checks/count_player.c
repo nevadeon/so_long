@@ -2,9 +2,9 @@
 
 t_error	count_player(char **grid)
 {
-	size_t	nb_player;
-	size_t	x;
-	size_t	y;
+	uint32_t	nb_player;
+	uint32_t	x;
+	uint32_t	y;
 
 	nb_player = 0;
 	y = -1;

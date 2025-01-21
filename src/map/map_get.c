@@ -2,8 +2,8 @@
 
 char	**_dim2join_free(char **tab, char *str)
 {
-	char	**output;
-	size_t	len;
+	char		**output;
+	uint32_t	len;
 
 	len = dim2_len((void **) tab) + 1;
 	output = malloc(sizeof(char *) * (len + 1));

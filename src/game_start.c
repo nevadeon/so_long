@@ -1,20 +1,20 @@
 #include "so_long.h"
 
-static void	place_tile(t_game_env *env, mlx_image_t *tile, size_t x, size_t y)
+static void	place_tile(t_game_env *e, mlx_image_t *tile, uint32_t x, uint32_t y)
 {
-	size_t	instance_index;
+	uint32_t	instance_index;
 
-	instance_index = image_to_window(env->mlx, tile, 0, 0);
+	instance_index = image_to_window(e->mlx, tile, 0, 0);
 	tile->instances[instance_index].x = \
-		WIDTH / 2 + ((x - env->map.player_x) * TILE_SIZE - TILE_SIZE / 2);
+		WIDTH / 2 + ((x - e->map.player_index_x) * TILE_SIZE - TILE_SIZE / 2);
 	tile->instances[instance_index].y = \
-		HEIGHT / 2 + ((y - env->map.player_y) * TILE_SIZE);
+		HEIGHT / 2 + ((y - e->map.player_index_y) * TILE_SIZE);
 }
 
 static void	display_ground(t_game_env *env)
 {
-	size_t	x;
-	size_t	y;
+	uint32_t	x;
+	uint32_t	y;
 
 	y = -1;
 	while (env->map.grid[++y] != NULL)
@@ -32,8 +32,8 @@ static void	display_ground(t_game_env *env)
 
 static void	display_collectible_exit(t_game_env *env)
 {
-	size_t	x;
-	size_t	y;
+	uint32_t	x;
+	uint32_t	y;
 
 	y = -1;
 	while (env->map.grid[++y] != NULL)
@@ -51,8 +51,8 @@ static void	display_collectible_exit(t_game_env *env)
 
 void	start_game(t_game_env *env)
 {
-	env->map.player_pos_x = env->map.player_x * TILE_SIZE + TILE_SIZE / 2;
-	env->map.player_pos_y = env->map.player_y * TILE_SIZE + TILE_SIZE / 2;
+	env->map.player_pos_x = env->map.player_index_x * TILE_SIZE + TILE_SIZE / 2;
+	env->map.player_pos_y = env->map.player_index_y * TILE_SIZE + TILE_SIZE / 2;
 	display_ground(env);
 	display_collectible_exit(env);
 	image_to_window(env->mlx, env->menu_bg_anim.render_layer, 0, 0);

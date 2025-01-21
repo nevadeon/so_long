@@ -64,14 +64,14 @@ typedef struct s_player_data
  * @param start_frame The index of the first frame in the sprite sheet.
  * @param frame_count The total number of frames in the animation.
  * @param current_frame The current frame being displayed in the animation.
- * @param mirrored A boolean indicating whether the frame should be horizontally
- * mirrored.
- * @param bounce A boolean that determines if the animation should bounce (i.e.,
+ * @param is_mirrored A boolean indicating whether the frame should be horizontally
+ * is_mirrored.
+ * @param is_bounce_anim A boolean that determines if the animation should is_bounce_anim (i.e.,
  * play in a 1 2 3 2 1 loop).
- * @param playing_in_reverse A boolean indicating whether the animation is
+ * @param is_playing_in_reverse A boolean indicating whether the animation is
  * playing backwards (in reverse order).
- * @param needs_refresh A boolean indicating if the animation needs to be
- * refreshed immediately (used for fast updates).
+ * @param needs_clear_refresh A boolean indicating if the animation needs to
+ * be reseted and refreshed immediately (used for fast updates).
  * @param frame_duration_ms The duration in milliseconds that each frame should
  * be displayed.
  * @param elapsed_time_ms The elapsed time in milliseconds since the last frame
@@ -83,38 +83,36 @@ typedef struct s_animation
 	mlx_image_t		*render_layer;
 	double			frame_duration_ms;
 	double			elapsed_time_ms;
-	size_t			dest_x;
-	size_t			dest_y;
-	size_t			frame_width;
-	size_t			frame_height;
-	size_t			padding_x;
-	size_t			padding_y;
-	size_t			start_frame;
-	size_t			frame_count;
-	size_t			current_frame;
-	bool			mirrored;
-	bool			bounce;
-	bool			playing_in_reverse;
-	bool			needs_refresh;
+	uint16_t		dest_x;
+	uint16_t		dest_y;
+	uint16_t		frame_width;
+	uint16_t		frame_height;
+	uint16_t		padding_x;
+	uint16_t		padding_y;
+	uint16_t		start_frame;
+	uint16_t		frame_count;
+	uint16_t		current_frame;
+	bool			is_mirrored;
+	bool			is_bounce_anim;
+	bool			is_playing_in_reverse;
+	bool			needs_clear_refresh;
 }	t_animation;
 
 typedef struct s_game_map
 {
 	char		**grid;
-	mlx_image_t	**tiles;
-	size_t		width;
-	size_t		height;
-	size_t		player_x;
-	size_t		player_y;
-	long		player_pos_x;
-	long		player_pos_y;
-	size_t		nb_collectibles;
+	int32_t		player_pos_x;
+	int32_t		player_pos_y;
+	uint32_t	player_index_x;
+	uint32_t	player_index_y;
+	uint32_t	width;
+	uint32_t	height;
+	uint32_t	nb_collectibles;
 	uint32_t	move_counter;
 }	t_game_map;
 
 typedef struct s_game_env
 {
-	t_player_data	player;
 	mlx_t			*mlx;
 	mlx_image_t		*foreground;
 	mlx_image_t		*start_bt;
@@ -127,9 +125,10 @@ typedef struct s_game_env
 	t_animation		select_anim;
 	t_animation		idle_knight;
 	t_animation		moving_knight;
+	t_game_map		map;
 	t_game_status	game_status;
 	t_menu_buttons	selected_button;
-	t_game_map		map;
+	t_player_data	player;
 }	t_game_env;
 
 #endif

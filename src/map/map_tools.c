@@ -2,7 +2,7 @@
 
 void	free_map(char **grid)
 {
-	size_t	i;
+	uint32_t	i;
 
 	i = -1;
 	while (grid[++i] != NULL)
@@ -13,8 +13,8 @@ void	free_map(char **grid)
 
 void	reset_map(char **grid)
 {
-	size_t	x;
-	size_t	y;
+	uint32_t	x;
+	uint32_t	y;
 
 	y = -1;
 	while (grid[++y] != NULL)
@@ -30,8 +30,8 @@ void	reset_map(char **grid)
 
 void	print_map(char **map)
 {
-	size_t	y;
-	size_t	x;
+	uint32_t	y;
+	uint32_t	x;
 
 	y = -1;
 	while (map[++y] != NULL)
@@ -54,8 +54,8 @@ void	print_map(char **map)
 
 void	get_player_position(t_game_map *map)
 {
-	size_t	y;
-	size_t	x;
+	uint32_t	y;
+	uint32_t	x;
 
 	y = -1;
 	while (map->grid[++y] != NULL)
@@ -65,8 +65,8 @@ void	get_player_position(t_game_map *map)
 		{
 			if (map->grid[y][x] == 'P')
 			{
-				map->player_x = x;
-				map->player_y = y;
+				map->player_index_x = x;
+				map->player_index_y = y;
 			}
 		}
 	}

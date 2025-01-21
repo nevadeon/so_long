@@ -2,9 +2,9 @@
 
 t_error	count_exit(char **grid)
 {
-	size_t	nb_exit;
-	size_t	x;
-	size_t	y;
+	uint32_t	nb_exit;
+	uint32_t	x;
+	uint32_t	y;
 
 	nb_exit = 0;
 	y = -1;

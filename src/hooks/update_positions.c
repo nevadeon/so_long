@@ -2,7 +2,7 @@
 
 static void	update_instances_positions(mlx_image_t	*image, long dx, long dy)
 {
-	size_t	i;
+	uint32_t	i;
 
 	i = 0;
 	while (i < image->count)
@@ -33,8 +33,8 @@ static void	disable_colliding_instances(mlx_image_t	*image)
 
 static void	handle_collectible_and_exit(t_game_env *env, long dx, long dy)
 {
-	size_t	futur_x;
-	size_t	futur_y;
+	uint32_t	futur_x;
+	uint32_t	futur_y;
 
 	futur_x = (env->map.player_pos_x + dx) / TILE_SIZE;
 	futur_y = (env->map.player_pos_y + dy) / TILE_SIZE;
@@ -50,10 +50,10 @@ static void	handle_collectible_and_exit(t_game_env *env, long dx, long dy)
 
 static void	check_wall_collision(t_game_env *env, long *dx, long *dy)
 {
-	size_t	current_x;
-	size_t	current_y;
-	size_t	futur_x;
-	size_t	futur_y;
+	uint32_t	current_x;
+	uint32_t	current_y;
+	uint32_t	futur_x;
+	uint32_t	futur_y;
 
 	current_x = env->map.player_pos_x / TILE_SIZE;
 	current_y = env->map.player_pos_y / TILE_SIZE;

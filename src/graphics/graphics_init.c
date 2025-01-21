@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	init_select_anim(t_game_env *env)
+static void	_init_select_anim(t_game_env *env)
 {
 	t_animation	anim;
 
@@ -15,7 +15,7 @@ void	init_select_anim(t_game_env *env)
 	env->select_anim = anim;
 }
 
-void	init_menu_bg_anim(t_game_env *env)
+static void	_init_menu_bg_anim(t_game_env *env)
 {
 	t_animation	anim;
 
@@ -32,7 +32,7 @@ void	init_menu_bg_anim(t_game_env *env)
 	env->menu_bg_anim = anim;
 }
 
-void	init_idle_knight_anim(t_game_env *env)
+static void	_init_idle_knight_anim(t_game_env *env)
 {
 	t_animation	anim;
 
@@ -50,7 +50,7 @@ void	init_idle_knight_anim(t_game_env *env)
 	env->idle_knight = anim;
 }
 
-void	init_moving_knight_anim(t_game_env *env)
+static void	_init_moving_knight_anim(t_game_env *env)
 {
 	t_animation	anim;
 
@@ -88,8 +88,8 @@ void	init_graphics(t_game_env *env, t_game_map map)
 		.game_status = IN_MENU,
 		.selected_button = BTN_START,
 	};
-	init_menu_bg_anim(env);
-	init_select_anim(env);
-	init_idle_knight_anim(env);
-	init_moving_knight_anim(env);
+	_init_menu_bg_anim(env);
+	_init_select_anim(env);
+	_init_idle_knight_anim(env);
+	_init_moving_knight_anim(env);
 }

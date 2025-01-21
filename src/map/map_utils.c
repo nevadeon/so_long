@@ -1,8 +1,8 @@
 #include "so_long.h"
 
-size_t	dim2_len(void **tab)
+uint32_t	dim2_len(void **tab)
 {
-	size_t	len;
+	uint32_t	len;
 
 	len = 0;
 	while (tab[len] != NULL)
