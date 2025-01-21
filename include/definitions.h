@@ -81,6 +81,8 @@ typedef struct s_animation
 {
 	mlx_texture_t	*sprite_sheet;
 	mlx_image_t		*render_layer;
+	double			frame_duration_ms;
+	double			elapsed_time_ms;
 	size_t			dest_x;
 	size_t			dest_y;
 	size_t			frame_width;
@@ -94,8 +96,6 @@ typedef struct s_animation
 	bool			bounce;
 	bool			playing_in_reverse;
 	bool			needs_refresh;
-	double			frame_duration_ms;
-	double			elapsed_time_ms;
 }	t_animation;
 
 typedef struct s_game_map

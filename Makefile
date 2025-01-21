@@ -4,7 +4,7 @@ CC := cc
 
 # Flags
 CFLAGS = -O3 -Wall -Wextra -I$(INC_FOLDER) -I$(LIBFT_FOLDER)/$(INC_FOLDER)
-LDFLAGS = -L$(LIBFT_FOLDER) -lndav -L$(LIB_FOLDER) -lmlx42 -ldl -lglfw -pthread -lm
+LDFLAGS = -L$(LIBFT_FOLDER) -lndav -L$(MLX_FOLDER) -lmlx42 -ldl -lglfw -lm -pthread
 
 # Directories
 SRC_FOLDER := src
@@ -17,6 +17,7 @@ OBJ := $(patsubst $(SRC_FOLDER)/%.c, $(OBJ_FOLDER)/%.o, $(SRC))
 
 # Library
 LIB_FOLDER := lib
+MLX_FOLDER := $(LIB_FOLDER)/MLX42
 LIBFT_FOLDER := $(LIB_FOLDER)/libndav
 LIBFT := $(LIBFT_FOLDER)/libndav.a
 LIBMLX := $(LIB_FOLDER)/libmlx42.a
@@ -30,7 +31,7 @@ TEST_SRC := $(shell find $(TEST_FOLDER) -type f -name "*.c")
 TEST_OBJ := $(patsubst $(TEST_FOLDER)/%.c, $(OBJ_FOLDER)/$(TEST_FOLDER)/%.o, $(TEST_SRC))
 TEST_LINK_OBJ := $(filter-out $(OBJ_FOLDER)/main.o, $(OBJ)) $(TEST_OBJ)
 
-# Tests flags
+# Tests flags (use -fsanitize=address for extensive tests)
 DEBUG_CFLAGS := -g
 TEST_CFLAGS := -I$(TEST_FOLDER)/$(INC_FOLDER) -DINCLUDE_TEST_HEADER
 VALGRIND_FLAGS := --quiet --leak-check=full --show-leak-kinds=all

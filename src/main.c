@@ -11,5 +11,6 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(env.mlx, key_hook, &env);
 	mlx_loop_hook(env.mlx, update_game, &env);
 	mlx_loop(env.mlx);
+	exit_game(&env);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@ char	**_dim2join_free(char **tab, char *str)
 	size_t	len;
 
 	len = dim2_len((void **) tab) + 1;
-	output = (char **) malloc(sizeof(char *) * (len + 1));
+	output = malloc(sizeof(char *) * (len + 1));
 	dim2_cpy((void **) output, (void **) tab);
 	output[len - 1] = str;
 	output[len] = NULL;
@@ -23,7 +23,7 @@ char	**get_map(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
-	map = (char **) malloc(sizeof(char *));
+	map = malloc(sizeof(char *));
 	map[0] = NULL;
 	line = get_next_line(fd);
 	while (line)

@@ -45,7 +45,7 @@ static void	handle_collectible_and_exit(t_game_env *env, long dx, long dy)
 		disable_colliding_instances(env->steak);
 	}
 	if (env->map.grid[futur_y][futur_x] == 'E' && env->map.nb_collectibles == 0)
-		exit(0);
+		exit_game(env);
 }
 
 static void	check_wall_collision(t_game_env *env, long *dx, long *dy)
