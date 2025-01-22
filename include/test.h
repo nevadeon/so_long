@@ -1,5 +1,5 @@
-#ifndef TEST_PUSH_SWAP_H
-# define TEST_PUSH_SWAP_H
+#ifndef TEST_H
+# define TEST_H
 
 # include <assert.h>
 # include <stdio.h>

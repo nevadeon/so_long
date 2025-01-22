@@ -1,62 +1,49 @@
 NAME := so_long
+TEST_BIN := tests
 
+# Compiler, flags and args
 CC := cc
-
-# Flags
-CFLAGS = -O3 -Wall -Wextra -I$(INC_FOLDER) -I$(LIBFT_FOLDER)/$(INC_FOLDER)
-LDFLAGS = -L$(LIBFT_FOLDER) -lndav -L$(MLX_FOLDER) -lmlx42 -ldl -lglfw -lm -pthread
-
-# Directories
-SRC_FOLDER := src
-OBJ_FOLDER := obj
-INC_FOLDER := include
-
-# Sources and objects
-SRC := $(shell find $(SRC_FOLDER) -type f -name "*.c")
-OBJ := $(patsubst $(SRC_FOLDER)/%.c, $(OBJ_FOLDER)/%.o, $(SRC))
-
-# Library
-LIB_FOLDER := lib
-MLX_FOLDER := $(LIB_FOLDER)/MLX42
-LIBFT_FOLDER := $(LIB_FOLDER)/libndav
-LIBFT := $(LIBFT_FOLDER)/libndav.a
-LIBMLX := $(LIB_FOLDER)/libmlx42.a
-
-# Tests
-TEST_BIN := test_bin
-TEST_FOLDER := tests
-
-# Tests sources and objects
-TEST_SRC := $(shell find $(TEST_FOLDER) -type f -name "*.c")
-TEST_OBJ := $(patsubst $(TEST_FOLDER)/%.c, $(OBJ_FOLDER)/$(TEST_FOLDER)/%.o, $(TEST_SRC))
-TEST_LINK_OBJ := $(filter-out $(OBJ_FOLDER)/main.o, $(OBJ)) $(TEST_OBJ)
-
-# Tests flags (use -fsanitize=address for extensive tests)
-DEBUG_CFLAGS := -g
-TEST_CFLAGS := -I$(TEST_FOLDER)/$(INC_FOLDER) -DINCLUDE_TEST_HEADER
+CFLAGS = -O3 -Wall -Wextra -I$(INC_DIR) -I$(LIBFT_DIR)/$(INC_DIR)
+LDFLAGS = -L$(LIBFT_DIR) -lndav -L$(MLX_DIR) -lmlx42 -ldl -lglfw -lm -pthread
 VALGRIND_FLAGS := --quiet --leak-check=full --show-leak-kinds=all
 GDB_FLAGS := --quiet --args
-
 TEST_ARGS :=
+
+# Directories
+INC_DIR := include
+LIB_DIR := lib
+SRC_DIR := src
+OBJ_DIR := obj
+TEST_DIR := test
+MLX_DIR := $(LIB_DIR)/MLX42
+LIBMLX := $(LIB_DIR)/libmlx42.a
+LIBFT_DIR := $(LIB_DIR)/libndav
+LIBFT := $(LIBFT_DIR)/libndav.a
+
+# Sources and objects
+SRC := $(shell find $(SRC_DIR) -type f -name "*.c")
+OBJ := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+TEST_SRC := $(shell find $(TEST_DIR) -type f -name "*.c")
+TEST_OBJ := $(patsubst $(TEST_DIR)/%.c, $(OBJ_DIR)/$(TEST_DIR)/%.o, $(TEST_SRC))
+TEST_LINK_OBJ := $(filter-out $(OBJ_DIR)/main.o, $(OBJ)) $(TEST_OBJ)
 
 # ============================================================================ #
 #        Main rules                                                            #
 # ============================================================================ #
-
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
 	@$(CC) $(CFLAGS) -o $@ $(OBJ) $(LDFLAGS)
 
-$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@./update_progress_bar.sh "Compiling $(NAME):"
 
 re: fclean all
 
 clean:
-	@rm -rf $(OBJ_FOLDER)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
@@ -64,39 +51,32 @@ fclean: clean
 # ============================================================================ #
 #        Library rules                                                         #
 # ============================================================================ #
-
 $(LIBFT):
-	@$(MAKE) -s -C $(LIBFT_FOLDER)
+	@$(MAKE) -s -C $(LIBFT_DIR)
 
 libre:
-	@$(MAKE) -s -C $(LIBFT_FOLDER) re
+	@$(MAKE) -s -C $(LIBFT_DIR) re
 
 # ============================================================================ #
 #        Test rules                                                            #
 # ============================================================================ #
+test: CFLAGS += -DINCLUDE_TEST_HEADER
+test: $(TEST_BIN)
+	./$(TEST_BIN)
 
-$(TEST_BIN): $(TEST_LINK_OBJ)
-	@$(CC) $(CFLAGS) -o $@ $(TEST_LINK_OBJ) $(LDFLAGS)
-	@printf "$(GREEN)✔ Binaire de test $(TEST_BIN) créé.\n$(RESET_COLOR)"
+$(TEST_BIN): $(LIBFT) $(TEST_LINK_OBJ)
+	$(CC) $(CFLAGS) -o $@ $(TEST_LINK_OBJ) $(LDFLAGS)
 
-$(OBJ_FOLDER)/$(TEST_FOLDER)/%.o: $(TEST_FOLDER)/%.c
+$(OBJ_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-test: CFLAGS += $(TEST_CFLAGS)
-test: $(TEST_BIN)
-	@printf "$(YELLOW)Lancement des tests...\n$(RESET_COLOR)"
-	@./$(TEST_BIN)
-
-valgrind: CFLAGS += $(DEBUG_CFLAGS)
+valgrind: CFLAGS += -g
 valgrind: libtest re
 	valgrind $(VALGRIND_FLAGS) ./$(NAME) $(TEST_ARGS)
 
-gdb: CFLAGS += $(DEBUG_CFLAGS)
+gdb: CFLAGS += -g
 gdb: libtest re
 	gdb $(GDB_FLAGS) ./$(NAME) $(TEST_ARGS)
-
-libtest:
-	@make -s -C $(LIBFT_FOLDER) test
 
 .PHONY: all clean fclean lclean re libre libtest test valgrind gdb
