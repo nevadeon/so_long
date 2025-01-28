@@ -7,7 +7,7 @@ CFLAGS = -O3 -Wall -Wextra -I$(INC_DIR) -I$(LIBFT_DIR)/$(INC_DIR)
 LDFLAGS = -L$(LIBFT_DIR) -lndav -L$(MLX_DIR) -lmlx42 -ldl -lglfw -lm -pthread
 VALGRIND_FLAGS := --quiet --leak-check=full --show-leak-kinds=all
 GDB_FLAGS := --quiet --args
-TEST_ARGS :=
+GDB_VALGRIND_ARGS :=
 
 # Directories
 INC_DIR := include
@@ -73,10 +73,10 @@ $(OBJ_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.c
 
 valgrind: CFLAGS += -g
 valgrind: libtest re
-	valgrind $(VALGRIND_FLAGS) ./$(NAME) $(TEST_ARGS)
+	valgrind $(VALGRIND_FLAGS) ./$(NAME) $(GDB_VALGRIND_ARGS)
 
 gdb: CFLAGS += -g
 gdb: libtest re
-	gdb $(GDB_FLAGS) ./$(NAME) $(TEST_ARGS)
+	gdb $(GDB_FLAGS) ./$(NAME) $(GDB_VALGRIND_ARGS)
 
 .PHONY: all clean fclean lclean re libre libtest test valgrind gdb
