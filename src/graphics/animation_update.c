@@ -48,27 +48,27 @@ static void	_render_animation(t_animation a)
 	_render_image(a, src_x, src_y);
 }
 
-static void	_update_is_bounce_anim_animation(t_animation *a)
+static void	_update_bounce_animation(t_animation *a)
 {
-	if (a->is_playing_in_reverse)
-	{
-		if (a->current_frame == 0)
-		{
-			a->is_playing_in_reverse = false;
-			a->current_frame++;
-		}
-		else
-			a->current_frame--;
-	}
-	else
+	if (a->anim_type == BOUNCE_PLAYING_FORWARD)
 	{
 		if (a->current_frame == a->frame_count - 1)
 		{
-			a->is_playing_in_reverse = true;
+			a->anim_type = BOUNCE_PLAYING_BACKWARD;
 			a->current_frame--;
 		}
 		else
 			a->current_frame++;
+	}
+	else
+	{
+		if (a->current_frame == 0)
+		{
+			a->anim_type = BOUNCE_PLAYING_FORWARD;
+			a->current_frame++;
+		}
+		else
+			a->current_frame--;
 	}
 }
 
@@ -84,8 +84,8 @@ void	update_animation(t_animation *a, double deltatime_s)
 	else if (a->elapsed_time_ms >= a->frame_duration_ms)
 	{
 		a->elapsed_time_ms -= a->frame_duration_ms;
-		if (a->is_bounce_anim)
-			_update_is_bounce_anim_animation(a);
+		if (a->anim_type != CLASSIC)
+			_update_bounce_animation(a);
 		else
 			a->current_frame = (a->current_frame + 1) % a->frame_count;
 		_render_animation(*a);

@@ -83,6 +83,13 @@ typedef enum e_menu_buttons
 	BTN_MAX
 }	t_menu_buttons;
 
+typedef enum e_anim_type
+{
+	CLASSIC,
+	BOUNCE_PLAYING_FORWARD,
+	BOUNCE_PLAYING_BACKWARD
+}	t_anim_type;
+
 typedef struct s_player_data
 {
 	bool	is_left;
@@ -111,10 +118,9 @@ typedef struct s_player_data
  * @param current_frame The current frame being displayed in the animation.
  * @param is_mirrored A boolean indicating whether the frame should be horizontally
  * is_mirrored.
- * @param is_bounce_anim A boolean that determines if the animation should is_bounce_anim (i.e.,
- * play in a 1 2 3 2 1 loop).
- * @param is_playing_in_reverse A boolean indicating whether the animation is
- * playing backwards (in reverse order).
+ * @param anim_type An enum that determines if the animation should play in a
+ * classic way (i.e. play in a 1 2 3 1 2 3 loop)
+ * or bounce (i.e. play in a 1 2 3 2 1 loop).
  * @param needs_clear_refresh A boolean indicating if the animation needs to
  * be reseted and refreshed immediately (used for fast updates).
  * @param frame_duration_ms The duration in milliseconds that each frame should
@@ -128,18 +134,17 @@ typedef struct s_animation
 	mlx_image_t		*render_layer;
 	double			frame_duration_ms;
 	double			elapsed_time_ms;
-	uint16_t		dest_x;
-	uint16_t		dest_y;
-	uint16_t		frame_width;
-	uint16_t		frame_height;
-	uint16_t		padding_x;
-	uint16_t		padding_y;
-	uint16_t		start_frame;
-	uint16_t		frame_count;
-	uint16_t		current_frame;
+	uint32_t		dest_x;
+	uint32_t		dest_y;
+	uint32_t		frame_width;
+	uint32_t		frame_height;
+	uint32_t		padding_x;
+	uint32_t		padding_y;
+	uint32_t		start_frame;
+	uint32_t		frame_count;
+	uint32_t		current_frame;
+	t_anim_type		anim_type;
 	bool			is_mirrored;
-	bool			is_bounce_anim;
-	bool			is_playing_in_reverse;
 	bool			needs_clear_refresh;
 }	t_animation;
 
